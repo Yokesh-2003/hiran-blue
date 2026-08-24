@@ -24,7 +24,8 @@ export const VideoSection: React.FC = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showControls, setShowControls] = useState(true);
+  // Hidden by default; only shows on hover or click
+  const [showControls, setShowControls] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [hoverSeekTime, setHoverSeekTime] = useState<number | null>(null);
   const [hoverSeekPos, setHoverSeekPos] = useState<number>(0);
@@ -105,10 +106,21 @@ export const VideoSection: React.FC = () => {
     };
   }, []);
 
-  // Handle Play/Pause
+  // Flash / reveal controls temporarily on interaction
+  const triggerControlsVisibility = () => {
+    setShowControls(true);
+    if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
+    controlsTimeoutRef.current = setTimeout(() => {
+      setShowControls(false);
+    }, 3200);
+  };
+
+  // Handle Play/Pause on click/tap
   const togglePlay = () => {
     const video = videoRef.current;
     if (!video) return;
+
+    triggerControlsVisibility();
 
     if (video.paused) {
       video
@@ -133,6 +145,7 @@ export const VideoSection: React.FC = () => {
   // Handle Mute/Unmute
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerControlsVisibility();
     const video = videoRef.current;
     if (!video) return;
 
@@ -149,6 +162,7 @@ export const VideoSection: React.FC = () => {
   // Handle Volume change
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
+    triggerControlsVisibility();
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
     if (videoRef.current) {
@@ -161,6 +175,7 @@ export const VideoSection: React.FC = () => {
   // Seek on Timeline Bar
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.stopPropagation();
+    triggerControlsVisibility();
     const newTime = parseFloat(e.target.value);
     if (videoRef.current) {
       videoRef.current.currentTime = newTime;
@@ -174,6 +189,7 @@ export const VideoSection: React.FC = () => {
   // Restart video
   const handleRestart = (e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerControlsVisibility();
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
       videoRef.current.play();
@@ -184,6 +200,7 @@ export const VideoSection: React.FC = () => {
   // Toggle Fullscreen
   const toggleFullscreen = (e: React.MouseEvent) => {
     e.stopPropagation();
+    triggerControlsVisibility();
     if (!containerRef.current) return;
 
     if (!document.fullscreenElement) {
@@ -212,11 +229,7 @@ export const VideoSection: React.FC = () => {
   };
 
   const handleMouseMove = () => {
-    setShowControls(true);
-    if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
-    controlsTimeoutRef.current = setTimeout(() => {
-      if (isPlaying) setShowControls(false);
-    }, 2800);
+    triggerControlsVisibility();
   };
 
   return (
@@ -239,19 +252,15 @@ export const VideoSection: React.FC = () => {
             onContextMenu={(e) => e.preventDefault()}
             onMouseMove={handleMouseMove}
             onTouchStart={() => {
-              setShowControls(true);
-              if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
-              controlsTimeoutRef.current = setTimeout(() => {
-                if (isPlaying) setShowControls(false);
-              }, 3000);
+              triggerControlsVisibility();
             }}
             onMouseEnter={() => {
               setIsHovered(true);
-              setShowControls(true);
+              triggerControlsVisibility();
             }}
             onMouseLeave={() => {
               setIsHovered(false);
-              if (isPlaying) setShowControls(false);
+              setShowControls(false);
             }}
             className="relative w-full aspect-video md:aspect-[16/9] lg:aspect-[16/9] max-h-[720px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950 shadow-2xl group cursor-pointer"
           >
@@ -270,10 +279,10 @@ export const VideoSection: React.FC = () => {
               className="w-full h-full object-cover pointer-events-auto"
             />
 
-            {/* Bottom Gradient for contrast */}
+            {/* Bottom Gradient for contrast (Only visible on hover/tap) */}
             <div
               className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 pointer-events-none ${
-                showControls || !isPlaying || isHovered ? 'opacity-100' : 'opacity-0'
+                showControls || isHovered ? 'opacity-100' : 'opacity-0'
               }`}
             />
 
@@ -290,7 +299,7 @@ export const VideoSection: React.FC = () => {
               </div>
             )}
 
-            {/* Center Play Button (When Paused) - Gold Luxury Styling */}
+            {/* Center Play Button (When Paused & Active Controls) */}
             {!isPlaying && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[1px] transition-all z-10 pointer-events-none">
                 <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#d4af37] text-neutral-950 flex items-center justify-center shadow-[0_0_35px_rgba(212,175,55,0.6)] backdrop-blur-md transform group-hover:scale-110 active:scale-95 transition-all border border-[#f3e5ab]">
@@ -299,13 +308,13 @@ export const VideoSection: React.FC = () => {
               </div>
             )}
 
-            {/* RESPONSIVE FLOATING CONTROLS DOCK (Scaled for mobile & desktop) */}
+            {/* RESPONSIVE FLOATING CONTROLS DOCK (HIDDEN BY DEFAULT; ONLY ON HOVER OR CLICK/TAP) */}
             <div
               onClick={(e) => e.stopPropagation()}
               className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 right-2 sm:right-8 z-30 transition-all duration-300 ${
-                showControls || !isPlaying || isHovered
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-2 pointer-events-none'
+                showControls || isHovered
+                  ? 'opacity-100 translate-y-0 pointer-events-auto'
+                  : 'opacity-0 translate-y-3 pointer-events-none'
               }`}
             >
               <div className="max-w-5xl mx-auto bg-neutral-950/70 hover:bg-neutral-950/80 backdrop-blur-2xl border border-white/20 rounded-xl sm:rounded-3xl p-2 sm:p-4 shadow-2xl transition-all">
