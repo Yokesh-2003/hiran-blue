@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import { Sparkles, MapPin, Wrench, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
@@ -71,20 +70,18 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-4 sm:space-y-6 lg:sticky lg:top-28">
             
             {/* Primary Visual */}
-            <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 bg-white/90 backdrop-blur-xl border border-neutral-200 shadow-[0_15px_45px_rgba(0,0,0,0.05)]">
-              <div className="relative aspect-[16/9] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950">
-                <Image
+            <div className="relative w-full rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 bg-white/90 backdrop-blur-xl border border-neutral-200 shadow-[0_15px_45px_rgba(0,0,0,0.05)]">
+              <div className="relative w-full aspect-[16/9] sm:aspect-[4/3] min-h-[220px] sm:min-h-[280px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/images/shower_system.jpg"
                   alt="Hiran - Bath Heritage"
-                  fill
-                  priority
-                  unoptimized
-                  className="object-cover hover:scale-105 transition-transform duration-700 w-full h-full"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="eager"
+                  className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent pointer-events-none" />
                 
-                <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 text-white font-sans">
+                <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5 text-white font-sans pointer-events-none">
                   <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-300">
                     Hiranbath Heritage
                   </span>

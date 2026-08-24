@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { ArrowUpRight, Phone } from 'lucide-react';
 
 interface CtaBannerProps {
@@ -17,26 +16,23 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
     <section className="relative w-full overflow-hidden bg-neutral-950 text-white">
       
       {/* WIDE PANORAMIC YOUTUBE BANNER PROPORTIONS CONTAINER (IDENTICAL PROPORTIONS ON MOBILE & PC) */}
-      <div className="relative w-full aspect-[16/8] sm:aspect-[21/9] md:aspect-[24/9] flex items-center justify-center py-8 sm:py-16 md:py-20">
+      <div className="relative w-full aspect-[16/8] sm:aspect-[21/9] md:aspect-[24/9] min-h-[180px] sm:min-h-[320px] md:min-h-[420px] flex items-center justify-center py-8 sm:py-16 md:py-20">
         
         {/* Background Image */}
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="/images/banner.png"
-          alt="Hiranbath Architectural Sanctuary"
-          fill
-          priority
-          unoptimized
-          draggable={false}
-          onDragStart={(e) => e.preventDefault()}
-          className="object-cover object-center w-full h-full [-webkit-user-drag:none]"
+          alt="Hiran - Bath Architectural Sanctuary"
+          loading="eager"
+          className="absolute inset-0 w-full h-full object-cover object-center [-webkit-user-drag:none]"
         />
 
         {/* Soft, Reduced Black Gradient Overlays (Clearer Background Image) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 pointer-events-none" />
 
         {/* Content Container */}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-2 sm:space-y-4 md:space-y-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-2 sm:space-y-4 md:space-y-6 pointer-events-auto">
           
           {/* Main Headline in Bold Luxury Editorial Serif */}
           <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-serif leading-[1.05] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
