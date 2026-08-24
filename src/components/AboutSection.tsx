@@ -8,7 +8,6 @@ export const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineTrackRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [aboutImg, setAboutImg] = useState('/images/shower_system.jpg');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,12 +74,11 @@ export const AboutSection: React.FC = () => {
             <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 bg-white/90 backdrop-blur-xl border border-neutral-200 shadow-[0_15px_45px_rgba(0,0,0,0.05)]">
               <div className="relative aspect-[16/9] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950">
                 <Image
-                  src={aboutImg}
+                  src="/images/shower_system.jpg"
                   alt="Hiran - Bath Heritage"
                   fill
                   priority
                   unoptimized
-                  onError={() => setAboutImg('/images/hero_bathware.jpg')}
                   className="object-cover hover:scale-105 transition-transform duration-700 w-full h-full"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
