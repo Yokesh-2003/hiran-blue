@@ -134,11 +134,11 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* 1. TOP UTILITY STRIP (Left: Customer & Partner links, Right: Language & Country Selector) */}
-      <div className="w-full bg-[#1e1e1e] text-neutral-300 text-[11px] py-1.5 px-4 sm:px-8 flex items-center justify-between gap-4 border-b border-neutral-800 select-none relative z-50">
+      {/* 1. TOP UTILITY STRIP (Mobile: Row 1 = Language/Country, Row 2 = Customer Links; Desktop: Single Line) */}
+      <div className="w-full bg-[#1e1e1e] text-neutral-300 text-[11px] py-1.5 px-3 sm:px-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-1.5 sm:gap-4 border-b border-neutral-800 select-none relative z-50">
         
-        {/* Left Links */}
-        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 text-[10px] sm:text-[11px] font-medium text-neutral-400 overflow-x-auto no-scrollbar py-0.5">
+        {/* Row 2 on Mobile / Left on Desktop: Customer & Partner Links (Wrapped in neat lines on mobile) */}
+        <div className="order-2 sm:order-1 flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-3.5 gap-y-1 text-[10px] sm:text-[11px] font-medium text-neutral-400 py-1 sm:py-0.5 border-t sm:border-t-0 border-neutral-800/80">
           <a
             href="#products"
             className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
@@ -155,37 +155,37 @@ export const Navbar: React.FC = () => {
             <Store className="w-3 h-3 text-neutral-400" />
             <span>Become a Dealer</span>
           </a>
-          <span className="text-neutral-700 hidden sm:inline">|</span>
+          <span className="text-neutral-700">|</span>
 
           <a
             href="#contact"
-            className="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
           >
             <HelpCircle className="w-3 h-3 text-neutral-400" />
             <span>Submit Enquiry</span>
           </a>
-          <span className="text-neutral-700 hidden md:inline">|</span>
+          <span className="text-neutral-700">|</span>
 
           <a
             href="#contact"
-            className="hidden md:flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
           >
             <Building2 className="w-3 h-3 text-neutral-400" />
             <span>Contractor Project Enquiry</span>
           </a>
-          <span className="text-neutral-700 hidden lg:inline">|</span>
+          <span className="text-neutral-700">|</span>
 
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
           >
             <Headphones className="w-3 h-3 text-neutral-400" />
             <span>Support</span>
           </a>
         </div>
 
-        {/* Right Selectors (Language & Country) */}
-        <div className="flex items-center gap-3 sm:gap-5 shrink-0">
+        {/* Row 1 on Mobile / Right on Desktop: Language & Country Selectors in One Line */}
+        <div className="order-1 sm:order-2 flex items-center justify-end gap-3 sm:gap-5 shrink-0">
           {/* A. Language Dropdown */}
           <div className="relative" ref={langDropdownRef}>
             <button

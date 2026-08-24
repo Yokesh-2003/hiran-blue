@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -10,6 +10,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+});
+
+const playfair = Playfair_Display({
+  variable: '--font-serif',
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['400', '600', '700', '800', '900'],
 });
 
 export const viewport: Viewport = {
@@ -33,6 +40,13 @@ export const metadata: Metadata = {
     'Freestanding Bathtubs',
     'Architectural Bath Fittings',
   ],
+  icons: {
+    icon: [
+      { url: '/images/favicon.png?v=3', type: 'image/png' },
+    ],
+    shortcut: '/images/favicon.png?v=3',
+    apple: '/images/favicon.png?v=3',
+  },
 };
 
 export default function RootLayout({
@@ -44,8 +58,13 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} scroll-smooth`}
     >
+      <head>
+        <link rel="icon" href="/images/favicon.png?v=3" type="image/png" sizes="any" />
+        <link rel="shortcut icon" href="/images/favicon.png?v=3" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/favicon.png?v=3" />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen flex flex-col bg-white text-neutral-900 antialiased overflow-x-hidden"

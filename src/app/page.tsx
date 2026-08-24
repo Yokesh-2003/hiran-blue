@@ -1,15 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { Navbar } from '@/components/Navbar';
 import { HeroBanner } from '@/components/HeroBanner';
+import { VideoSection } from '@/components/VideoSection';
 import { AboutSection } from '@/components/AboutSection';
+import { ClientsSection } from '@/components/ClientsSection';
 import { ProductSection } from '@/components/ProductSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { DealersSection } from '@/components/DealersSection';
 import { CatalogueSection } from '@/components/CatalogueSection';
-import { ContactSection } from '@/components/ContactSection';
+import { ProductCategoriesSection } from '@/components/ProductCategoriesSection';
+import { CtaBanner } from '@/components/CtaBanner';
 import { Footer } from '@/components/Footer';
 import { ProductQuickViewModal } from '@/components/ProductQuickViewModal';
 import { CartDrawer } from '@/components/CartDrawer';
@@ -18,6 +22,12 @@ import { Product } from '@/types';
 import { productsData } from '@/data/mockData';
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Cart state
   const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([
     { product: productsData[0], quantity: 1 },
@@ -65,9 +75,21 @@ export default function Home() {
     setInquiryOpen(true);
   };
 
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans">
+        <div className="w-full h-8 bg-[#1e1e1e]" />
+        <div className="w-full h-16 bg-white border-b border-neutral-200" />
+      </div>
+    );
+  }
+
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-neutral-900 selection:text-white">
+      <div
+        suppressHydrationWarning
+        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-neutral-900 selection:text-white"
+      >
         {/* Navigation Bar with Indian Languages Dropdown */}
         <Navbar />
 
@@ -80,26 +102,20 @@ export default function Home() {
           }}
         />
 
+        {/* Video Player in Glassmorphism Container */}
+        <VideoSection />
+
         {/* About Us Section */}
         <AboutSection />
 
-        {/* Products Section */}
-        <ProductSection
-          onQuickView={(p) => setQuickViewProduct(p)}
-          onAddToCart={handleAddToCart}
-        />
+        {/* Our Clients Infinite Logo Marquee Section */}
+        <ClientsSection />
 
-        {/* Projects Section */}
-        <ProjectsSection />
+        {/* Our Products 5-Category Showcase */}
+        <ProductCategoriesSection />
 
-        {/* Dealers Section */}
-        <DealersSection onBookVisit={handleBookVisit} />
-
-        {/* Catalogue Download Section */}
-        <CatalogueSection />
-
-        {/* Contact Section */}
-        <ContactSection />
+        {/* Wide Panoramic CTA Banner */}
+        <CtaBanner onContactClick={handleOpenGeneralInquiry} />
 
         {/* Footer */}
         <Footer />

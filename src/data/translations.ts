@@ -225,8 +225,8 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     aboutYears: 'Years of Innovation',
     aboutYearsSub: 'Trusted by over 450 luxury architecture firms worldwide.',
 
-    productsBadge: 'Engineered Elegance',
-    productsTitle: 'Featured Luxury Collections',
+    productsBadge: 'Engineered Precision',
+    productsTitle: 'Architectural Collections',
     productsDesc: 'Precision-forged bathroom fittings crafted in timeless monochrome palettes and aerospace-grade titanium coatings.',
     catAll: 'All Collections',
     catFaucets: 'Faucets & Mixers',
