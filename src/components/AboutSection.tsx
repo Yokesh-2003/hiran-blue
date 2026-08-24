@@ -8,6 +8,7 @@ export const AboutSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const timelineTrackRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [aboutImg, setAboutImg] = useState('/images/shower_system.jpg');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +48,7 @@ export const AboutSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header (Playfair Serif Font for Title & Subtitle) */}
+        {/* Section Header (Playfair Serif Font for Title & Subtitle with Gold Italic Accent) */}
         <div className="max-w-3xl mb-10 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-neutral-900 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-sm font-sans">
             <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-neutral-300" />
@@ -74,12 +75,14 @@ export const AboutSection: React.FC = () => {
             <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 bg-white/90 backdrop-blur-xl border border-neutral-200 shadow-[0_15px_45px_rgba(0,0,0,0.05)]">
               <div className="relative aspect-[16/9] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950">
                 <Image
-                  src="/images/shower_system.jpg"
-                  alt="Hiranbath Engineering"
+                  src={aboutImg}
+                  alt="Hiran - Bath Heritage"
                   fill
                   priority
                   unoptimized
-                  className="object-cover hover:scale-105 transition-transform duration-700"
+                  onError={() => setAboutImg('/images/hero_bathware.jpg')}
+                  className="object-cover hover:scale-105 transition-transform duration-700 w-full h-full"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
                 
@@ -94,8 +97,8 @@ export const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Heritage Stats Strip (Original Font) */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 font-sans">
+            {/* 3 Metric Cards Grid */}
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-3 font-sans">
               <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-neutral-200/90 shadow-sm text-center">
                 <p className="text-xl sm:text-2xl font-black text-neutral-950 font-display-impact">1957</p>
                 <p className="text-[9px] sm:text-[10px] uppercase font-bold text-neutral-500 tracking-wider">Founded</p>
