@@ -71,7 +71,7 @@ export const ClientsSection: React.FC = () => {
             </div>
 
             <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-neutral-950 font-serif leading-[1.05]">
-              Our Clients
+              Our <span className="italic font-normal text-[#c59a3f]">Clients</span>
             </h2>
 
             <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed max-w-xl font-sans">

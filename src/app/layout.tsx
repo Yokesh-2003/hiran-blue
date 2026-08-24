@@ -22,14 +22,15 @@ const playfair = Playfair_Display({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  maximumScale: 1,
+  userScalable: false,
   themeColor: '#000000',
 };
 
 export const metadata: Metadata = {
-  title: 'Hiranbath | Luxury Architectural Bathware & Sanitaryware',
+  title: 'Hiran - Bath | Luxury Architectural Bathware & Sanitaryware',
   description:
-    'Experience Hiranbath Aura Zero 2.0. Ultra-minimalist precision bathroom mixers, thermostatic wellness showers, monolithic stone bathtubs, and designer sanitaryware.',
+    'Experience Hiran - Bath. Ultra-minimalist precision bathroom mixers, thermostatic wellness showers, monolithic stone bathtubs, and designer sanitaryware.',
   keywords: [
     'Hiranbath',
     'Luxury Bathware',

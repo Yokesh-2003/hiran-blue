@@ -221,8 +221,7 @@ export const Navbar: React.FC = () => {
                       value={langSearch}
                       onChange={(e) => setLangSearch(e.target.value)}
                       placeholder="Search language..."
-                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
-                      autoFocus
+                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
                     />
                     {langSearch && (
                       <button
@@ -306,8 +305,7 @@ export const Navbar: React.FC = () => {
                       value={countrySearch}
                       onChange={(e) => setCountrySearch(e.target.value)}
                       placeholder="Search country..."
-                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
-                      autoFocus
+                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
                     />
                     {countrySearch && (
                       <button

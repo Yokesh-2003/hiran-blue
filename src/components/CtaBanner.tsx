@@ -40,7 +40,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
           
           {/* Main Headline in Bold Luxury Editorial Serif */}
           <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-serif leading-[1.05] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
-            Let&apos;s Work <span className="italic font-normal text-neutral-100">Together</span>
+            Let&apos;s Work <span className="italic font-normal text-[#d4af37]">Together</span>
           </h2>
 
           {/* Subtitle */}

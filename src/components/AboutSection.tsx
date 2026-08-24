@@ -55,12 +55,12 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-neutral-950 font-serif leading-[1.05]">
-            About <span className="italic font-normal text-neutral-950">Us</span>
+            About <span className="italic font-normal text-[#c59a3f]">Us</span>
           </h2>
 
           <p className="text-base sm:text-xl text-neutral-800 font-serif leading-relaxed max-w-2xl font-normal">
             A generational story of{' '}
-            <span className="italic font-semibold text-neutral-950">resilience, entrepreneurial spirit</span>, and uncompromising craftsmanship that shaped the foundation of modern luxury bathware.
+            <span className="italic font-semibold text-[#c59a3f]">resilience, entrepreneurial spirit</span>, and uncompromising craftsmanship that shaped the foundation of modern luxury bathware.
           </p>
         </div>
 
@@ -120,9 +120,9 @@ export const AboutSection: React.FC = () => {
               
               {/* 1. Track Background Line */}
               <div className="absolute left-4 sm:left-5 top-7 bottom-10 w-0.5 bg-neutral-200 -translate-x-1/2 rounded-full overflow-hidden">
-                {/* 2. Active Scroll Fill Line */}
+                {/* 2. Active Scroll Fill Line in Luxury Gold */}
                 <div
-                  className="w-full bg-neutral-950 rounded-full transition-all duration-150 ease-out"
+                  className="w-full bg-gradient-to-b from-[#d4af37] via-[#c59a3f] to-[#aa7c11] rounded-full transition-all duration-150 ease-out shadow-[0_0_10px_rgba(212,175,55,0.8)]"
                   style={{ height: `${scrollProgress}%` }}
                 />
               </div>
@@ -133,7 +133,7 @@ export const AboutSection: React.FC = () => {
                 <div
                   className={`absolute left-4 sm:left-5 -translate-x-1/2 top-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-500 z-10 border-2 ${
                     is1957Active
-                      ? 'bg-neutral-950 border-neutral-950 text-white scale-105 sm:scale-110 shadow-lg ring-3 sm:ring-4 ring-neutral-950/15'
+                      ? 'bg-neutral-950 border-[#d4af37] text-[#d4af37] scale-105 sm:scale-110 shadow-lg ring-3 sm:ring-4 ring-[#d4af37]/25'
                       : 'bg-white border-neutral-300 text-neutral-400 scale-95 shadow-sm'
                   }`}
                 >
@@ -175,7 +175,7 @@ export const AboutSection: React.FC = () => {
                 <div
                   className={`absolute left-4 sm:left-5 -translate-x-1/2 top-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-500 z-10 border-2 ${
                     is1987Active
-                      ? 'bg-neutral-950 border-neutral-950 text-white scale-105 sm:scale-110 shadow-lg ring-3 sm:ring-4 ring-neutral-950/15'
+                      ? 'bg-neutral-950 border-[#d4af37] text-[#d4af37] scale-105 sm:scale-110 shadow-lg ring-3 sm:ring-4 ring-[#d4af37]/25'
                       : 'bg-white border-neutral-300 text-neutral-400 scale-95 shadow-sm'
                   }`}
                 >

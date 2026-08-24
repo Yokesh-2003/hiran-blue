@@ -24,6 +24,13 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+declare global {
+  interface Window {
+    google?: any;
+    googleTranslateElementInit?: () => void;
+  }
+}
+
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -40,9 +47,45 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     (langCode) => allLanguagesMap[langCode] || allLanguagesMap['en']
   );
 
-  // Load from localStorage on mount safely
+  // Helper to map code to Google Translate standard code
+  const getGoogleLangCode = (code: LanguageCode): string => {
+    if (code === 'zh') return 'zh-CN';
+    return code;
+  };
+
+  // Helper to apply translation via Google Translate cookies & DOM combo
+  const applyGoogleTranslation = (langCode: LanguageCode) => {
+    if (typeof window === 'undefined') return;
+
+    const gtCode = getGoogleLangCode(langCode);
+
+    if (langCode === 'en') {
+      // Clear cookies for English
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`;
+    } else {
+      // Set translation cookie from English to target language
+      document.cookie = `googtrans=/en/${gtCode}; path=/;`;
+      document.cookie = `googtrans=/en/${gtCode}; path=/; domain=${window.location.hostname}`;
+      document.cookie = `googtrans=/en/${gtCode}; path=/; domain=.${window.location.hostname}`;
+    }
+
+    // Try finding existing Google Translate combo
+    const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+    if (select) {
+      select.value = gtCode;
+      select.dispatchEvent(new Event('change'));
+    } else {
+      // Reload page to apply new translation cookie seamlessly
+      window.location.reload();
+    }
+  };
+
+  // Initialize Google Translate script on mount
   useEffect(() => {
     setIsMounted(true);
+
     try {
       const savedCountry = localStorage.getItem('hiranbath_country');
       const savedLang = localStorage.getItem('hiranbath_lang') as LanguageCode;
@@ -50,11 +93,37 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       if (savedCountry && countriesList.some((c) => c.code === savedCountry)) {
         setSelectedCountryCode(savedCountry);
       }
-      if (savedLang && translations[savedLang]) {
+      if (savedLang && allLanguagesMap[savedLang]) {
         setCurrentLanguage(savedLang);
       }
     } catch {
       // ignore storage errors
+    }
+
+    // Inject Google Translate script dynamically
+    if (typeof window !== 'undefined') {
+      window.googleTranslateElementInit = () => {
+        if (window.google?.translate?.TranslateElement) {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              autoDisplay: false,
+              includedLanguages:
+                'en,hi,ta,te,kn,ml,mr,gu,bn,pa,ar,de,fr,it,es,ja,zh-CN,ru,pt',
+            },
+            'google_translate_element'
+          );
+        }
+      };
+
+      if (!document.getElementById('google-translate-script')) {
+        const script = document.createElement('script');
+        script.id = 'google-translate-script';
+        script.src =
+          '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        script.async = true;
+        document.head.appendChild(script);
+      }
     }
   }, []);
 
@@ -68,10 +137,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
 
       // If current language is not in the new country's languages, switch to default
       if (!country.languages.includes(currentLanguage)) {
-        setCurrentLanguage(country.defaultLanguage);
-        try {
-          localStorage.setItem('hiranbath_lang', country.defaultLanguage);
-        } catch {}
+        setLanguage(country.defaultLanguage);
       }
     }
   };
@@ -81,6 +147,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       localStorage.setItem('hiranbath_lang', code);
     } catch {}
+
+    // Apply live full-website translation
+    applyGoogleTranslation(code);
   };
 
   const t = (key: string): string => {
@@ -108,6 +177,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       {children}
+      {/* Hidden Google Translate Mount Element */}
+      <div id="google_translate_element" style={{ display: 'none' }} />
     </LanguageContext.Provider>
   );
 };

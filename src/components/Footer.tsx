@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
       
       {/* GIANT FADED BACKGROUND WATERMARK (HIRAN® WITH OFFICIAL REGISTERED TRADEMARK CIRCLE) */}
       {/* Desktop Background Watermark */}
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-neutral-900/35 text-[17vw] font-black uppercase tracking-wider font-display-impact pointer-events-none whitespace-nowrap hidden md:flex items-center">
+      <div className="notranslate absolute -bottom-10 left-1/2 -translate-x-1/2 text-neutral-900/35 text-[17vw] font-black uppercase tracking-wider font-display-impact pointer-events-none whitespace-nowrap hidden md:flex items-center">
         <span>HIRAN</span>
         <span className="text-[0.3em] font-sans font-bold -translate-y-8 ml-2 border-[0.06em] border-neutral-900/40 rounded-full w-[1.2em] h-[1.2em] inline-flex items-center justify-center">
           R
@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Mobile Vertical Watermark on Right Edge */}
-      <div className="absolute right-1 top-24 bottom-12 text-neutral-900/35 text-6xl font-black uppercase tracking-[0.4em] [writing-mode:vertical-rl] font-display-impact pointer-events-none md:hidden">
+      <div className="notranslate absolute right-1 top-24 bottom-12 text-neutral-900/35 text-6xl font-black uppercase tracking-[0.4em] [writing-mode:vertical-rl] font-display-impact pointer-events-none md:hidden">
         HIRAN®
       </div>
 
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
         {/* BOTTOM COPYRIGHT & SCROLL TO TOP */}
         <div className="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <p className="text-center sm:text-left">
-            Copyright © Hiran®. All rights reserved. | Powered by yuyonix
+            Copyright © <span className="notranslate">Hiran®</span>. All rights reserved. | Powered by <span className="notranslate">yuyonix</span>
           </p>
 
           {/* Scroll to top floating button */}

@@ -146,7 +146,7 @@ export const ProductCategoriesSection: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-950 font-serif leading-[1.05]">
-              Our Products
+              Our <span className="italic font-normal text-[#c59a3f]">Products</span>
             </h2>
 
             {/* Right Leaf Image (nature2) */}
