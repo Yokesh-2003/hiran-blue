@@ -129,7 +129,7 @@ export const VideoSection: React.FC = () => {
           setIsPlaying(true);
           triggerPulse('play');
         })
-        .catch(() => {});
+        .catch(() => { });
     } else {
       video.pause();
       setIsPlaying(false);
@@ -204,9 +204,9 @@ export const VideoSection: React.FC = () => {
     if (!containerRef.current) return;
 
     if (!document.fullscreenElement) {
-      containerRef.current.requestFullscreen().catch(() => {});
+      containerRef.current.requestFullscreen().catch(() => { });
     } else {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen().catch(() => { });
     }
   };
 
@@ -235,16 +235,16 @@ export const VideoSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-6 sm:py-12 lg:py-16 bg-[#fafafa] overflow-hidden border-b border-neutral-200"
+      className="relative w-full py-6 sm:py-12 lg:py-16 bg-[#ede0d4] overflow-hidden border-b border-[#d8c3af]"
     >
-      {/* Ambient Glass Glow Layer */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] bg-neutral-200/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-slate-200/40 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Glow Layer */}
+      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] bg-[#0d1b2a]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-[#d4a373]/20 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Main Glass Container */}
+      {/* Main Container */}
       <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-4 lg:p-5 bg-white/70 backdrop-blur-3xl border border-white/80 shadow-[0_15px_45px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_55px_rgba(0,0,0,0.09)] transition-all duration-500">
-          
+        <div className="relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-4 lg:p-5 bg-[#0d1b2a] border border-[#1b263b] shadow-[0_20px_50px_rgba(13,27,42,0.35)] transition-all duration-500">
+
           {/* Video Player Viewport */}
           <div
             ref={containerRef}
@@ -262,7 +262,7 @@ export const VideoSection: React.FC = () => {
               setIsHovered(false);
               setShowControls(false);
             }}
-            className="relative w-full aspect-video md:aspect-[16/9] lg:aspect-[16/9] max-h-[720px] rounded-xl sm:rounded-2xl overflow-hidden bg-neutral-950 shadow-2xl group cursor-pointer"
+            className="relative w-full aspect-video md:aspect-[16/9] lg:aspect-[16/9] max-h-[720px] rounded-xl sm:rounded-2xl overflow-hidden bg-black shadow-2xl group cursor-pointer"
           >
             {/* Video */}
             <video
@@ -277,13 +277,6 @@ export const VideoSection: React.FC = () => {
               controlsList="nodownload nofullscreen noremoteplayback"
               onContextMenu={(e) => e.preventDefault()}
               className="w-full h-full object-cover pointer-events-auto"
-            />
-
-            {/* Bottom Gradient for contrast (Only visible on hover/tap) */}
-            <div
-              className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 pointer-events-none ${
-                showControls || isHovered ? 'opacity-100' : 'opacity-0'
-              }`}
             />
 
             {/* Click Pulse Ripple */}
@@ -302,8 +295,8 @@ export const VideoSection: React.FC = () => {
             {/* Center Play Button (When Paused & Active Controls) */}
             {!isPlaying && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[1px] transition-all z-10 pointer-events-none">
-                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#d4af37] text-neutral-950 flex items-center justify-center shadow-[0_0_35px_rgba(212,175,55,0.6)] backdrop-blur-md transform group-hover:scale-110 active:scale-95 transition-all border border-[#f3e5ab]">
-                  <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-neutral-950 translate-x-0.5" />
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#d4af37] text-[#0d1522] flex items-center justify-center shadow-[0_0_35px_rgba(212,175,55,0.6)] backdrop-blur-md transform group-hover:scale-110 active:scale-95 transition-all border border-[#f3e5ab]">
+                  <Play className="w-6 h-6 sm:w-8 sm:h-8 fill-[#0d1522] translate-x-0.5" />
                 </div>
               </div>
             )}
@@ -311,14 +304,13 @@ export const VideoSection: React.FC = () => {
             {/* RESPONSIVE FLOATING CONTROLS DOCK (HIDDEN BY DEFAULT; ONLY ON HOVER OR CLICK/TAP) */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 right-2 sm:right-8 z-30 transition-all duration-300 ${
-                showControls || isHovered
+              className={`absolute bottom-2 sm:bottom-6 left-2 sm:left-8 right-2 sm:right-8 z-30 transition-all duration-300 ${showControls || isHovered
                   ? 'opacity-100 translate-y-0 pointer-events-auto'
                   : 'opacity-0 translate-y-3 pointer-events-none'
-              }`}
+                }`}
             >
-              <div className="max-w-5xl mx-auto bg-neutral-950/70 hover:bg-neutral-950/80 backdrop-blur-2xl border border-white/20 rounded-xl sm:rounded-3xl p-2 sm:p-4 shadow-2xl transition-all">
-                
+              <div className="max-w-5xl mx-auto bg-[#0d1b2a] border border-[#1b263b] rounded-xl sm:rounded-3xl p-2 sm:p-4 shadow-2xl transition-all">
+
                 {/* 1. Precision Timeline Scrubber with Gold Luxury Accent */}
                 <div
                   onMouseMove={handleProgressMouseMove}
@@ -365,7 +357,7 @@ export const VideoSection: React.FC = () => {
 
                 {/* 2. Sleek Controls Toolbar */}
                 <div className="flex items-center justify-between text-white text-[11px] sm:text-xs">
-                  
+
                   {/* Left Controls: Play, Replay, Time */}
                   <div className="flex items-center gap-1.5 sm:gap-4">
                     {/* Play/Pause Button in Luxury Gold */}
@@ -401,16 +393,15 @@ export const VideoSection: React.FC = () => {
 
                   {/* Right Controls: Volume / Mute, Fullscreen */}
                   <div className="flex items-center gap-1.5 sm:gap-3">
-                    
+
                     {/* Volume Group */}
                     <div className="flex items-center gap-2 group/vol">
                       <button
                         onClick={toggleMute}
-                        className={`p-1.5 sm:px-3 sm:py-1.5 rounded-full border text-xs font-semibold transition-all flex items-center gap-1.5 focus:outline-none ${
-                          isMuted
+                        className={`p-1.5 sm:px-3 sm:py-1.5 rounded-full border text-xs font-semibold transition-all flex items-center gap-1.5 focus:outline-none ${isMuted
                             ? 'bg-white/10 hover:bg-white/20 border-white/20 text-neutral-300'
                             : 'bg-[#d4af37] text-neutral-950 border-[#d4af37] shadow-[0_0_15px_rgba(212,175,55,0.4)]'
-                        }`}
+                          }`}
                         aria-label={isMuted ? 'Unmute' : 'Mute'}
                       >
                         {isMuted ? (

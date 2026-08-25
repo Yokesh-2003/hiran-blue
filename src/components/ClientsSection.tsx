@@ -55,26 +55,26 @@ export const ClientsSection: React.FC = () => {
   };
 
   return (
-    <section id="clients" className="relative py-16 sm:py-24 bg-white text-neutral-900 border-b border-neutral-200 overflow-hidden">
+    <section id="clients" className="relative py-16 sm:py-24 bg-[#0d1b2a] text-white border-b border-[#1b263b] overflow-hidden">
       
       {/* Background Accent Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-900 text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-sm font-sans">
-              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-neutral-300" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#16253b] text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-sm font-sans border border-[#1b263b]">
+              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#d4a373]" />
               <span>Trusted Partnerships</span>
             </div>
 
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-neutral-950 font-serif leading-[1.05]">
-              Our <span className="italic font-normal text-[#c59a3f]">Clients</span>
+            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight text-white font-serif leading-[1.05]">
+              Our <span className="italic font-normal text-[#d4a373]">Clients</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-neutral-600 font-normal leading-relaxed max-w-xl font-sans">
+            <p className="text-sm sm:text-base text-[#ede0d4] font-normal leading-relaxed max-w-xl font-sans">
               Trusted by industry leaders, premier hospitality chains, healthcare landmarks, and renowned institutions nationwide.
             </p>
           </div>
@@ -85,22 +85,22 @@ export const ClientsSection: React.FC = () => {
             {/* Prev Arrow */}
             <button
               onClick={handlePrev}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 hover:border-neutral-900 bg-white hover:bg-neutral-900 text-neutral-800 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#1b263b] hover:border-[#d4a373] bg-[#16253b] hover:bg-[#0d1b2a] text-[#ede0d4] hover:text-[#d4a373] flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
               aria-label="Previous Clients"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
 
             {/* Page Number Pills (1, 2, 3) */}
-            <div className="flex items-center gap-1.5 bg-neutral-100 p-1 rounded-full border border-neutral-200">
+            <div className="flex items-center gap-1.5 bg-[#16253b] p-1 rounded-full border border-[#1b263b]">
               {[1, 2, 3].map((num) => (
                 <button
                   key={num}
                   onClick={() => handlePageClick(num)}
-                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-bold transition-all focus:outline-none ${
+                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-bold transition-all focus:outline-none cursor-pointer ${
                     currentPage === num
-                      ? 'bg-neutral-950 text-white shadow-sm scale-105'
-                      : 'text-neutral-600 hover:text-neutral-950 hover:bg-neutral-200'
+                      ? 'bg-[#d4a373] text-[#0d1b2a] shadow-sm scale-105 font-black'
+                      : 'text-[#dfcfbe] hover:text-white hover:bg-[#0d1b2a]'
                   }`}
                 >
                   {num}
@@ -111,7 +111,7 @@ export const ClientsSection: React.FC = () => {
             {/* Next Arrow */}
             <button
               onClick={handleNext}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 hover:border-neutral-900 bg-white hover:bg-neutral-900 text-neutral-800 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#1b263b] hover:border-[#d4a373] bg-[#16253b] hover:bg-[#0d1b2a] text-[#ede0d4] hover:text-[#d4a373] flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
               aria-label="Next Clients"
             >
               <ChevronRight className="w-4 h-4" />
@@ -124,8 +124,8 @@ export const ClientsSection: React.FC = () => {
         <div className="relative w-full overflow-hidden py-2">
           
           {/* Left & Right Seamless Vignette Gradients */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white via-white/80 to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white via-white/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-[#0d1b2a] via-[#0d1b2a]/80 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#0d1b2a] via-[#0d1b2a]/80 to-transparent z-20 pointer-events-none" />
 
           {/* Continuous Running Marquee Container (with ample vertical padding to prevent hover crop) */}
           <div

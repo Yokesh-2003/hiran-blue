@@ -27,21 +27,21 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/60 backdrop-blur-sm animate-in fade-in">
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white text-neutral-900 shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300">
+        <div className="w-screen max-w-md bg-[#0d1522] text-white shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 border-l border-[#1b2a4a]">
           
           {/* Top Header */}
-          <div className="p-6 border-b border-neutral-200 flex items-center justify-between bg-neutral-50">
+          <div className="p-6 border-b border-[#1b2a4a] flex items-center justify-between bg-[#0a101d] text-white">
             <div>
-              <h2 className="text-xl font-bold font-display-impact uppercase tracking-tight text-neutral-950">
+              <h2 className="text-xl font-bold font-display-impact uppercase tracking-tight text-white">
                 Architectural Spec Cart
               </h2>
-              <p className="text-xs text-neutral-500">
+              <p className="text-xs text-neutral-400">
                 {items.length} fixtures selected for quotation
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-neutral-200 text-neutral-600 transition-colors"
+              className="p-2 rounded-full hover:bg-[#16233b] text-neutral-300 hover:text-[#d4af37] transition-colors cursor-pointer"
               aria-label="Close Cart"
             >
               <X className="w-5 h-5" />
@@ -52,11 +52,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <div className="p-6 flex-1 overflow-y-auto space-y-4">
             {items.length === 0 ? (
               <div className="text-center py-16 space-y-3">
-                <div className="w-12 h-12 rounded-full bg-neutral-100 flex items-center justify-center mx-auto text-neutral-400">
-                  <FileSpreadsheet className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-full bg-[#16233b] flex items-center justify-center mx-auto text-[#d4af37] border border-[#1b2a4a]">
+                  <FileSpreadsheet className="w-6 h-6 text-[#d4af37]" />
                 </div>
-                <p className="text-sm font-bold text-neutral-700">Your Spec Cart is Empty</p>
-                <p className="text-xs text-neutral-500 max-w-xs mx-auto">
+                <p className="text-sm font-bold text-white">Your Spec Cart is Empty</p>
+                <p className="text-xs text-neutral-400 max-w-xs mx-auto">
                   Browse the Aura 2.0 or Master Catalogue collections and add fixtures to build your project bill of quantities (BOQ).
                 </p>
               </div>
@@ -64,9 +64,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               items.map(({ product, quantity }) => (
                 <div
                   key={product.id}
-                  className="flex items-center gap-4 p-3 bg-neutral-50 rounded-2xl border border-neutral-200"
+                  className="flex items-center gap-4 p-3 bg-[#16233b] rounded-2xl border border-[#1b2a4a]"
                 >
-                  <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-neutral-200 shrink-0">
+                  <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-[#0a101d] shrink-0">
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -76,17 +76,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold text-neutral-900 truncate">
+                    <p className="text-xs font-bold text-white truncate">
                       {product.name}
                     </p>
-                    <p className="text-[10px] text-neutral-500 truncate">
+                    <p className="text-[10px] text-neutral-400 truncate">
                       {product.collection} • {product.finish}
                     </p>
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-xs font-black text-neutral-950">
+                      <span className="text-xs font-black text-[#d4af37]">
                         {product.price}
                       </span>
-                      <span className="text-[11px] text-neutral-500 font-semibold">
+                      <span className="text-[11px] text-neutral-300 font-semibold">
                         Qty: {quantity}
                       </span>
                     </div>
@@ -94,7 +94,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                   <button
                     onClick={() => onRemoveItem(product.id)}
-                    className="p-1.5 text-neutral-400 hover:text-rose-600 transition-colors"
+                    className="p-1.5 text-neutral-400 hover:text-[#c8102e] transition-colors cursor-pointer"
                     title="Remove item"
                   >
                     <Trash2 className="w-4 h-4" />
@@ -106,10 +106,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
           {/* Bottom Actions */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-neutral-200 bg-neutral-50 space-y-4">
+            <div className="p-6 border-t border-[#1b2a4a] bg-[#0a101d] space-y-4">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-neutral-500">Project Spec Items:</span>
-                <span className="font-bold text-neutral-900">{items.length} models</span>
+                <span className="font-semibold text-neutral-400">Project Spec Items:</span>
+                <span className="font-bold text-[#d4af37]">{items.length} models</span>
               </div>
 
               <div className="space-y-2">
@@ -118,7 +118,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     onClose();
                     onProceedToInquiry();
                   }}
-                  className="w-full py-4 bg-[#c8102e] hover:bg-[#a50b24] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-rose-900/20"
+                  className="w-full py-4 bg-[#c8102e] hover:bg-[#a50b24] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-950/20 cursor-pointer"
                 >
                   <span>Request Project Estimate & BIM</span>
                   <ArrowRight className="w-4 h-4" />
@@ -126,7 +126,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                 <button
                   onClick={onClearCart}
-                  className="w-full py-2 text-xs text-neutral-500 hover:text-neutral-800 font-semibold text-center"
+                  className="w-full py-2 text-xs text-neutral-400 hover:text-white font-semibold text-center cursor-pointer"
                 >
                   Clear Spec Cart
                 </button>

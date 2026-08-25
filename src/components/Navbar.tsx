@@ -134,57 +134,60 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      {/* 1. TOP UTILITY STRIP (Mobile: Row 1 = Language/Country, Row 2 = Customer Links; Desktop: Single Line) */}
-      <div className="w-full bg-[#1e1e1e] text-neutral-300 text-[11px] py-1.5 px-3 sm:px-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-1.5 sm:gap-4 border-b border-neutral-800 select-none relative z-50">
+      {/* 1. TOP UTILITY STRIP (DARK BLUE BACKGROUND) */}
+      <div
+        className="w-full bg-[#0d1b2a] text-[#ede0d4] text-[11px] py-1.5 px-3 sm:px-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-1.5 sm:gap-4 border-b border-[#1b263b] select-none relative z-50 notranslate"
+        translate="no"
+      >
         
-        {/* Row 2 on Mobile / Left on Desktop: Customer & Partner Links (Wrapped in neat lines on mobile) */}
-        <div className="order-2 sm:order-1 flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-3.5 gap-y-1 text-[10px] sm:text-[11px] font-medium text-neutral-400 py-1 sm:py-0.5 border-t sm:border-t-0 border-neutral-800/80">
+        {/* Row 2 on Mobile / Left on Desktop: Customer & Partner Links */}
+        <div className="order-2 sm:order-1 flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-3.5 gap-y-1 text-[10px] sm:text-[11px] font-medium text-[#dfcfbe] py-1 sm:py-0.5 border-t sm:border-t-0 border-[#1b263b]">
           <a
             href="#products"
-            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
-            <Package className="w-3 h-3 text-neutral-400" />
+            <Package className="w-3 h-3 text-[#d4a373]" />
             <span>Customer Product</span>
           </a>
-          <span className="text-neutral-700">|</span>
+          <span className="text-[#5c677d]">|</span>
 
           <a
             href="#dealers"
-            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
-            <Store className="w-3 h-3 text-neutral-400" />
+            <Store className="w-3 h-3 text-[#d4a373]" />
             <span>Become a Dealer</span>
           </a>
-          <span className="text-neutral-700">|</span>
+          <span className="text-[#5c677d]">|</span>
 
           <a
             href="#contact"
-            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
-            <HelpCircle className="w-3 h-3 text-neutral-400" />
+            <HelpCircle className="w-3 h-3 text-[#d4a373]" />
             <span>Submit Enquiry</span>
           </a>
-          <span className="text-neutral-700">|</span>
+          <span className="text-[#5c677d]">|</span>
 
           <a
             href="#contact"
-            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
-            <Building2 className="w-3 h-3 text-neutral-400" />
+            <Building2 className="w-3 h-3 text-[#d4a373]" />
             <span>Contractor Project Enquiry</span>
           </a>
-          <span className="text-neutral-700">|</span>
+          <span className="text-[#5c677d]">|</span>
 
           <a
             href="#contact"
-            className="flex items-center gap-1.5 hover:text-white transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
-            <Headphones className="w-3 h-3 text-neutral-400" />
+            <Headphones className="w-3 h-3 text-[#d4a373]" />
             <span>Support</span>
           </a>
         </div>
 
-        {/* Row 1 on Mobile / Right on Desktop: Language & Country Selectors in One Line */}
+        {/* Row 1 on Mobile / Right on Desktop: Language & Country Selectors */}
         <div className="order-1 sm:order-2 flex items-center justify-end gap-3 sm:gap-5 shrink-0">
           {/* A. Language Dropdown */}
           <div className="relative" ref={langDropdownRef}>
@@ -193,25 +196,25 @@ export const Navbar: React.FC = () => {
                 setLangDropdownOpen(!langDropdownOpen);
                 setCountryDropdownOpen(false);
               }}
-              className="flex items-center gap-1.5 hover:text-white transition-colors py-0.5 px-2 rounded-md hover:bg-neutral-800 focus:outline-none"
+              className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors py-0.5 px-2 rounded-md hover:bg-[#1b263b] focus:outline-none"
               aria-expanded={langDropdownOpen}
             >
-              <Globe className="w-3.5 h-3.5 text-neutral-400" />
-              <span className="font-semibold text-white truncate max-w-[120px] sm:max-w-none">
+              <Globe className="w-3.5 h-3.5 text-[#d4a373]" />
+              <span className="font-bold text-white truncate max-w-[120px] sm:max-w-none">
                 {currentLanguageName}
               </span>
               <ChevronDown
-                className={`w-3 h-3 text-neutral-400 transition-transform ${
-                  langDropdownOpen ? 'rotate-180' : ''
+                className={`w-3 h-3 text-[#dfcfbe] transition-transform ${
+                  langDropdownOpen ? 'rotate-180 text-[#d4a373]' : ''
                 }`}
               />
             </button>
 
             {/* Language Dropdown Menu with Search Option */}
             {langDropdownOpen && (
-              <div className="absolute top-full right-0 mt-1.5 w-64 bg-neutral-900 text-white rounded-2xl shadow-2xl border border-neutral-700 py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                <div className="px-3 pb-2 border-b border-neutral-800">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5">
+              <div className="absolute top-full right-0 mt-1.5 w-64 bg-[#0d1b2a] text-white rounded-2xl shadow-2xl border border-[#1b263b] py-2 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="px-3 pb-2 border-b border-[#1b263b]">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#dfcfbe] mb-1.5">
                     Languages for {currentCountry.name} ({availableLanguages.length})
                   </div>
                   {/* Search Box Inside Language Dropdown */}
@@ -221,12 +224,12 @@ export const Navbar: React.FC = () => {
                       value={langSearch}
                       onChange={(e) => setLangSearch(e.target.value)}
                       placeholder="Search language..."
-                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
+                      className="w-full bg-[#16253b] border border-[#274060] rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-[#a88b74] focus:outline-none focus:border-[#d4a373]"
                     />
                     {langSearch && (
                       <button
                         onClick={() => setLangSearch('')}
-                        className="absolute right-2 text-neutral-400 hover:text-white text-xs"
+                        className="absolute right-2 text-[#a88b74] hover:text-white text-xs"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -247,21 +250,21 @@ export const Navbar: React.FC = () => {
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 text-left text-xs transition-colors ${
                           currentLanguage === lang.code
-                            ? 'bg-neutral-800 text-white font-bold'
-                            : 'text-neutral-300 hover:bg-neutral-800/60 hover:text-white'
+                            ? 'bg-[#1b263b] text-[#d4a373] font-bold'
+                            : 'text-[#dfcfbe] hover:bg-[#16253b] hover:text-white'
                         }`}
                       >
                         <div className="flex items-center gap-2">
                           <span className="font-medium">{lang.name}</span>
-                          <span className="text-[10px] text-neutral-400">({lang.nativeName})</span>
+                          <span className="text-[10px] text-[#a88b74]">({lang.nativeName})</span>
                         </div>
                         {currentLanguage === lang.code && (
-                          <Check className="w-3.5 h-3.5 text-white" />
+                          <Check className="w-3.5 h-3.5 text-[#d4a373]" />
                         )}
                       </button>
                     ))
                   ) : (
-                    <div className="p-3 text-center text-xs text-neutral-500">
+                    <div className="p-3 text-center text-xs text-[#a88b74]">
                       No language found
                     </div>
                   )}
@@ -277,26 +280,26 @@ export const Navbar: React.FC = () => {
                 setCountryDropdownOpen(!countryDropdownOpen);
                 setLangDropdownOpen(false);
               }}
-              className="flex items-center gap-2 hover:text-white transition-colors py-0.5 px-2 rounded-md hover:bg-neutral-800 focus:outline-none"
+              className="flex items-center gap-2 hover:text-[#d4a373] transition-colors py-0.5 px-2 rounded-md hover:bg-[#1b263b] focus:outline-none"
               aria-expanded={countryDropdownOpen}
             >
               {/* Visual Flag Image */}
               <CountryFlag code={currentCountry.code} name={currentCountry.name} />
-              <span className="font-semibold text-white">{currentCountry.name}</span>
+              <span className="font-bold text-white">{currentCountry.name}</span>
               <ChevronDown
-                className={`w-3 h-3 text-neutral-400 transition-transform ${
-                  countryDropdownOpen ? 'rotate-180' : ''
+                className={`w-3 h-3 text-[#dfcfbe] transition-transform ${
+                  countryDropdownOpen ? 'rotate-180 text-[#d4a373]' : ''
                 }`}
               />
             </button>
 
             {/* Country Dropdown Menu with Search Option */}
             {countryDropdownOpen && (
-              <div className="absolute top-full right-0 mt-1.5 w-64 bg-neutral-900 text-white rounded-2xl shadow-2xl border border-neutral-700 py-2 z-50 animate-in fade-in slide-in-from-top-2">
-                <div className="px-3 pb-2 border-b border-neutral-800">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center justify-between">
+              <div className="absolute top-full right-0 mt-1.5 w-64 bg-[#0d1b2a] text-white rounded-2xl shadow-2xl border border-[#1b263b] py-2 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="px-3 pb-2 border-b border-[#1b263b]">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#dfcfbe] mb-1.5 flex items-center justify-between">
                     <span>Select Country / Region</span>
-                    <span className="text-[9px] text-neutral-500">{allCountries.length} Countries</span>
+                    <span className="text-[9px] text-[#d4a373] font-bold">{allCountries.length} Countries</span>
                   </div>
                   {/* Search Box Inside Country Dropdown */}
                   <div className="relative flex items-center">
@@ -305,12 +308,12 @@ export const Navbar: React.FC = () => {
                       value={countrySearch}
                       onChange={(e) => setCountrySearch(e.target.value)}
                       placeholder="Search country..."
-                      className="w-full bg-neutral-800 border border-neutral-700 rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-neutral-500 focus:outline-none focus:border-neutral-500"
+                      className="w-full bg-[#16253b] border border-[#274060] rounded-lg text-base sm:text-xs px-2.5 py-1.5 text-white placeholder:text-[#a88b74] focus:outline-none focus:border-[#d4a373]"
                     />
                     {countrySearch && (
                       <button
                         onClick={() => setCountrySearch('')}
-                        className="absolute right-2 text-neutral-400 hover:text-white text-xs"
+                        className="absolute right-2 text-[#a88b74] hover:text-white text-xs"
                       >
                         <X className="w-3 h-3" />
                       </button>
@@ -331,8 +334,8 @@ export const Navbar: React.FC = () => {
                         }}
                         className={`w-full flex items-center justify-between px-3 py-2 text-left text-xs transition-colors ${
                           currentCountry.code === c.code
-                            ? 'bg-neutral-800 text-white font-bold'
-                            : 'text-neutral-300 hover:bg-neutral-800/60 hover:text-white'
+                            ? 'bg-[#1b263b] text-[#d4a373] font-bold'
+                            : 'text-[#dfcfbe] hover:bg-[#16253b] hover:text-white'
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -341,12 +344,12 @@ export const Navbar: React.FC = () => {
                           <span className="font-medium">{c.name}</span>
                         </div>
                         {currentCountry.code === c.code && (
-                          <Check className="w-3.5 h-3.5 text-white" />
+                          <Check className="w-3.5 h-3.5 text-[#d4a373]" />
                         )}
                       </button>
                     ))
                   ) : (
-                    <div className="p-3 text-center text-xs text-neutral-500">
+                    <div className="p-3 text-center text-xs text-[#a88b74]">
                       No country found
                     </div>
                   )}
@@ -358,33 +361,33 @@ export const Navbar: React.FC = () => {
 
       </div>
 
-      {/* 2. RUNNING GREY TICKER STRIP */}
-      <div className="w-full bg-[#f1f5f9] text-neutral-900 text-[11px] sm:text-xs py-1.5 overflow-hidden border-b border-neutral-300 select-none z-40">
+      {/* 2. RUNNING TICKER STRIP (GREY BACKGROUND) */}
+      <div className="w-full bg-[#f3f4f6] text-[#0d1b2a] text-[11px] sm:text-xs py-1.5 overflow-hidden border-b border-[#e5e7eb] select-none z-40">
         <div className="animate-marquee flex items-center whitespace-nowrap">
           {tickerItems.map((text, idx) => (
             <div key={`ticker-1-${idx}`} className="flex items-center">
-              <span className="font-semibold tracking-wide text-neutral-900 px-4">
+              <span className="font-bold tracking-wide text-[#0d1b2a] px-4">
                 {text}
               </span>
-              <span className="text-neutral-400 font-normal px-2">|</span>
+              <span className="text-[#c8102e] font-bold px-2">|</span>
             </div>
           ))}
           {tickerItems.map((text, idx) => (
             <div key={`ticker-2-${idx}`} className="flex items-center">
-              <span className="font-semibold tracking-wide text-neutral-900 px-4">
+              <span className="font-bold tracking-wide text-[#0d1b2a] px-4">
                 {text}
               </span>
-              <span className="text-neutral-400 font-normal px-2">|</span>
+              <span className="text-[#c8102e] font-bold px-2">|</span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 3. MAIN WHITE NAVIGATION HEADER */}
+      {/* 3. MAIN NAVIGATION HEADER (WHITE BACKGROUND) */}
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-neutral-200'
+            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-neutral-200'
             : 'bg-white border-b border-neutral-200'
         }`}
       >
@@ -408,22 +411,19 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* NAVIGATION CONTENTS (Desktop Center with dynamic translations) */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-3">
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
               {navItemsList.map((item) => (
                 <a
                   key={item.key}
                   href={item.href}
                   onClick={() => setActiveNav(item.name)}
-                  className={`px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all relative rounded-md whitespace-nowrap ${
+                  className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all relative rounded-lg whitespace-nowrap ${
                     activeNav === item.name
-                      ? 'text-black font-bold bg-neutral-100'
-                      : 'text-neutral-600 hover:text-black hover:bg-neutral-50'
+                      ? 'text-[#d4a373] bg-[#0d1b2a] shadow-md'
+                      : 'text-[#0d1b2a] hover:text-[#b58351] hover:bg-[#f5efe6]'
                   }`}
                 >
                   {item.name}
-                  {activeNav === item.name && (
-                    <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-neutral-900 rounded-full" />
-                  )}
                 </a>
               ))}
             </nav>
@@ -435,8 +435,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => setSearchOpen(!searchOpen)}
                 className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border flex items-center justify-center transition-all ${
                   searchOpen
-                    ? 'border-neutral-900 bg-neutral-900 text-white'
-                    : 'border-neutral-300 text-neutral-800 hover:border-neutral-900 hover:text-black bg-white'
+                    ? 'border-[#0d1b2a] bg-[#0d1b2a] text-[#d4a373]'
+                    : 'border-neutral-300 text-[#0d1b2a] hover:border-[#0d1b2a] hover:bg-[#f5efe6] bg-white shadow-sm'
                 }`}
                 aria-label="Search"
               >
@@ -446,15 +446,15 @@ export const Navbar: React.FC = () => {
               {/* 2. Hamburger Menu (Only for Mobile / Tablet, hidden on PC) */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="w-9 h-9 sm:w-10 sm:h-10 flex lg:hidden flex-col items-center justify-center gap-1.5 p-2 text-neutral-900 hover:text-black focus:outline-none"
+                className="w-9 h-9 sm:w-10 sm:h-10 flex lg:hidden flex-col items-center justify-center gap-1.5 p-2 text-[#0d1b2a] hover:text-[#b58351] focus:outline-none"
                 aria-label="Toggle Menu"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-6 h-6" />
+                  <X className="w-6 h-6 text-[#0d1b2a]" />
                 ) : (
                   <div className="flex flex-col gap-1.5 w-6">
-                    <span className="w-full h-[2.5px] bg-neutral-900 rounded-full transition-transform" />
-                    <span className="w-4/5 h-[2.5px] bg-neutral-900 rounded-full transition-transform" />
+                    <span className="w-full h-[2.5px] bg-[#0d1b2a] rounded-full transition-transform" />
+                    <span className="w-4/5 h-[2.5px] bg-[#d4a373] rounded-full transition-transform" />
                   </div>
                 )}
               </button>
@@ -472,7 +472,7 @@ export const Navbar: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t('searchPlaceholder')}
-                  className="w-full bg-white border border-neutral-300 rounded-lg sm:rounded-xl px-4 py-3 text-xs sm:text-sm text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:border-neutral-900 shadow-sm pr-12"
+                  className="w-full bg-[#f5efe6] border border-[#d8c3af] rounded-lg sm:rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0d1b2a] placeholder:text-[#a88b74] focus:outline-none focus:border-[#0d1b2a] focus:ring-1 focus:ring-[#0d1b2a] shadow-sm pr-12"
                 />
                 
                 {/* Arrow Submit Button */}
@@ -483,7 +483,7 @@ export const Navbar: React.FC = () => {
                       el?.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 text-neutral-900 hover:text-black hover:scale-110 transition-transform focus:outline-none"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 text-[#0d1b2a] hover:text-[#c8102e] hover:scale-110 transition-transform focus:outline-none"
                   aria-label="Submit search"
                 >
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
@@ -493,7 +493,7 @@ export const Navbar: React.FC = () => {
               {/* Instant Search Results Dropdown */}
               {searchQuery.trim().length > 0 && (
                 <div className="mt-2 w-full bg-white rounded-xl shadow-2xl border border-neutral-200 p-2 z-50 animate-in fade-in">
-                  <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider px-3 py-1.5">
+                  <div className="text-[10px] font-bold text-[#a88b74] uppercase tracking-wider px-3 py-1.5">
                     {t('searchResults')} ({filteredProducts.length})
                   </div>
                   {filteredProducts.length > 0 ? (
@@ -506,24 +506,24 @@ export const Navbar: React.FC = () => {
                             setSearchQuery('');
                             setSearchOpen(false);
                           }}
-                          className="flex items-center justify-between p-2.5 hover:bg-neutral-50 rounded-lg transition-colors group"
+                          className="flex items-center justify-between p-2.5 hover:bg-[#f5efe6] rounded-lg transition-colors group"
                         >
                           <div>
-                            <p className="text-xs font-bold text-neutral-900 group-hover:text-black">
+                            <p className="text-xs font-bold text-[#0d1b2a] group-hover:text-[#b58351]">
                               {prod.name}
                             </p>
-                            <p className="text-[10px] text-neutral-500">
+                            <p className="text-[10px] text-[#a88b74]">
                               {prod.collection} • {prod.finish}
                             </p>
                           </div>
-                          <span className="text-xs font-semibold text-neutral-800">
+                          <span className="text-xs font-semibold text-[#0d1b2a]">
                             {prod.price}
                           </span>
                         </a>
                       ))}
                     </div>
                   ) : (
-                    <div className="p-3 text-xs text-neutral-500 text-center">
+                    <div className="p-3 text-xs text-[#a88b74] text-center">
                       {t('noResults')} &ldquo;{searchQuery}&rdquo;
                     </div>
                   )}
@@ -544,14 +544,14 @@ export const Navbar: React.FC = () => {
                   setActiveNav(item.name);
                   setMobileMenuOpen(false);
                 }}
-                className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+                className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
                   activeNav === item.name
-                    ? 'bg-neutral-100 text-black font-bold'
-                    : 'text-neutral-700 hover:bg-neutral-50'
+                    ? 'bg-[#0d1b2a] text-[#d4a373] shadow-sm'
+                    : 'text-[#0d1b2a] hover:bg-[#f5efe6] hover:text-[#b58351]'
                 }`}
               >
                 <span>{item.name}</span>
-                <ChevronRight className="w-3.5 h-3.5 text-neutral-400" />
+                <ChevronRight className="w-3.5 h-3.5 text-[#a88b74]" />
               </a>
             ))}
           </div>

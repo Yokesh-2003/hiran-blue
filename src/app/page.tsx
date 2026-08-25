@@ -15,6 +15,7 @@ import { CatalogueSection } from '@/components/CatalogueSection';
 import { ProductCategoriesSection } from '@/components/ProductCategoriesSection';
 import { CtaBanner } from '@/components/CtaBanner';
 import { Footer } from '@/components/Footer';
+import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import { ProductQuickViewModal } from '@/components/ProductQuickViewModal';
 import { CartDrawer } from '@/components/CartDrawer';
 import { InquiryModal } from '@/components/InquiryModal';
@@ -26,6 +27,15 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
+
+    const handleDragStart = (e: DragEvent) => {
+      if ((e.target as HTMLElement)?.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('dragstart', handleDragStart);
+    return () => window.removeEventListener('dragstart', handleDragStart);
   }, []);
 
   // Cart state
@@ -77,9 +87,9 @@ export default function Home() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans">
-        <div className="w-full h-8 bg-[#1e1e1e]" />
-        <div className="w-full h-16 bg-white border-b border-neutral-200" />
+      <div className="min-h-screen bg-[#f0f7ff] text-[#0f172a] flex flex-col font-sans">
+        <div className="w-full h-8 bg-[#e2e8f0]" />
+        <div className="w-full h-16 bg-[#e2e8f0] border-b border-[#cbd5e1]" />
       </div>
     );
   }
@@ -88,7 +98,7 @@ export default function Home() {
     <LanguageProvider>
       <div
         suppressHydrationWarning
-        className="min-h-screen bg-white text-neutral-900 flex flex-col font-sans selection:bg-neutral-900 selection:text-white"
+        className="min-h-screen bg-[#f0f7ff] text-[#0f172a] flex flex-col font-sans selection:bg-[#e0f2fe] selection:text-[#0284c7]"
       >
         {/* Navigation Bar with Indian Languages Dropdown */}
         <Navbar />
@@ -119,6 +129,9 @@ export default function Home() {
 
         {/* Footer */}
         <Footer />
+
+        {/* Floating Scroll to Top Pop-Up Button (25% Scroll Trigger) */}
+        <ScrollToTopButton />
 
         {/* Modals & Drawers */}
         <ProductQuickViewModal

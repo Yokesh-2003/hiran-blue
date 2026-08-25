@@ -41,20 +41,20 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
   ];
 
   return (
-    <section id="products" className="py-20 sm:py-28 bg-[#f8fafc] text-neutral-900 border-b border-neutral-200">
+    <section id="products" className="py-20 sm:py-28 bg-[#ede0d4] text-[#0d1b2a] border-b border-[#d8c3af]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Title & Filter Tabs */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white text-neutral-800 text-xs font-bold uppercase tracking-widest border border-neutral-200 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-neutral-900" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0d1b2a] text-white text-xs font-bold uppercase tracking-widest border border-[#1b263b] shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#d4a373]" />
               {t('productsBadge')}
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-neutral-950 font-display-impact">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#0d1b2a] font-display-impact">
               {t('productsTitle')}
             </h2>
-            <p className="text-neutral-600 text-sm sm:text-base max-w-xl">
+            <p className="text-[#5c677d] text-sm sm:text-base max-w-xl">
               {t('productsDesc')}
             </p>
           </div>
@@ -67,8 +67,8 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 onClick={() => setActiveCategory(cat.id)}
                 className={`whitespace-nowrap px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   activeCategory === cat.id
-                    ? 'bg-neutral-900 text-white shadow-md'
-                    : 'bg-white text-neutral-600 hover:text-neutral-900 border border-neutral-200 hover:border-neutral-300'
+                    ? 'bg-[#0d1b2a] text-[#d4a373] shadow-md border border-[#1b263b] font-bold'
+                    : 'bg-white text-[#4a3525] hover:text-[#0d1b2a] border border-[#d8c3af]'
                 }`}
               >
                 {cat.label}
@@ -85,10 +85,10 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
             return (
               <div
                 key={product.id}
-                className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-neutral-200 shadow-sm hover:shadow-xl hover:border-neutral-300 transition-all duration-300 relative"
+                className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-[#d8c3af] shadow-sm hover:shadow-xl hover:border-[#0d1b2a] transition-all duration-300 relative"
               >
                 {/* Product Image Frame */}
-                <div className="relative aspect-[4/3] w-full bg-neutral-100 overflow-hidden">
+                <div className="relative aspect-[4/3] w-full bg-[#ede0d4] overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -97,18 +97,18 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                   />
 
                   {product.tag && (
-                    <div className="absolute top-3 left-3 bg-neutral-900/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">
+                    <div className="absolute top-3 left-3 bg-[#0d1b2a]/90 backdrop-blur-md text-[#d4a373] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow border border-[#d4a373]/30">
                       {product.tag}
                     </div>
                   )}
 
                   {/* Quick View Button */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                  <div className="absolute inset-0 bg-[#0d1b2a]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
                     <button
                       onClick={() => onQuickView && onQuickView(product)}
-                      className="bg-white/95 hover:bg-white text-neutral-900 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all"
+                      className="bg-white hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-all cursor-pointer"
                     >
-                      <Eye className="w-3.5 h-3.5 text-neutral-900" />
+                      <Eye className="w-3.5 h-3.5" />
                       {t('quickSpec')}
                     </button>
                   </div>
@@ -117,21 +117,21 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 {/* Content Section */}
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-1.5">
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-neutral-500">
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-[#c8102e]">
                       {product.collection}
                     </div>
-                    <h3 className="text-base font-bold text-neutral-900 group-hover:text-black transition-colors line-clamp-1">
+                    <h3 className="text-base font-bold text-[#0d1b2a] group-hover:text-[#b58351] transition-colors line-clamp-1">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-neutral-500 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-[#5c677d] line-clamp-2 leading-relaxed">
                       {product.description}
                     </p>
                   </div>
 
                   {/* Finish Selector */}
-                  <div className="pt-2 border-t border-neutral-100 flex items-center justify-between">
-                    <span className="text-[11px] font-semibold text-neutral-500">
-                      Finish: <span className="text-neutral-900 font-bold">{currentFinish}</span>
+                  <div className="pt-2 border-t border-[#e2d5c5] flex items-center justify-between">
+                    <span className="text-[11px] font-semibold text-[#5c677d]">
+                      Finish: <span className="text-[#0d1b2a] font-bold">{currentFinish}</span>
                     </span>
                     <div className="flex items-center gap-1.5">
                       {finishes.map((f) => (
@@ -144,9 +144,9 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                             })
                           }
                           style={{ backgroundColor: f.color }}
-                          className={`w-4 h-4 rounded-full border transition-all ${
+                          className={`w-4 h-4 rounded-full border border-neutral-300 transition-all cursor-pointer ${
                             currentFinish === f.name
-                              ? 'ring-2 ring-neutral-900 scale-110'
+                              ? 'ring-2 ring-[#0d1b2a] scale-110'
                               : 'hover:scale-105'
                           }`}
                           title={f.name}
@@ -158,13 +158,13 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                   {/* Price & Action Button */}
                   <div className="flex items-center justify-between pt-1">
                     <div>
-                      <span className="text-[10px] uppercase text-neutral-400 font-bold block">{t('msrp')}</span>
-                      <span className="text-lg font-black text-neutral-950 font-display-impact">{product.price}</span>
+                      <span className="text-[10px] uppercase text-[#7f5539] font-bold block">{t('msrp')}</span>
+                      <span className="text-lg font-black text-[#0d1b2a] font-display-impact">{product.price}</span>
                     </div>
 
                     <button
                       onClick={() => onAddToCart && onAddToCart(product)}
-                      className="px-4 py-2 rounded-xl bg-neutral-900 hover:bg-black text-white text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
+                      className="px-4 py-2 rounded-xl bg-[#c8102e] hover:bg-[#a50b24] text-white text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm cursor-pointer"
                     >
                       <span>{t('addToSpec')}</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -177,20 +177,21 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
         </div>
 
         {/* Bottom Banner */}
-        <div className="mt-16 bg-neutral-900 text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl">
-          <div className="relative z-10 space-y-2 text-center md:text-left">
-            <h3 className="text-xl sm:text-2xl font-black font-display-impact uppercase tracking-tight">
-              Need Custom Finishes or Bulk Project Specifications?
+        <div className="mt-16 bg-[#0d1b2a] text-white rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-xl border border-[#1b263b]">
+          <div className="space-y-2 text-center md:text-left z-10">
+            <h3 className="text-2xl sm:text-3xl font-black font-display-impact text-white">
+              Need a Custom Finish or Bespoke Architecture Suite?
             </h3>
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-xl">
-              Our engineering team crafts bespoke tapware dimensions and custom PVD colors for luxury hospitality and private residences.
+            <p className="text-sm text-[#ede0d4] max-w-xl">
+              Our project engineering team fabricates PVD-coated finishes in Brushed Champagne, Rose Gold, and Ultra-Matte Nero for large-scale development orders.
             </p>
           </div>
+
           <a
             href="#contact"
-            className="relative z-10 whitespace-nowrap px-6 py-3.5 bg-white hover:bg-neutral-100 text-neutral-950 font-bold text-sm rounded-full shadow-lg transition-all hover:scale-105"
+            className="px-6 py-3.5 rounded-xl bg-[#d4a373] hover:bg-[#b58351] text-[#0d1b2a] text-xs font-bold uppercase tracking-wider transition-all z-10 shrink-0 shadow-lg transform hover:scale-105"
           >
-            Consult Our Engineering Studio
+            Speak to Project Specifier
           </a>
         </div>
 

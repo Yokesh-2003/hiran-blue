@@ -13,7 +13,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
   onViewProductClick,
 }) => {
   return (
-    <section className="relative w-full overflow-hidden bg-neutral-950 text-white">
+    <section className="relative w-full overflow-hidden bg-[#0d1b2a] text-white">
       
       {/* WIDE PANORAMIC YOUTUBE BANNER PROPORTIONS CONTAINER (IDENTICAL PROPORTIONS ON MOBILE & PC) */}
       <div className="relative w-full aspect-[16/8] sm:aspect-[21/9] md:aspect-[24/9] min-h-[180px] sm:min-h-[320px] md:min-h-[420px] flex items-center justify-center py-8 sm:py-16 md:py-20">
@@ -27,20 +27,20 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
           className="absolute inset-0 w-full h-full object-cover object-center [-webkit-user-drag:none]"
         />
 
-        {/* Soft, Reduced Black Gradient Overlays (Clearer Background Image) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/30 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60 pointer-events-none" />
+        {/* Soft Dark Blue Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/90 via-[#0d1b2a]/55 to-[#0d1b2a]/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1b2a]/70 via-transparent to-[#0d1b2a]/70 pointer-events-none" />
 
         {/* Content Container */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-2 sm:space-y-4 md:space-y-6 pointer-events-auto">
           
           {/* Main Headline in Bold Luxury Editorial Serif */}
           <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white font-serif leading-[1.05] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
-            Let&apos;s Work <span className="italic font-normal text-[#d4af37]">Together</span>
+            Elevate Your <span className="italic font-normal text-[#d4a373]">Bath Sanctuary</span>
           </h2>
 
           {/* Subtitle */}
-          <p className="text-[10px] sm:text-sm md:text-lg text-neutral-200 font-normal leading-tight sm:leading-relaxed max-w-[280px] sm:max-w-xl md:max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] font-sans">
+          <p className="text-[10px] sm:text-sm md:text-lg text-[#ede0d4] font-normal leading-tight sm:leading-relaxed max-w-[280px] sm:max-w-xl md:max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] font-sans">
             Elevate your upcoming residential developments, luxury villas, and commercial landmarks with bespoke architectural bathware.
           </p>
 
@@ -51,20 +51,20 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
             <a
               href="#products"
               onClick={onViewProductClick}
-              className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-white hover:bg-neutral-200 text-black text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-white hover:bg-[#ede0d4] text-[#0d1b2a] hover:text-[#c8102e] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
             >
-              <span>View Product</span>
-              <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span>View Products</span>
+              <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#0d1b2a] group-hover:text-[#c8102e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
             {/* 2. Contact Button */}
             <a
               href="tel:641-754-0072"
               onClick={onContactClick}
-              className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-black/40 hover:bg-black/60 text-white border border-white/40 hover:border-white text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
+              className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-[#0d1b2a]/80 hover:bg-[#0d1b2a] text-white hover:text-[#d4a373] border border-[#d4a373]/60 hover:border-[#d4a373] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
             >
-              <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
-              <span>Contact Button</span>
+              <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-[#d4a373]" />
+              <span>Contact Us</span>
             </a>
 
           </div>

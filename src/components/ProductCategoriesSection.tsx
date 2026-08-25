@@ -123,7 +123,7 @@ export const ProductCategoriesSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="products" className="relative py-14 sm:py-22 bg-[#f8f8f9] text-neutral-900 border-t border-b border-neutral-200 overflow-hidden">
+    <section id="products" className="relative py-14 sm:py-22 bg-[#ede0d4] text-[#0d1b2a] border-t border-b border-[#d8c3af] overflow-hidden">
       
       {/* Subtle Background Architectural Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
@@ -145,8 +145,8 @@ export const ProductCategoriesSection: React.FC = () => {
               />
             </div>
 
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-neutral-950 font-serif leading-[1.05]">
-              Our <span className="italic font-normal text-[#c59a3f]">Products</span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0d1b2a] font-serif leading-[1.05]">
+              Our <span className="italic font-normal text-[#b58351]">Products</span>
             </h2>
 
             {/* Right Leaf Image (nature2) */}
@@ -162,7 +162,7 @@ export const ProductCategoriesSection: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-xs sm:text-base text-neutral-600 font-normal leading-relaxed max-w-xl mx-auto font-sans">
+          <p className="text-xs sm:text-base text-[#5c677d] font-normal leading-relaxed max-w-xl mx-auto font-sans">
             Engineered with aerospace-grade precision and timeless minimalist aesthetics for modern luxury sanctuaries.
           </p>
         </div>
@@ -170,7 +170,7 @@ export const ProductCategoriesSection: React.FC = () => {
         {/* 5 Luxury Architectural Category Cards - SINGLE LINE HORIZONTAL ROW ON MOBILE & DESKTOP */}
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto lg:grid lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 items-stretch pb-3 pt-1 px-1 no-scrollbar snap-x snap-mandatory"
+          className="flex overflow-x-auto lg:overflow-visible lg:grid lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6 items-stretch pt-4 pb-6 px-2.5 sm:px-3 no-scrollbar snap-x snap-mandatory -my-2"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
@@ -179,7 +179,7 @@ export const ProductCategoriesSection: React.FC = () => {
           {categories.map((cat) => (
             <div
               key={cat.id}
-              className="min-w-[160px] sm:min-w-[190px] lg:min-w-0 w-full shrink-0 snap-center relative rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-md border border-neutral-200/90 hover:border-neutral-950 p-4 sm:p-6 lg:p-7 flex flex-col items-center justify-between text-center transition-all duration-500 hover:-translate-y-2 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] group cursor-pointer"
+              className="min-w-[160px] sm:min-w-[190px] lg:min-w-0 w-full shrink-0 snap-center relative rounded-2xl sm:rounded-3xl bg-white backdrop-blur-md border border-[#d8c3af] hover:border-[#0d1b2a] p-4 sm:p-6 lg:p-7 flex flex-col items-center justify-between text-center transition-all duration-500 hover:-translate-y-2 shadow-sm hover:shadow-xl group cursor-pointer"
             >
               {/* Image / Icon rendered directly at full size */}
               <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-22 lg:h-22 flex items-center justify-center my-1.5 transition-transform duration-300 transform group-hover:scale-110">
@@ -195,7 +195,7 @@ export const ProductCategoriesSection: React.FC = () => {
                     />
                   </div>
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-neutral-950">
+                  <div className="w-full h-full flex items-center justify-center text-[#b58351]">
                     {cat.icon}
                   </div>
                 )}
@@ -203,18 +203,18 @@ export const ProductCategoriesSection: React.FC = () => {
 
               {/* Title in Editorial Serif */}
               <div className="space-y-0.5 my-2">
-                <h3 className="text-base sm:text-xl lg:text-2xl font-bold font-serif text-neutral-950 group-hover:text-neutral-950 tracking-tight leading-tight">
+                <h3 className="text-base sm:text-xl lg:text-2xl font-bold font-serif text-[#0d1b2a] group-hover:text-[#b58351] tracking-tight leading-tight transition-colors">
                   {cat.name}
                 </h3>
-                <p className="text-[10px] sm:text-xs text-neutral-500 font-sans font-normal leading-tight">
+                <p className="text-[10px] sm:text-xs text-[#7f5539] font-sans font-normal leading-tight">
                   {cat.subtitle}
                 </p>
               </div>
 
               {/* Bottom Subtle Action Link */}
-              <div className="mt-2 pt-2.5 border-t border-neutral-100 w-full flex items-center justify-center gap-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-neutral-700 group-hover:text-neutral-950 font-sans transition-colors">
+              <div className="mt-2 pt-2.5 border-t border-[#e2d5c5] w-full flex items-center justify-center gap-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#7f5539] group-hover:text-[#0d1b2a] font-sans transition-colors">
                 <span>Explore</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3 h-3 text-[#b58351] group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
           ))}
@@ -226,14 +226,14 @@ export const ProductCategoriesSection: React.FC = () => {
           {/* Prev Arrow */}
           <button
             onClick={handlePrev}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 hover:border-neutral-900 bg-white hover:bg-neutral-900 text-neutral-800 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#d8c3af] hover:border-[#0d1b2a] bg-white hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
             aria-label="Previous Product"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
           {/* Page Number Pills (1, 2, 3, 4, 5) */}
-          <div className="flex items-center gap-1 sm:gap-1.5 bg-neutral-100 p-1 rounded-full border border-neutral-200">
+          <div className="flex items-center gap-1 sm:gap-1.5 bg-white p-1 rounded-full border border-[#d8c3af]">
             {categories.map((_, index) => {
               const num = index + 1;
               return (
@@ -242,10 +242,9 @@ export const ProductCategoriesSection: React.FC = () => {
                   onClick={() => scrollToPage(num)}
                   className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full text-xs font-bold transition-all focus:outline-none cursor-pointer ${
                     currentPage === num
-                      ? 'bg-neutral-950 text-white shadow-sm scale-105'
-                      : 'text-neutral-600 hover:text-neutral-950 hover:bg-neutral-200'
+                      ? 'bg-[#0d1b2a] text-[#d4a373] shadow-sm scale-105'
+                      : 'text-[#7f5539] hover:text-[#0d1b2a] hover:bg-[#ede0d4]'
                   }`}
-                  aria-label={`Go to product ${num}`}
                 >
                   {num}
                 </button>
@@ -256,7 +255,7 @@ export const ProductCategoriesSection: React.FC = () => {
           {/* Next Arrow */}
           <button
             onClick={handleNext}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 hover:border-neutral-900 bg-white hover:bg-neutral-900 text-neutral-800 hover:text-white flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#d8c3af] hover:border-[#0d1b2a] bg-white hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] flex items-center justify-center transition-all shadow-sm active:scale-95 focus:outline-none cursor-pointer"
             aria-label="Next Product"
           >
             <ChevronRight className="w-4 h-4" />

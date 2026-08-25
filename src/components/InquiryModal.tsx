@@ -36,29 +36,29 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
       <div
-        className="relative w-full max-w-lg bg-white rounded-3xl overflow-hidden shadow-2xl border border-neutral-200 animate-in zoom-in-95 duration-200"
+        className="relative w-full max-w-lg bg-[#0d1522] text-white rounded-3xl overflow-hidden shadow-2xl border border-[#1b2a4a] animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-neutral-950 text-white p-6 relative">
+        <div className="bg-[#0a101d] text-white p-6 relative border-b border-[#1b2a4a]">
           <button
             onClick={onClose}
-            className="absolute top-5 right-5 w-8 h-8 rounded-full bg-neutral-800 hover:bg-neutral-700 flex items-center justify-center text-neutral-300 transition-colors"
+            className="absolute top-5 right-5 w-8 h-8 rounded-full bg-[#16233b] hover:bg-[#1b2a4a] flex items-center justify-center text-neutral-300 hover:text-[#d4af37] transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
           </button>
           
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-600/20 text-rose-400 text-[10px] font-extrabold uppercase tracking-wider mb-2 border border-rose-600/30">
-            <Sparkles className="w-3 h-3" /> Priority Concierge
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#d4af37]/15 text-[#d4af37] text-[10px] font-extrabold uppercase tracking-wider mb-2 border border-[#d4af37]/30">
+            <Sparkles className="w-3 h-3 text-[#d4af37]" /> Priority Concierge
           </div>
-          <h2 className="text-xl font-bold font-display-impact uppercase tracking-tight">
+          <h2 className="text-xl font-bold font-display-impact uppercase tracking-tight text-white">
             Direct Studio Inquiry
           </h2>
           <p className="text-xs text-neutral-400 mt-1">
-            Topic: <span className="text-white font-semibold">{initialTopic}</span>
+            Topic: <span className="text-[#d4af37] font-semibold">{initialTopic}</span>
           </p>
         </div>
 
@@ -66,70 +66,70 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
         <div className="p-6">
           {submitted ? (
             <div className="py-8 text-center space-y-3 animate-in fade-in">
-              <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow">
+              <div className="w-14 h-14 bg-[#16233b] text-[#d4af37] border border-[#d4af37]/40 rounded-full flex items-center justify-center mx-auto shadow">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h3 className="text-lg font-bold text-neutral-900 font-display-impact">
+              <h3 className="text-lg font-bold text-white font-display-impact">
                 Inquiry Transmitted Successfully
               </h3>
-              <p className="text-xs text-neutral-500 max-w-xs mx-auto">
+              <p className="text-xs text-neutral-400 max-w-xs mx-auto">
                 Our luxury plumbing consultant will connect via phone and email shortly.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label className="text-[11px] font-bold text-neutral-700 uppercase">Your Name *</label>
+                <label className="text-[11px] font-bold text-neutral-300 uppercase">Your Name *</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Architect / Homeowner Name"
-                  className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-3.5 py-2.5 text-xs text-neutral-900 focus:outline-none focus:border-rose-500 focus:bg-white transition-all"
+                  className="w-full bg-[#16233b] border border-[#1b2a4a] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] transition-all"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-neutral-700 uppercase">Contact Number *</label>
+                  <label className="text-[11px] font-bold text-neutral-300 uppercase">Contact Number *</label>
                   <input
                     type="tel"
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-3.5 py-2.5 text-xs text-neutral-900 focus:outline-none focus:border-rose-500 focus:bg-white transition-all"
+                    className="w-full bg-[#16233b] border border-[#1b2a4a] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] transition-all"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[11px] font-bold text-neutral-700 uppercase">Email Address *</label>
+                  <label className="text-[11px] font-bold text-neutral-300 uppercase">Email Address *</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@studio.com"
-                    className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-3.5 py-2.5 text-xs text-neutral-900 focus:outline-none focus:border-rose-500 focus:bg-white transition-all"
+                    className="w-full bg-[#16233b] border border-[#1b2a4a] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] transition-all"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-[11px] font-bold text-neutral-700 uppercase">Requirements / Project Scope</label>
+                <label className="text-[11px] font-bold text-neutral-300 uppercase">Requirements / Project Scope</label>
                 <textarea
                   rows={3}
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Mention product models, finishes, or questions..."
-                  className="w-full bg-neutral-50 border border-neutral-300 rounded-xl px-3.5 py-2.5 text-xs text-neutral-900 focus:outline-none focus:border-rose-500 focus:bg-white transition-all resize-none"
+                  className="w-full bg-[#16233b] border border-[#1b2a4a] rounded-xl px-3.5 py-2.5 text-xs text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-[#c8102e] hover:bg-[#a50b24] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow"
+                className="w-full py-3.5 bg-[#c8102e] hover:bg-[#a50b24] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-2 shadow cursor-pointer shadow-red-950/20"
               >
                 <Send className="w-4 h-4" />
                 <span>Submit Priority Inquiry</span>

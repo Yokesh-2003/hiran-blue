@@ -2,47 +2,102 @@
 
 @layer base {
   :root {
-    --bg-main: #f8fafc;
+    --bg-main: #f7f4ee;
     --card-surface: #ffffff;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --brand-accent: #e11d48;
-    --brand-accent-hover: #be123c;
-    --brand-grey: #64748b;
-    --border-subtle: #e2e8f0;
+    --text-primary: #0d1b2a;
+    --text-secondary: #5c677d;
+    --brand-dark-blue: #0d1b2a;
+    --brand-navy: #1b263b;
+    --brand-blue-accent: #274060;
+    --brand-sandal: #d4a373;
+    --brand-sandal-light: #f5efe6;
+    --brand-sandal-dark: #b58351;
+    --brand-pale-brown: #a88b74;
+    --brand-pale-brown-light: #ede0d4;
+    --brand-brown: #6f4e37;
+    --brand-red: #c8102e;
+    --brand-red-hover: #a50b24;
+    --border-subtle: #e2d5c5;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: #f7f4ee;
   }
 
   body {
-    background-color: #ffffff;
-    color: #0f172a;
+    background-color: #f7f4ee;
+    color: #0d1b2a;
     font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     overflow-x: hidden;
     top: 0px !important;
     position: static !important;
   }
+
+  /* Make all images non-draggable across the website */
+  img,
+  image {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
 }
 
-/* Custom modern scrollbar */
+/* Continuous Marquee Ticker Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+/* Global Text Selection in Brand Dark Blue */
+::selection {
+  background-color: #0d1b2a;
+  color: #d4a373;
+}
+
+::-moz-selection {
+  background-color: #0d1b2a;
+  color: #d4a373;
+}
+
+/* Custom modern scrollbar with brand dark blue */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #ede0d4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #0d1b2a;
   border-radius: 9999px;
+  border: 1.5px solid #ede0d4;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #1b263b;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a #ede0d4;
 }
 
 /* Angled italic hero typography utilities */
@@ -55,7 +110,7 @@
 
 /* Subtle glow effects */
 .luxe-shadow-hero {
-  filter: drop-shadow(0 25px 35px rgba(15, 23, 42, 0.18));
+  filter: drop-shadow(0 25px 35px rgba(22, 35, 59, 0.18));
 }
 
 .glow-card {
@@ -63,8 +118,8 @@
 }
 
 .glow-card:hover {
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12),
-              0 0 0 1px rgba(225, 29, 72, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(22, 35, 59, 0.12),
+              0 0 0 1px rgba(212, 175, 55, 0.35);
 }
 
 /* Google Translate Full Website Engine Clean Styling */
