@@ -27,9 +27,9 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
           className="absolute inset-0 w-full h-full object-cover object-center [-webkit-user-drag:none]"
         />
 
-        {/* Soft Dark Blue Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/90 via-[#0d1b2a]/55 to-[#0d1b2a]/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1b2a]/70 via-transparent to-[#0d1b2a]/70 pointer-events-none" />
+        {/* Soft Dark Blue Gradient Overlays (Reduced intensity) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1b2a]/60 via-[#0d1b2a]/30 to-[#0d1b2a]/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0d1b2a]/45 via-transparent to-[#0d1b2a]/45 pointer-events-none" />
 
         {/* Content Container */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-8 text-center space-y-2 sm:space-y-4 md:space-y-6 pointer-events-auto">
