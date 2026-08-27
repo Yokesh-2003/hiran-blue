@@ -77,7 +77,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
       badge: '100% Solid Pure Brass',
       baseBg: 'bg-[#b45309]',
       overlayGradient: 'bg-gradient-to-br from-[#b45309]/90 via-[#d97706]/60 to-transparent',
-      img: '/images/our products/Allieds.png',
+      img: '/images/products/6.png',
       tag: 'Monogram Luxe',
     },
     {
