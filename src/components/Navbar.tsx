@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { productsData } from '@/data/mockData';
 import { useLanguage } from '@/context/LanguageContext';
 import { CountryFlag } from '@/components/CountryFlag';
@@ -41,8 +42,25 @@ export const Navbar: React.FC = () => {
   const [countrySearch, setCountrySearch] = useState('');
   const [langSearch, setLangSearch] = useState('');
 
+  const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeNav, setActiveNav] = useState('Home');
+  const [activeNav, setActiveNav] = useState('');
+
+  const isNavActive = (key: string) => {
+    if (pathname === '/about') {
+      return key === 'about';
+    }
+    if (pathname === '/products') {
+      return key === 'products';
+    }
+    if (pathname === '/' || !pathname) {
+      if (activeNav) {
+        return activeNav === key;
+      }
+      return key === 'home';
+    }
+    return activeNav === key;
+  };
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const langDropdownRef = useRef<HTMLDivElement>(null);
@@ -90,13 +108,13 @@ export const Navbar: React.FC = () => {
   }, [searchOpen]);
 
   const navItemsList = [
-    { key: 'home', name: t('home'), href: '#home' },
-    { key: 'about', name: t('about'), href: '#about' },
-    { key: 'products', name: t('products'), href: '#products' },
-    { key: 'projects', name: t('projects'), href: '#projects' },
-    { key: 'dealers', name: t('dealers'), href: '#dealers' },
-    { key: 'catalogue', name: t('catalogue'), href: '#catalogue' },
-    { key: 'contact', name: t('contact'), href: '#contact' },
+    { key: 'home', name: t('home'), href: '/' },
+    { key: 'about', name: t('about'), href: '/about' },
+    { key: 'products', name: t('products'), href: '/products' },
+    { key: 'projects', name: t('projects'), href: '/#projects' },
+    { key: 'dealers', name: t('dealers'), href: '/#dealers' },
+    { key: 'catalogue', name: t('catalogue'), href: '/#catalogue' },
+    { key: 'contact', name: t('contact'), href: '/#contact' },
   ];
 
   const tickerItems = [
@@ -143,7 +161,7 @@ export const Navbar: React.FC = () => {
         {/* Row 2 on Mobile / Left on Desktop: Customer & Partner Links */}
         <div className="order-2 sm:order-1 flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-3.5 gap-y-1 text-[10px] sm:text-[11px] font-medium text-[#dfcfbe] py-1 sm:py-0.5 border-t sm:border-t-0 border-[#1b263b]">
           <a
-            href="#products"
+            href="/#products"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <Package className="w-3 h-3 text-[#d4a373]" />
@@ -152,7 +170,7 @@ export const Navbar: React.FC = () => {
           <span className="text-[#5c677d]">|</span>
 
           <a
-            href="#dealers"
+            href="/#dealers"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <Store className="w-3 h-3 text-[#d4a373]" />
@@ -161,7 +179,7 @@ export const Navbar: React.FC = () => {
           <span className="text-[#5c677d]">|</span>
 
           <a
-            href="#contact"
+            href="/#contact"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <HelpCircle className="w-3 h-3 text-[#d4a373]" />
@@ -170,20 +188,20 @@ export const Navbar: React.FC = () => {
           <span className="text-[#5c677d]">|</span>
 
           <a
-            href="#contact"
-            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
-          >
-            <Building2 className="w-3 h-3 text-[#d4a373]" />
-            <span>Contractor Project Enquiry</span>
-          </a>
-          <span className="text-[#5c677d]">|</span>
-
-          <a
-            href="#contact"
+            href="/#contact"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <Headphones className="w-3 h-3 text-[#d4a373]" />
             <span>Support</span>
+          </a>
+          <span className="text-[#5c677d]">|</span>
+
+          <a
+            href="/#contact"
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
+          >
+            <Building2 className="w-3 h-3 text-[#d4a373]" />
+            <span>Contractor Project Enquiry</span>
           </a>
         </div>
 
@@ -397,7 +415,7 @@ export const Navbar: React.FC = () => {
             {/* LOGO (Left) */}
             <div className="flex items-center shrink-0">
               <a
-                href="#home"
+                href="/"
                 className="h-10 sm:h-12 flex items-center justify-start focus:outline-none"
                 aria-label="Hiranbath Home"
               >
@@ -416,9 +434,9 @@ export const Navbar: React.FC = () => {
                 <a
                   key={item.key}
                   href={item.href}
-                  onClick={() => setActiveNav(item.name)}
+                  onClick={() => setActiveNav(item.key)}
                   className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all relative rounded-lg whitespace-nowrap ${
-                    activeNav === item.name
+                    isNavActive(item.key)
                       ? 'text-[#d4a373] bg-[#0d1b2a] shadow-md'
                       : 'text-[#0d1b2a] hover:text-[#b58351] hover:bg-[#f5efe6]'
                   }`}
@@ -541,11 +559,11 @@ export const Navbar: React.FC = () => {
                 key={item.key}
                 href={item.href}
                 onClick={() => {
-                  setActiveNav(item.name);
+                  setActiveNav(item.key);
                   setMobileMenuOpen(false);
                 }}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
-                  activeNav === item.name
+                  isNavActive(item.key)
                     ? 'bg-[#0d1b2a] text-[#d4a373] shadow-sm'
                     : 'text-[#0d1b2a] hover:bg-[#f5efe6] hover:text-[#b58351]'
                 }`}

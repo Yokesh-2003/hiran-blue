@@ -216,13 +216,22 @@ export const AboutSection: React.FC = () => {
                   <span>65+ Years of Trust & Uncompromised Quality</span>
                 </div>
 
-                <a
-                  href="#clients"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#0d1b2a] hover:bg-[#1b263b] text-[#ede0d4] hover:text-[#d4a373] text-xs font-bold uppercase tracking-wider transition-all transform hover:scale-105 shadow-md group w-full sm:w-auto font-sans border border-[#1b263b]"
-                >
-                  <span>Explore Our Clients</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#d4a373]" />
-                </a>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
+                  <a
+                    href="/about"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#d4a373] hover:bg-[#b58351] text-[#0d1b2a] text-xs font-bold uppercase tracking-wider transition-all transform hover:scale-105 shadow-md group w-full sm:w-auto font-sans"
+                  >
+                    <span>Read Full About Us & Motto</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                  <a
+                    href="#clients"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#0d1b2a] hover:bg-[#1b263b] text-[#ede0d4] hover:text-[#d4a373] text-xs font-bold uppercase tracking-wider transition-all transform hover:scale-105 shadow-md group w-full sm:w-auto font-sans border border-[#1b263b]"
+                  >
+                    <span>Our Clients</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#d4a373]" />
+                  </a>
+                </div>
               </div>
 
             </div>

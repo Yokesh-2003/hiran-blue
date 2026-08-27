@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
             
             {/* Pillar 1: Assistance */}
             <a
-              href="#contact"
+              href="/#contact"
               className="group py-8 sm:py-10 md:px-8 first:pl-0 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
 
             {/* Pillar 2: News & Events */}
             <a
-              href="#projects"
+              href="/#projects"
               className="group py-8 sm:py-10 md:px-8 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
 
             {/* Pillar 3: Catalogues */}
             <a
-              href="#catalogue"
+              href="/#catalogue"
               className="group py-8 sm:py-10 md:px-8 last:pr-0 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
@@ -129,36 +129,40 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
-              Quick Link
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#5c677d]">
-              <li><a href="#home" className="hover:text-[#0d1b2a] transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-[#0d1b2a] transition-colors">About Us</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Our Product</a></li>
-              <li><a href="#catalogue" className="hover:text-[#0d1b2a] transition-colors">Catalogue</a></li>
-              <li><a href="#projects" className="hover:text-[#0d1b2a] transition-colors">Projects</a></li>
-              <li><a href="#dealers" className="hover:text-[#0d1b2a] transition-colors">Dealers</a></li>
-              <li><a href="#contact" className="hover:text-[#0d1b2a] transition-colors">Contact</a></li>
-            </ul>
-          </div>
+          {/* Columns 2 & 3: Quick Links & Our Product (Side-by-side 2 columns on mobile & desktop) */}
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:col-span-4">
+            
+            {/* Quick Link */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
+                Quick Link
+              </h4>
+              <ul className="space-y-2.5 text-xs text-[#5c677d]">
+                <li><a href="/" className="hover:text-[#0d1b2a] transition-colors">Home</a></li>
+                <li><a href="/about" className="hover:text-[#0d1b2a] transition-colors">About Us</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Our Product</a></li>
+                <li><a href="/#catalogue" className="hover:text-[#0d1b2a] transition-colors">Catalogue</a></li>
+                <li><a href="/#projects" className="hover:text-[#0d1b2a] transition-colors">Projects</a></li>
+                <li><a href="/#dealers" className="hover:text-[#0d1b2a] transition-colors">Dealers</a></li>
+                <li><a href="/#contact" className="hover:text-[#0d1b2a] transition-colors">Contact</a></li>
+              </ul>
+            </div>
 
-          {/* Column 3: Our Products */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
-              Our Product
-            </h4>
-            <ul className="space-y-2.5 text-xs text-[#5c677d]">
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Faucets</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Bath Seth</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Showers</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Valve</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Kitchen Sink</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Gratings & Showers</a></li>
-              <li><a href="#products" className="hover:text-[#0d1b2a] transition-colors">Allieds</a></li>
-            </ul>
+            {/* Our Product (On the right side of Quick Link) */}
+            <div className="space-y-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
+                Our Product
+              </h4>
+              <ul className="space-y-2.5 text-xs text-[#5c677d]">
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Faucets</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Bath Seth</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Kitchen</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Valves</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Allieds</a></li>
+                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Showers</a></li>
+              </ul>
+            </div>
+
           </div>
 
           {/* Column 4: Newsletter */}
@@ -238,45 +242,10 @@ export const Footer: React.FC = () => {
           FOLLOW US
         </h4>
 
-        {/* Social Icons Row matching Gessi luxury aesthetic */}
+        {/* Social Icons Row (Instagram, WhatsApp, Facebook, YouTube, X) */}
         <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-[#0d1b2a]">
           
-          {/* Facebook */}
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center text-sm font-serif font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="Facebook"
-          >
-            f
-          </a>
-
-          {/* X (Twitter) */}
-          <a
-            href="https://x.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center text-sm font-sans font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="X Twitter"
-          >
-            𝕏
-          </a>
-
-          {/* YouTube */}
-          <a
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="YouTube"
-          >
-            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-          </a>
-
-          {/* Instagram */}
+          {/* 1. Instagram */}
           <a
             href="https://instagram.com"
             target="_blank"
@@ -291,61 +260,52 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
 
-          {/* Pinterest */}
+          {/* 2. WhatsApp */}
           <a
-            href="https://pinterest.com"
+            href="https://wa.me/919876543210"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
+            aria-label="WhatsApp"
+          >
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+
+          {/* 3. Facebook */}
+          <a
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             className="w-7 h-7 flex items-center justify-center text-sm font-serif font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="Pinterest"
+            aria-label="Facebook"
           >
-            p
+            f
           </a>
 
-          {/* LinkedIn */}
+          {/* 4. YouTube */}
           <a
-            href="https://linkedin.com"
+            href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center text-xs font-sans font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="LinkedIn"
+            className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
+            aria-label="YouTube"
           >
-            in
+            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
           </a>
 
-          {/* Threads */}
+          {/* 5. X (Twitter) */}
           <a
-            href="https://threads.net"
+            href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
             className="w-7 h-7 flex items-center justify-center text-sm font-sans font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="Threads"
+            aria-label="X Twitter"
           >
-            @
-          </a>
-
-          {/* WeChat */}
-          <a
-            href="#contact"
-            className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="WeChat"
-          >
-            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M8.691 2.188C3.891 2.188 0 5.478 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.81-.05-.858-2.587.402-5.408 2.838-6.611 1.09-.538 2.288-.813 3.52-.813.432 0 .86.035 1.282.105C18.15 5.244 13.81 2.188 8.69 2.188zm-2.4 4.025c.662 0 1.2.538 1.2 1.2 0 .663-.538 1.2-1.2 1.2-.663 0-1.2-.537-1.2-1.2 0-.662.537-1.2 1.2-1.2zm5.4 0c.662 0 1.2.538 1.2 1.2 0 .663-.538 1.2-1.2 1.2-.663 0-1.2-.537-1.2-1.2 0-.662.537-1.2 1.2-1.2z"/>
-            </svg>
-          </a>
-
-          {/* TikTok */}
-          <a
-            href="https://tiktok.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="TikTok"
-          >
-            <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 2.89 3.5 2.73 1.12-.04 2.16-.62 2.74-1.57.4-.64.57-1.4.56-2.15.02-5.74.01-11.49.01-17.23z"/>
-            </svg>
+            𝕏
           </a>
 
         </div>
@@ -353,7 +313,7 @@ export const Footer: React.FC = () => {
 
       {/* 4. BOTTOM COPYRIGHT STRIP */}
       <div className="border-t border-[#d8c3af] py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 relative">
           
           {/* Brand Logo */}
           <div className="shrink-0">
@@ -368,15 +328,16 @@ export const Footer: React.FC = () => {
             />
           </div>
 
-          {/* Corporate Address & Details */}
-          <div className="text-center md:text-left text-[11px] text-[#7f5539] space-y-0.5 leading-tight">
-            <p>1718 Park Boulevard Marshalltown, IA 50158 • Phone: 641-754-0072</p>
+          {/* Copyright / Powered By (Centered in the middle) */}
+          <div className="text-xs text-[#5c677d] text-center md:absolute md:left-1/2 md:-translate-x-1/2">
+            <p>
+              Copyright © <span className="text-[#0d1b2a] font-semibold">Hiran®</span>. All rights reserved. | Powered by{' '}
+              <span className="text-[#b58351] font-bold">yuyonix</span>
+            </p>
           </div>
 
-          {/* Copyright / Powered By */}
-          <div className="text-[11px] text-[#5c677d]">
-            <p>Copyright © <span className="text-[#0d1b2a] font-semibold">Hiran®</span>. All rights reserved. | Powered by <span className="text-[#b58351] font-bold">yuyonix</span></p>
-          </div>
+          {/* Spacer to keep flex layout balanced */}
+          <div className="hidden md:block w-28 shrink-0 pointer-events-none" />
 
         </div>
       </div>

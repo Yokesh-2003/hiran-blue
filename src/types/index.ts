@@ -9,7 +9,7 @@ export interface Product {
   id: string;
   name: string;
   collection: string;
-  category: 'faucets' | 'showers' | 'sanitaryware' | 'bathtubs' | 'accessories';
+  category: 'faucets' | 'showers' | 'sanitaryware' | 'bathtubs' | 'accessories' | 'bath-seth' | 'kitchen' | 'valves' | 'allieds' | string;
   finish: string;
   price?: string;
   image: string;
