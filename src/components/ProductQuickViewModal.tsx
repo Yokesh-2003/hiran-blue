@@ -27,18 +27,19 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
 }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const suggestedScrollRef = useRef<HTMLDivElement>(null);
+  const modalBodyRef = useRef<HTMLDivElement>(null);
 
   // Silky Smooth Mouse Drag-to-Scroll for Suggested Carousel
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeftVal = useRef(0);
-  const hasDragged = useRef(false);
+  const dragDistance = useRef(0);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     const el = suggestedScrollRef.current;
     if (!el) return;
     isDragging.current = true;
-    hasDragged.current = false;
+    dragDistance.current = 0;
     startX.current = e.pageX;
     scrollLeftVal.current = el.scrollLeft;
     el.style.scrollBehavior = 'auto';
@@ -47,13 +48,14 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging.current || !suggestedScrollRef.current) return;
-    e.preventDefault();
     const x = e.pageX;
-    const walk = x - startX.current;
-    if (Math.abs(walk) > 4) {
-      hasDragged.current = true;
+    const diff = Math.abs(x - startX.current);
+    dragDistance.current = diff;
+    if (diff > 8) {
+      e.preventDefault();
+      const walk = x - startX.current;
+      suggestedScrollRef.current.scrollLeft = scrollLeftVal.current - walk;
     }
-    suggestedScrollRef.current.scrollLeft = scrollLeftVal.current - walk;
   };
 
   const handleMouseUpOrLeave = () => {
@@ -75,9 +77,12 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
     return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
   }, []);
 
-  // Reset quantity when active product changes
+  // Reset quantity and scroll position when active product changes
   useEffect(() => {
     setQuantity(1);
+    if (modalBodyRef.current) {
+      modalBodyRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [product?.id]);
 
   // Suggested products from the same category or sub-category
@@ -123,6 +128,12 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleSelectSuggestedItem = (item: Product) => {
+    if (dragDistance.current < 8 && onSelectProduct) {
+      onSelectProduct(item);
+    }
+  };
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-8 bg-black/80 backdrop-blur-md animate-in fade-in"
@@ -152,7 +163,7 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
         </div>
 
         {/* Scrollable Modal Body */}
-        <div className="overflow-y-auto p-5 sm:p-7 space-y-7 flex-1">
+        <div ref={modalBodyRef} className="overflow-y-auto p-5 sm:p-7 space-y-7 flex-1 scroll-smooth">
           
           {/* TOP SECTION: 2-COLUMN (IMAGE LEFT + CLASSIFICATION RIGHT) */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
@@ -294,11 +305,7 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                 {suggestedProducts.map((item) => (
                   <div
                     key={`suggested-${item.id}`}
-                    onClick={() => {
-                      if (!hasDragged.current && onSelectProduct) {
-                        onSelectProduct(item);
-                      }
-                    }}
+                    onClick={() => handleSelectSuggestedItem(item)}
                     className="w-[140px] sm:w-[160px] shrink-0 rounded-2xl bg-[#fbf9f5] border border-[#e2d5c5] p-2.5 shadow-sm hover:shadow-md hover:border-[#0d1b2a] transition-all cursor-pointer flex flex-col justify-between group"
                   >
                     <div>

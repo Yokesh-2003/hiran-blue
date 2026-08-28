@@ -117,6 +117,7 @@ export default function AboutPage() {
         <ProductQuickViewModal
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
+          onSelectProduct={(p) => setQuickViewProduct(p)}
           onAddToCart={handleAddToCart}
         />
 

@@ -137,6 +137,7 @@ export default function Home() {
         <ProductQuickViewModal
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
+          onSelectProduct={(p) => setQuickViewProduct(p)}
           onAddToCart={handleAddToCart}
         />
 
