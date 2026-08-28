@@ -12,12 +12,12 @@ export interface Product {
   collection: string;
   subCategory?: string;
   category: 'faucets' | 'showers' | 'sanitaryware' | 'bathtubs' | 'accessories' | 'bath-seth' | 'kitchen' | 'valves' | 'allieds' | string;
-  finish: string;
+  finish?: string;
   price?: string;
   image: string;
   tag?: string;
-  description: string;
-  specs: {
+  description?: string;
+  specs?: {
     material?: string;
     flowRate?: string;
     warranty?: string;

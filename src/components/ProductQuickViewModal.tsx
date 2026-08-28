@@ -17,6 +17,7 @@ interface ProductQuickViewModalProps {
   product: Product | null;
   onClose: () => void;
   onSelectProduct?: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
 }
 
 export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
