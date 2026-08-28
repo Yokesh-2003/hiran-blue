@@ -8,7 +8,9 @@ export interface NavItem {
 export interface Product {
   id: string;
   name: string;
+  modelCode?: string;
   collection: string;
+  subCategory?: string;
   category: 'faucets' | 'showers' | 'sanitaryware' | 'bathtubs' | 'accessories' | 'bath-seth' | 'kitchen' | 'valves' | 'allieds' | string;
   finish: string;
   price?: string;
@@ -16,10 +18,13 @@ export interface Product {
   tag?: string;
   description: string;
   specs: {
-    material: string;
+    material?: string;
     flowRate?: string;
-    warranty: string;
-    installation: string;
+    warranty?: string;
+    installation?: string;
+    model?: string;
+    collection?: string;
+    [key: string]: string | undefined;
   };
 }
 

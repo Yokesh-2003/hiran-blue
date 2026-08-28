@@ -7,12 +7,8 @@ import { ProductsShowcase } from '@/components/products/ProductsShowcase';
 import { AboutCta } from '@/components/about/AboutCta';
 import { Footer } from '@/components/Footer';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
-import { InquiryModal } from '@/components/InquiryModal';
-import { CartDrawer } from '@/components/CartDrawer';
 import { ProductQuickViewModal } from '@/components/ProductQuickViewModal';
 import { Product } from '@/types';
-import { productsData } from '@/data/mockData';
-import { Sparkles, Package } from 'lucide-react';
 
 export default function ProductsPage() {
   const [mounted, setMounted] = useState(false);
@@ -28,40 +24,8 @@ export default function ProductsPage() {
     return () => window.removeEventListener('dragstart', handleDragStart);
   }, []);
 
-  // Cart state
-  const [cartItems, setCartItems] = useState<{ product: Product; quantity: number }[]>([
-    { product: productsData[0], quantity: 1 },
-    { product: productsData[1], quantity: 1 },
-  ]);
-  const [cartOpen, setCartOpen] = useState(false);
-
   // Quick view state
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
-
-  // Inquiry modal state
-  const [inquiryOpen, setInquiryOpen] = useState(false);
-  const [inquiryTopic, setInquiryTopic] = useState('Product Specification & Bulk Order Enquiry');
-
-  const handleAddToCart = (product: Product) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prev, { product, quantity: 1 }];
-    });
-    setCartOpen(true);
-  };
-
-  const handleRemoveFromCart = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.product.id !== id));
-  };
-
-  const handleClearCart = () => {
-    setCartItems([]);
-  };
 
   if (!mounted) {
     return (
@@ -89,16 +53,15 @@ export default function ProductsPage() {
           {/* Products Showcase */}
           <ProductsShowcase
             onQuickView={(p) => setQuickViewProduct(p)}
-            onAddToCart={handleAddToCart}
           />
 
         </main>
 
-        {/* CTA Banner: Experience the Luxury & Consultation */}
+        {/* CTA Banner: Experience the Luxury */}
         <AboutCta
           onOpenInquiry={() => {
-            setInquiryTopic('Products Specification Consultation');
-            setInquiryOpen(true);
+            const el = document.getElementById('contact');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         />
 
@@ -108,29 +71,11 @@ export default function ProductsPage() {
         {/* Scroll To Top Button */}
         <ScrollToTopButton />
 
-        {/* Interactive Modals */}
+        {/* Interactive Modal */}
         <ProductQuickViewModal
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
-          onAddToCart={handleAddToCart}
-        />
-
-        <CartDrawer
-          isOpen={cartOpen}
-          onClose={() => setCartOpen(false)}
-          items={cartItems}
-          onRemoveItem={handleRemoveFromCart}
-          onClearCart={handleClearCart}
-          onProceedToInquiry={() => {
-            setInquiryTopic('BOQ Project Quotation with Selected Products');
-            setInquiryOpen(true);
-          }}
-        />
-
-        <InquiryModal
-          isOpen={inquiryOpen}
-          onClose={() => setInquiryOpen(false)}
-          initialTopic={inquiryTopic}
+          onSelectProduct={(p) => setQuickViewProduct(p)}
         />
       </div>
     </LanguageProvider>

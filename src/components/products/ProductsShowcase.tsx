@@ -1,14 +1,18 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import Image from 'next/image';
 import {
-  Sparkles,
   ArrowRight,
   Eye,
   ShoppingBag,
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
 } from 'lucide-react';
 import { productsData } from '@/data/mockData';
+import { allCatalogProducts } from '@/data/allCatalogProducts';
 import { Product } from '@/types';
 
 interface ProductsShowcaseProps {
@@ -16,14 +20,193 @@ interface ProductsShowcaseProps {
   onAddToCart?: (product: Product) => void;
 }
 
+// Reusable Netflix-Style Category Product Row
+interface NetflixRowProps {
+  title: string;
+  count: number;
+  products: Product[];
+  onQuickView?: (product: Product) => void;
+  onAddToCart?: (product: Product) => void;
+  onViewAll?: () => void;
+}
+
+const NetflixRow: React.FC<NetflixRowProps> = ({
+  title,
+  count,
+  products,
+  onQuickView,
+  onAddToCart,
+  onViewAll,
+}) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftVal = useRef(0);
+  const hasDragged = useRef(false);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const el = rowRef.current;
+    if (!el) return;
+    isDragging.current = true;
+    hasDragged.current = false;
+    startX.current = e.pageX;
+    scrollLeftVal.current = el.scrollLeft;
+    el.style.scrollBehavior = 'auto';
+    el.style.scrollSnapType = 'none';
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !rowRef.current) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = x - startX.current;
+    if (Math.abs(walk) > 4) {
+      hasDragged.current = true;
+    }
+    rowRef.current.scrollLeft = scrollLeftVal.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    if (rowRef.current) {
+      rowRef.current.style.scrollBehavior = 'smooth';
+      rowRef.current.style.scrollSnapType = '';
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!rowRef.current) return;
+    const scrollAmount = direction === 'left' ? -380 : 380;
+    rowRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  return (
+    <div className="space-y-4 pt-2">
+      {/* Row Header: Category Name + Counter + Left/Right Navigation */}
+      <div className="flex items-center justify-between px-1">
+        <div className="flex items-center gap-2.5">
+          <h4 className="text-lg sm:text-2xl font-serif font-bold text-[#0d1b2a] tracking-tight">
+            {title}
+          </h4>
+          <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#ede0d4] text-[#7f5539] border border-[#d8c3af]">
+            {count} Items
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          {onViewAll && (
+            <button
+              onClick={onViewAll}
+              className="text-xs sm:text-sm font-bold text-[#b58351] hover:text-[#0d1b2a] transition-colors flex items-center gap-1 cursor-pointer mr-2"
+            >
+              <span>View All</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          )}
+
+          {/* Left / Right Arrow Buttons */}
+          <button
+            onClick={() => scroll('left')}
+            className="w-8 h-8 rounded-full bg-white hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] border border-[#e2d5c5] shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-95"
+            aria-label={`Scroll ${title} left`}
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll('right')}
+            className="w-8 h-8 rounded-full bg-white hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] border border-[#e2d5c5] shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-95"
+            aria-label={`Scroll ${title} right`}
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Horizontal Scroll Track (Netflix Style - headroom padding to prevent hover crop) */}
+      <div
+        ref={rowRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        className="flex items-stretch gap-3.5 sm:gap-5 overflow-x-auto select-none cursor-grab active:cursor-grabbing pt-5 pb-6 px-2 -mt-3 scrollbar-none snap-x snap-mandatory sm:snap-none"
+      >
+        {products.map((product) => (
+          <div
+            key={product.id}
+            onClick={() => onQuickView?.(product)}
+            className="w-[190px] sm:w-[230px] shrink-0 snap-start rounded-2xl sm:rounded-3xl bg-white border border-[#e2d5c5] p-3.5 sm:p-4 shadow-sm hover:shadow-xl hover:border-[#0d1b2a] transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer group"
+          >
+            <div>
+              {/* Category & Model Code Badge */}
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <span className="px-2 py-0.5 rounded-md bg-[#f5efe6] text-[#7f5539] text-[9px] font-bold uppercase tracking-wider border border-[#e2d5c5] truncate max-w-[120px]">
+                  {product.subCategory || product.category}
+                </span>
+
+                {product.modelCode && (
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#d4a373] bg-[#0d1b2a] px-1.5 py-0.5 rounded shrink-0">
+                    {product.modelCode}
+                  </span>
+                )}
+              </div>
+
+              {/* Product Image Frame */}
+              <div className="relative w-full aspect-square rounded-xl bg-[#fbf9f5] border border-[#f0e6da] overflow-hidden flex items-center justify-center p-2.5 mb-2.5 group-hover:bg-[#f5efe6] transition-colors">
+                <div className="relative w-full h-full">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+
+              {/* Product Name Format: [Folder Name] Model: [Code] */}
+              <h5 className="text-xs sm:text-sm font-serif font-bold text-[#0d1b2a] line-clamp-2 group-hover:text-[#b58351] transition-colors mb-1">
+                {product.name}
+              </h5>
+
+              <p className="text-[10px] sm:text-[11px] text-[#7f5539] font-medium truncate">
+                {product.collection}
+              </p>
+            </div>
+          </div>
+        ))}
+
+        {/* Netflix Style "View More" End Card */}
+        {onViewAll && count > products.length && (
+          <div
+            onClick={onViewAll}
+            className="w-[180px] sm:w-[200px] shrink-0 snap-start rounded-2xl sm:rounded-3xl bg-[#0d1b2a] text-white p-5 border border-[#1b263b] shadow-md hover:shadow-2xl hover:bg-[#1b263b] transition-all duration-300 flex flex-col justify-center items-center text-center cursor-pointer group"
+          >
+            <div className="w-12 h-12 rounded-full bg-[#1b263b] group-hover:bg-[#d4a373] group-hover:text-[#0d1b2a] text-[#d4a373] flex items-center justify-center transition-colors mb-3 shadow">
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </div>
+            <h5 className="text-base font-serif font-bold text-white mb-1">
+              View More
+            </h5>
+            <p className="text-xs text-[#ede0d4]/80">
+              +{count - products.length} {title} Products
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
   onQuickView,
   onAddToCart,
 }) => {
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const promoSliderRef = useRef<HTMLDivElement>(null);
 
-  // Top 6 Colorful Category Cards (Full-bleed container image with corner color overlay design)
+  // 1. Top 6 Colorful Category Cards
   const promoCards = [
     {
       id: 'faucets',
@@ -123,19 +306,79 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
   };
 
   const categoriesTabs = [
-    { id: 'all', label: 'All Products' },
-    { id: 'faucets', label: 'Faucets' },
-    { id: 'bath-seth', label: 'Bath Seth' },
-    { id: 'kitchen', label: 'Kitchen' },
-    { id: 'valves', label: 'Valves' },
-    { id: 'allieds', label: 'Allieds' },
-    { id: 'showers', label: 'Showers' },
+    { id: 'all', label: 'All Categories', count: allCatalogProducts.length },
+    { id: 'faucets', label: 'Faucets', count: allCatalogProducts.filter(p => p.category === 'faucets').length },
+    { id: 'bath-seth', label: 'Bath Seth', count: allCatalogProducts.filter(p => p.category === 'bath-seth').length },
+    { id: 'kitchen', label: 'Kitchen', count: allCatalogProducts.filter(p => p.category === 'kitchen').length },
+    { id: 'valves', label: 'Valves', count: allCatalogProducts.filter(p => p.category === 'valves').length },
+    { id: 'allieds', label: 'Allieds', count: allCatalogProducts.filter(p => p.category === 'allieds').length },
+    { id: 'showers', label: 'Showers', count: allCatalogProducts.filter(p => p.category === 'showers').length },
   ];
 
-  const filteredProducts =
-    activeCategoryFilter === 'all'
-      ? productsData
-      : productsData.filter((p) => p.category === activeCategoryFilter);
+  // Group products by category for Netflix Rows
+  const categoryGroups = useMemo(() => {
+    const groups = [
+      {
+        id: 'faucets',
+        title: 'Faucets',
+        products: allCatalogProducts.filter((p) => p.category === 'faucets'),
+      },
+      {
+        id: 'bath-seth',
+        title: 'Bath Seth',
+        products: allCatalogProducts.filter((p) => p.category === 'bath-seth'),
+      },
+      {
+        id: 'kitchen',
+        title: 'Kitchen',
+        products: allCatalogProducts.filter((p) => p.category === 'kitchen'),
+      },
+      {
+        id: 'valves',
+        title: 'Valves',
+        products: allCatalogProducts.filter((p) => p.category === 'valves'),
+      },
+      {
+        id: 'allieds',
+        title: 'Allieds',
+        products: allCatalogProducts.filter((p) => p.category === 'allieds'),
+      },
+      {
+        id: 'showers',
+        title: 'Showers',
+        products: allCatalogProducts.filter((p) => p.category === 'showers'),
+      },
+    ];
+    return groups;
+  }, []);
+
+  // When a specific category is selected, group its products by Series/Subcategory
+  const seriesGroupsForCategory = useMemo(() => {
+    if (activeCategoryFilter === 'all') return [];
+    const prods = allCatalogProducts.filter(p => p.category === activeCategoryFilter);
+    const map = new Map<string, Product[]>();
+    prods.forEach(p => {
+      const sub = p.subCategory || p.collection || 'General';
+      if (!map.has(sub)) map.set(sub, []);
+      map.get(sub)!.push(p);
+    });
+    return Array.from(map.entries()).map(([subTitle, items]) => ({
+      title: subTitle,
+      products: items,
+    }));
+  }, [activeCategoryFilter]);
+
+  // Search Results
+  const searchResults = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    const q = searchQuery.toLowerCase().trim();
+    return allCatalogProducts.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      (p.modelCode || '').toLowerCase().includes(q) ||
+      (p.subCategory || '').toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q)
+    );
+  }, [searchQuery]);
 
   return (
     <div className="w-full space-y-12 sm:space-y-16">
@@ -186,7 +429,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
 
         </div>
 
-        {/* B. RIGHT COLUMN: TOP COLORFUL CATEGORY SLIDER + SMALL PRODUCTS GRID DIRECTLY BELOW */}
+        {/* B. RIGHT COLUMN: TOP COLORFUL CATEGORY SLIDER + 6 CATEGORY TILES DIRECTLY BELOW */}
         <div className="lg:col-span-8 space-y-6 sm:space-y-8">
           
           {/* 1. Top Colorful Category Cards Slider (Full-bleed image + corner color overlay) */}
@@ -204,6 +447,10 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                 onClick={() => {
                   if (!hasDragged.current) {
                     setActiveCategoryFilter(card.category);
+                    const el = document.getElementById('full-catalog-section');
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' });
+                    }
                   }
                 }}
                 className={`w-[260px] sm:w-[280px] shrink-0 snap-start rounded-3xl p-5 sm:p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden group min-h-[380px] lg:min-h-[400px] ${card.baseBg} ${
@@ -249,7 +496,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
             ))}
           </div>
 
-          {/* 2. Small Product Cards Grid Directly Below the Slider in Right Column */}
+          {/* 2. Top Area Clean Category Tiles Grid */}
           <div className="pt-4 border-t border-[#e2d5c5] space-y-6">
             
             {/* Category Filter Pills in Top Area */}
@@ -257,7 +504,9 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
               {categoriesTabs.map((tab) => (
                 <button
                   key={`top-${tab.id}`}
-                  onClick={() => setActiveCategoryFilter(tab.id)}
+                  onClick={() => {
+                    setActiveCategoryFilter(tab.id);
+                  }}
                   className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                     activeCategoryFilter === tab.id
                       ? 'bg-[#0d1b2a] text-[#d4a373] shadow-md border border-[#1b263b]'
@@ -269,9 +518,9 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
               ))}
             </div>
 
-            {/* Top Area Product Cards Grid (2 columns on mobile, matching PC tile aesthetic) */}
+            {/* Top Area Category Tiles */}
             <div className="grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-5">
-              {filteredProducts.map((product) => (
+              {productsData.map((product) => (
                 <div
                   key={`top-${product.id}`}
                   onClick={() => {
@@ -281,7 +530,11 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                       el.scrollIntoView({ behavior: 'smooth' });
                     }
                   }}
-                  className="rounded-2xl sm:rounded-3xl bg-white border border-[#e2d5c5] p-3.5 sm:p-5 shadow-sm hover:shadow-xl hover:border-[#0d1b2a] transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between items-center cursor-pointer group min-h-[190px] sm:min-h-[285px]"
+                  className={`rounded-2xl sm:rounded-3xl bg-white border p-3.5 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between items-center cursor-pointer group min-h-[190px] sm:min-h-[285px] ${
+                    activeCategoryFilter === product.category
+                      ? 'border-[#0d1b2a] ring-2 ring-[#0d1b2a]'
+                      : 'border-[#e2d5c5] hover:border-[#0d1b2a]'
+                  }`}
                 >
                   {/* Product Image Frame */}
                   <div className="relative w-full aspect-square max-w-[130px] sm:max-w-[180px] rounded-xl sm:rounded-2xl bg-[#fbf9f5] border border-[#f0e6da] overflow-hidden flex items-center justify-center p-2.5 sm:p-4 group-hover:bg-[#f5efe6] transition-colors">
@@ -296,7 +549,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                     </div>
                   </div>
 
-                  {/* Product Name Only */}
+                  {/* Category Name */}
                   <div className="pt-2 sm:pt-3 text-center">
                     <h4 className="text-sm sm:text-lg font-serif font-bold text-[#0d1b2a] group-hover:text-[#b58351] transition-colors">
                       {product.name}
@@ -313,99 +566,171 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. FULL-WIDTH PRODUCTS CATALOG SECTION (DOWN BELOW ACROSS FULL WIDTH) */}
+      {/* 2. NETFLIX-STYLE FULL CATALOG ROWS (HORIZONTAL SCROLLING ROWS WITH VIEW MORE) */}
       {/* ========================================================================= */}
-      <div id="full-catalog-section" className="pt-8 sm:pt-10 border-t-2 border-[#e2d5c5] space-y-6 sm:space-y-8">
+      <div id="full-catalog-section" className="pt-8 sm:pt-10 border-t-2 border-[#e2d5c5] space-y-8 sm:space-y-12">
         
-        {/* Full-Width Filter Tabs Strip */}
+        {/* Header & Live Search Bar */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 bg-white p-5 sm:p-6 rounded-3xl border border-[#e2d5c5] shadow-sm">
+          <div>
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#b58351] block mb-1">
+              Architecture & Specification Library
+            </span>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#0d1b2a]">
+              {activeCategoryFilter === 'all'
+                ? 'Complete Product Collections'
+                : `${categoriesTabs.find(t => t.id === activeCategoryFilter)?.label || 'Products'} Collections`}
+            </h3>
+          </div>
+
+          {/* Search Box */}
+          <div className="relative w-full md:w-80">
+            <Search className="w-4 h-4 text-[#7f5539] absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search model number or code... e.g. BV3001"
+              className="w-full bg-[#fbf9f5] border border-[#d8c3af] focus:border-[#0d1b2a] focus:bg-white text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-full text-[#0d1b2a] placeholder:text-[#9c8979] focus:outline-none transition-all"
+            />
+          </div>
+        </div>
+
+        {/* Master Category Filter Tabs */}
         <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {categoriesTabs.map((tab) => (
             <button
-              key={`bottom-${tab.id}`}
-              onClick={() => setActiveCategoryFilter(tab.id)}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+              key={`bottom-tab-${tab.id}`}
+              onClick={() => {
+                setActiveCategoryFilter(tab.id);
+                setSearchQuery('');
+              }}
+              className={`px-3.5 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeCategoryFilter === tab.id
                   ? 'bg-[#0d1b2a] text-[#d4a373] shadow-md border border-[#1b263b]'
                   : 'bg-white text-[#4a3525] hover:text-[#0d1b2a] border border-[#d8c3af]'
               }`}
             >
-              {tab.label}
+              <span>{tab.label}</span>
+              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+                activeCategoryFilter === tab.id ? 'bg-[#1b263b] text-white' : 'bg-[#f5efe6] text-[#7f5539]'
+              }`}>
+                {tab.count}
+              </span>
             </button>
           ))}
         </div>
 
-        {/* 2-to-4 Column Product Cards Grid (Matching PC on mobile with 2 columns) */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
-          {filteredProducts.map((product) => (
-            <div
-              key={`bottom-${product.id}`}
-              className="rounded-2xl sm:rounded-3xl bg-white border border-[#e2d5c5] p-3.5 sm:p-5 shadow-sm hover:shadow-xl hover:border-[#d4a373] transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-1.5 mb-2 sm:mb-3">
-                  <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-[#f5efe6] text-[#7f5539] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider border border-[#e2d5c5]">
-                    {product.category}
-                  </span>
-
-                  {product.tag && (
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[#d4a373] bg-[#0d1b2a] px-1.5 sm:px-2 py-0.5 rounded">
-                      {product.tag}
-                    </span>
-                  )}
-                </div>
-
-                <div className="relative w-full aspect-square rounded-xl sm:rounded-2xl bg-[#fbf9f5] border border-[#f0e6da] overflow-hidden flex items-center justify-center p-2.5 sm:p-4 mb-2.5 sm:mb-4 group-hover:bg-[#f5efe6] transition-colors">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      unoptimized
-                      className="object-contain transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                <h4 className="text-sm sm:text-lg font-serif font-bold text-[#0d1b2a] line-clamp-1 group-hover:text-[#b58351] transition-colors">
-                  {product.name}
-                </h4>
-
-                <p className="text-[11px] sm:text-xs text-[#7f5539] font-medium mb-1.5 sm:mb-2">
-                  {product.collection} • <span className="text-[#5c677d]">{product.finish}</span>
-                </p>
-
-                <p className="text-[11px] sm:text-xs text-[#5c677d] line-clamp-2 leading-relaxed mb-3 sm:mb-4">
-                  {product.description}
-                </p>
-              </div>
-
-              <div className="pt-2.5 sm:pt-3 border-t border-[#f0e6da] flex items-center justify-between gap-1.5 sm:gap-2">
-                <span className="text-xs sm:text-base font-bold text-[#0d1b2a] font-serif">
-                  {product.price}
-                </span>
-
-                <div className="flex items-center gap-1.5 sm:gap-2">
-                  <button
-                    onClick={() => onQuickView?.(product)}
-                    className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-[#f5efe6] hover:bg-[#0d1b2a] text-[#0d1b2a] hover:text-[#d4a373] border border-[#e2d5c5] transition-all cursor-pointer"
-                    title="Quick View"
-                  >
-                    <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-
-                  <button
-                    onClick={() => onAddToCart?.(product)}
-                    className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-[#0d1b2a] hover:bg-[#b58351] text-white font-bold text-[10px] sm:text-xs uppercase tracking-wider flex items-center gap-1 sm:gap-1.5 transition-all shadow-md active:scale-95 cursor-pointer"
-                  >
-                    <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d4a373]" />
-                    <span className="hidden xs:inline sm:inline">Enquire</span>
-                  </button>
-                </div>
-              </div>
-
+        {/* A. SEARCH MODE (When user types a search query) */}
+        {searchQuery.trim() ? (
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <h4 className="text-lg font-serif font-bold text-[#0d1b2a]">
+                Search Results for &ldquo;{searchQuery}&rdquo; ({searchResults.length} Products Found)
+              </h4>
+              <button
+                onClick={() => setSearchQuery('')}
+                className="text-xs font-bold text-[#b58351] hover:underline"
+              >
+                Clear Search
+              </button>
             </div>
-          ))}
-        </div>
+
+            {searchResults.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5 sm:gap-6">
+                {searchResults.map((product) => (
+                  <div
+                    key={product.id}
+                    onClick={() => onQuickView?.(product)}
+                    className="rounded-2xl sm:rounded-3xl bg-white border border-[#e2d5c5] p-3.5 sm:p-4 shadow-sm hover:shadow-xl hover:border-[#0d1b2a] transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-1 mb-2">
+                        <span className="px-2 py-0.5 rounded-md bg-[#f5efe6] text-[#7f5539] text-[9px] font-bold uppercase tracking-wider border border-[#e2d5c5] truncate max-w-[130px]">
+                          {product.subCategory || product.category}
+                        </span>
+
+                        {product.modelCode && (
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#d4a373] bg-[#0d1b2a] px-1.5 py-0.5 rounded shrink-0">
+                            {product.modelCode}
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="relative w-full aspect-square rounded-xl bg-[#fbf9f5] border border-[#f0e6da] overflow-hidden flex items-center justify-center p-2.5 mb-2.5 group-hover:bg-[#f5efe6] transition-colors">
+                        <div className="relative w-full h-full">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      </div>
+
+                      <h5 className="text-xs sm:text-sm font-serif font-bold text-[#0d1b2a] line-clamp-2 group-hover:text-[#b58351] transition-colors mb-1">
+                        {product.name}
+                      </h5>
+
+                      <p className="text-[10px] sm:text-[11px] text-[#7f5539] font-medium truncate">
+                        {product.collection}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-12 text-center bg-white rounded-3xl border border-[#e2d5c5]">
+                <p className="text-sm font-bold text-[#0d1b2a]">No models found matching &ldquo;{searchQuery}&rdquo;.</p>
+              </div>
+            )}
+          </div>
+        ) : activeCategoryFilter === 'all' ? (
+          /* B. ALL CATEGORIES: NETFLIX ROWS FOR EACH MASTER CATEGORY */
+          <div className="space-y-12 sm:space-y-16">
+            {categoryGroups.map((group) => (
+              <NetflixRow
+                key={`netflix-group-${group.id}`}
+                title={group.title}
+                count={group.products.length}
+                products={group.products}
+                onQuickView={onQuickView}
+                onAddToCart={onAddToCart}
+                onViewAll={() => {
+                  setActiveCategoryFilter(group.id);
+                  const el = document.getElementById('full-catalog-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          /* C. SINGLE CATEGORY ACTIVE: NETFLIX ROWS FOR EACH SUB-SERIES FOLDER */
+          <div className="space-y-10 sm:space-y-14">
+            <div className="flex items-center justify-between pb-2 border-b border-[#e2d5c5]">
+              <h4 className="text-xl sm:text-2xl font-serif font-bold text-[#0d1b2a]">
+                All {categoriesTabs.find(t => t.id === activeCategoryFilter)?.label} Series ({seriesGroupsForCategory.length} Series Folders)
+              </h4>
+              <button
+                onClick={() => setActiveCategoryFilter('all')}
+                className="text-xs font-bold text-[#b58351] hover:underline cursor-pointer"
+              >
+                Back to All Categories
+              </button>
+            </div>
+
+            {seriesGroupsForCategory.map((series) => (
+              <NetflixRow
+                key={`series-${series.title}`}
+                title={series.title}
+                count={series.products.length}
+                products={series.products}
+                onQuickView={onQuickView}
+                onAddToCart={onAddToCart}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
 

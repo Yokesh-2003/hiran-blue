@@ -83,9 +83,6 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                       {product.collection} • {product.finish}
                     </p>
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-xs font-black text-[#d4af37]">
-                        {product.price}
-                      </span>
                       <span className="text-[11px] text-neutral-300 font-semibold">
                         Qty: {quantity}
                       </span>
