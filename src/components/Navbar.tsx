@@ -367,18 +367,22 @@ export const Navbar: React.FC = () => {
 
           <button
             type="button"
+            suppressHydrationWarning
             onClick={() => setCartOpen(true)}
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap cursor-pointer"
           >
             <div className="relative flex items-center">
               <ShoppingCart className="w-3 h-3 text-[#d4a373]" />
               {totalItems > 0 && (
-                <span className="absolute -top-1.5 -right-2 bg-[#d4a373] text-[#0d1b2a] text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                <span
+                  suppressHydrationWarning
+                  className="absolute -top-1.5 -right-2 bg-[#d4a373] text-[#0d1b2a] text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center"
+                >
                   {totalItems}
                 </span>
               )}
             </div>
-            <span>Cart {totalItems > 0 ? `(${totalItems})` : ''}</span>
+            <span suppressHydrationWarning>Cart {totalItems > 0 ? `(${totalItems})` : ''}</span>
           </button>
         </div>
 
@@ -387,6 +391,7 @@ export const Navbar: React.FC = () => {
           {/* A. Language Dropdown */}
           <div className="relative" ref={langDropdownRef}>
             <button
+              suppressHydrationWarning
               onClick={() => {
                 setLangDropdownOpen(!langDropdownOpen);
                 setCountryDropdownOpen(false);
@@ -395,7 +400,7 @@ export const Navbar: React.FC = () => {
               aria-expanded={langDropdownOpen}
             >
               <Globe className="w-3.5 h-3.5 text-[#d4a373]" />
-              <span className="font-bold text-white truncate max-w-[120px] sm:max-w-none">
+              <span suppressHydrationWarning className="font-bold text-white truncate max-w-[120px] sm:max-w-none">
                 {currentLanguageName}
               </span>
               <ChevronDown
@@ -471,6 +476,7 @@ export const Navbar: React.FC = () => {
           {/* B. Country Dropdown with Visual Flag Icons */}
           <div className="relative" ref={countryDropdownRef}>
             <button
+              suppressHydrationWarning
               onClick={() => {
                 setCountryDropdownOpen(!countryDropdownOpen);
                 setLangDropdownOpen(false);
@@ -480,7 +486,7 @@ export const Navbar: React.FC = () => {
             >
               {/* Visual Flag Image */}
               <CountryFlag code={currentCountry.code} name={currentCountry.name} />
-              <span className="font-bold text-white">{currentCountry.name}</span>
+              <span suppressHydrationWarning className="font-bold text-white">{currentCountry.name}</span>
               <ChevronDown
                 className={`w-3 h-3 text-[#dfcfbe] transition-transform ${
                   countryDropdownOpen ? 'rotate-180 text-[#d4a373]' : ''

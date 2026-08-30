@@ -420,16 +420,6 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
             </p>
           </div>
 
-          {/* Bottom Action Button */}
-          <div className="relative z-10 pt-4 flex flex-col items-center justify-end">
-            <a
-              href="#full-catalog-section"
-              className="w-full py-3.5 rounded-2xl bg-white text-[#004085] hover:bg-[#ede0d4] font-bold text-xs sm:text-sm text-center uppercase tracking-wider transition-all shadow-xl hover:shadow-white/20 active:scale-95"
-            >
-              Explore Full Collection
-            </a>
-          </div>
-
         </div>
 
         {/* B. RIGHT COLUMN: TOP COLORFUL CATEGORY SLIDER + 6 CATEGORY TILES DIRECTLY BELOW */}
@@ -492,6 +482,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
               {categoriesTabs.map((tab) => (
                 <button
                   key={`top-${tab.id}`}
+                  suppressHydrationWarning
                   onClick={() => {
                     if (tab.id === 'all') {
                       setActiveCategoryFilter('all');
