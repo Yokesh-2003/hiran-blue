@@ -49,18 +49,16 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
             
             {/* 1. View Product Button */}
             <a
-              href="#products"
-              onClick={onViewProductClick}
+              href="/products"
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-white hover:bg-[#ede0d4] text-[#0d1b2a] hover:text-[#c8102e] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
             >
               <span>View Products</span>
               <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 text-[#0d1b2a] group-hover:text-[#c8102e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
-            {/* 2. Contact Button */}
+            {/* 2. Contact Button (Direct Call) */}
             <a
-              href="tel:641-754-0072"
-              onClick={onContactClick}
+              href="tel:+919585117901"
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-[#0d1b2a]/80 hover:bg-[#0d1b2a] text-white hover:text-[#d4a373] border border-[#d4a373]/60 hover:border-[#d4a373] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] group shrink-0"
             >
               <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-[#d4a373]" />

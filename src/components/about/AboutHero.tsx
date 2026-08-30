@@ -177,7 +177,7 @@ export const AboutHero: React.FC<AboutHeroProps> = ({ onExploreMotto, onOpenInqu
                 </button>
                 
                 <a
-                  href="/#products"
+                  href="/products"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 text-white font-medium text-xs sm:text-sm transition-all"
                 >
                   <span>View Product Catalog</span>

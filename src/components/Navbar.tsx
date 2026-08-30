@@ -1,9 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { productsData } from '@/data/mockData';
+import { allCatalogProducts } from '@/data/allCatalogProducts';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCart } from '@/context/CartContext';
+import { CartDrawer } from '@/components/CartDrawer';
 import { CountryFlag } from '@/components/CountryFlag';
 import {
   Search,
@@ -18,6 +21,10 @@ import {
   HelpCircle,
   Building2,
   Headphones,
+  ShoppingCart,
+  Download,
+  Layers,
+  Sparkles,
 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -32,6 +39,9 @@ export const Navbar: React.FC = () => {
     currentLanguageName,
   } = useLanguage();
 
+  const { totalItems, setCartOpen } = useCart();
+
+  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -52,6 +62,12 @@ export const Navbar: React.FC = () => {
     }
     if (pathname === '/products') {
       return key === 'products';
+    }
+    if (pathname === '/catalogue') {
+      return key === 'catalogue';
+    }
+    if (pathname === '/contact') {
+      return key === 'contact';
     }
     if (pathname === '/' || !pathname) {
       if (activeNav) {
@@ -74,22 +90,22 @@ export const Navbar: React.FC = () => {
         setIsScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Close dropdowns on outside click
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (
         langDropdownRef.current &&
-        !langDropdownRef.current.contains(e.target as Node)
+        !langDropdownRef.current.contains(event.target as Node)
       ) {
         setLangDropdownOpen(false);
       }
       if (
         countryDropdownRef.current &&
-        !countryDropdownRef.current.contains(e.target as Node)
+        !countryDropdownRef.current.contains(event.target as Node)
       ) {
         setCountryDropdownOpen(false);
       }
@@ -98,7 +114,7 @@ export const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Auto focus input when search is opened
+  // Focus input when search bar opens
   useEffect(() => {
     if (searchOpen) {
       setTimeout(() => {
@@ -111,10 +127,8 @@ export const Navbar: React.FC = () => {
     { key: 'home', name: t('home'), href: '/' },
     { key: 'about', name: t('about'), href: '/about' },
     { key: 'products', name: t('products'), href: '/products' },
-    { key: 'projects', name: t('projects'), href: '/#projects' },
-    { key: 'dealers', name: t('dealers'), href: '/#dealers' },
-    { key: 'catalogue', name: t('catalogue'), href: '/#catalogue' },
-    { key: 'contact', name: t('contact'), href: '/#contact' },
+    { key: 'catalogue', name: t('catalogue'), href: '/catalogue' },
+    { key: 'contact', name: t('contact'), href: '/contact' },
   ];
 
   const tickerItems = [
@@ -127,14 +141,187 @@ export const Navbar: React.FC = () => {
     t('ticker7'),
   ];
 
-  const filteredProducts = searchQuery.trim()
-    ? productsData.filter(
-        (p) =>
-          p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.collection.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.category.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : [];
+  const query = searchQuery.trim().toLowerCase();
+
+  // 1. Quick Navigation Links Matching (Enquiries, Catalogues, Support, Categories)
+  const quickLinksMatches = useMemo(() => {
+    if (!query) return [];
+    const results: Array<{
+      title: string;
+      subtitle: string;
+      href: string;
+      badge: string;
+      iconType: 'download' | 'enquiry' | 'support' | 'category' | 'about';
+    }> = [];
+
+    // Catalogue & ZIP downloads
+    if (
+      query.includes('cat') ||
+      query.includes('zip') ||
+      query.includes('down') ||
+      query.includes('pdf') ||
+      query.includes('photo') ||
+      query.includes('media') ||
+      query.includes('image')
+    ) {
+      results.push({
+        title: 'Download Product ZIP & Catalogue',
+        subtitle: 'Official photos, high-res library & PDF catalog',
+        href: '/catalogue',
+        badge: 'Downloads',
+        iconType: 'download',
+      });
+    }
+
+    // Business / Project Enquiry
+    if (
+      query.includes('enquir') ||
+      query.includes('inquir') ||
+      query.includes('quote') ||
+      query.includes('pric') ||
+      query.includes('b2b') ||
+      query.includes('project') ||
+      query.includes('order') ||
+      query.includes('buy')
+    ) {
+      results.push({
+        title: 'Submit Business & Project Enquiry',
+        subtitle: 'Request architectural specifications & official quotations',
+        href: '/contact?tab=enquiry',
+        badge: 'Enquiry',
+        iconType: 'enquiry',
+      });
+    }
+
+    // Customer Support
+    if (
+      query.includes('supp') ||
+      query.includes('cust') ||
+      query.includes('help') ||
+      query.includes('care') ||
+      query.includes('service') ||
+      query.includes('warrant') ||
+      query.includes('issu') ||
+      query.includes('tech') ||
+      query.includes('contact')
+    ) {
+      results.push({
+        title: 'Customer Support & Concierge',
+        subtitle: 'Installation guidance, service & warranty support',
+        href: '/contact?tab=support',
+        badge: 'Support',
+        iconType: 'support',
+      });
+    }
+
+    // Category matches
+    if (query.includes('faucet') || query.includes('tap') || query.includes('mixer')) {
+      results.push({
+        title: 'Faucets Collection',
+        subtitle: 'Basin mixers, tall body, wall mixers & diverters',
+        href: '/products/faucets',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+    if (query.includes('bath') || query.includes('seth')) {
+      results.push({
+        title: 'Bath Seth Collection',
+        subtitle: 'Luxury bath sets, concealed components & spouts',
+        href: '/products/bath-seth',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+    if (query.includes('kitchen') || query.includes('sink')) {
+      results.push({
+        title: 'Kitchen Collection',
+        subtitle: 'Sink mixers & 360° flexible kitchen faucets',
+        href: '/products/kitchen',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+    if (query.includes('valve') || query.includes('angle') || query.includes('ball')) {
+      results.push({
+        title: 'Valves Collection',
+        subtitle: 'Ball valves, angle valves & heavy-duty flow controls',
+        href: '/products/valves',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+    if (query.includes('allied') || query.includes('trap') || query.includes('drain') || query.includes('towel')) {
+      results.push({
+        title: 'Allieds & Accessories',
+        subtitle: 'Floor gratings, bottle traps & architectural accessories',
+        href: '/products/allieds',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+    if (query.includes('shower') || query.includes('rain') || query.includes('overhead')) {
+      results.push({
+        title: 'Showers Collection',
+        subtitle: 'Rain showers, multi-flow systems & shower arms',
+        href: '/products/showers',
+        badge: 'Category',
+        iconType: 'category',
+      });
+    }
+
+    // About Us
+    if (query.includes('about') || query.includes('company') || query.includes('story') || query.includes('brand') || query.includes('motto')) {
+      results.push({
+        title: 'About Hiran Bath',
+        subtitle: 'Heritage, precision engineering & company values',
+        href: '/about',
+        badge: 'About Us',
+        iconType: 'about',
+      });
+    }
+
+    return results;
+  }, [query]);
+
+  // 2. Full Products Search across all 437 items
+  const matchingCatalogProducts = useMemo(() => {
+    if (!query) return [];
+    return allCatalogProducts
+      .filter((p) => {
+        const nameMatch = p.name?.toLowerCase().includes(query);
+        const codeMatch = p.modelCode?.toLowerCase().includes(query);
+        const seriesMatch = p.subCategory?.toLowerCase().includes(query);
+        const catMatch = p.category?.toLowerCase().includes(query);
+        const collectionMatch = p.collection?.toLowerCase().includes(query);
+        return nameMatch || codeMatch || seriesMatch || catMatch || collectionMatch;
+      })
+      .slice(0, 10);
+  }, [query]);
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!query) return;
+
+    if (quickLinksMatches.length > 0 && matchingCatalogProducts.length === 0) {
+      router.push(quickLinksMatches[0].href);
+      setSearchOpen(false);
+      setSearchQuery('');
+      return;
+    }
+
+    if (matchingCatalogProducts.length > 0) {
+      const cat = matchingCatalogProducts[0].category;
+      router.push(`/products/${cat}`);
+      setSearchOpen(false);
+      setSearchQuery('');
+      return;
+    }
+
+    router.push('/products');
+    setSearchOpen(false);
+    setSearchQuery('');
+  };
 
   // Filter countries by search query
   const filteredCountries = allCountries.filter(
@@ -158,28 +345,10 @@ export const Navbar: React.FC = () => {
         translate="no"
       >
         
-        {/* Row 2 on Mobile / Left on Desktop: Customer & Partner Links */}
+        {/* Row 2 on Mobile / Left on Desktop: Submit Enquiry, Customer Support & Cart */}
         <div className="order-2 sm:order-1 flex flex-wrap items-center justify-start gap-x-2.5 sm:gap-x-3.5 gap-y-1 text-[10px] sm:text-[11px] font-medium text-[#dfcfbe] py-1 sm:py-0.5 border-t sm:border-t-0 border-[#1b263b]">
           <a
-            href="/#products"
-            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
-          >
-            <Package className="w-3 h-3 text-[#d4a373]" />
-            <span>Customer Product</span>
-          </a>
-          <span className="text-[#5c677d]">|</span>
-
-          <a
-            href="/#dealers"
-            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
-          >
-            <Store className="w-3 h-3 text-[#d4a373]" />
-            <span>Become a Dealer</span>
-          </a>
-          <span className="text-[#5c677d]">|</span>
-
-          <a
-            href="/#contact"
+            href="/contact?tab=enquiry"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <HelpCircle className="w-3 h-3 text-[#d4a373]" />
@@ -188,21 +357,29 @@ export const Navbar: React.FC = () => {
           <span className="text-[#5c677d]">|</span>
 
           <a
-            href="/#contact"
+            href="/contact?tab=support"
             className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
           >
             <Headphones className="w-3 h-3 text-[#d4a373]" />
-            <span>Support</span>
+            <span>Customer Support</span>
           </a>
           <span className="text-[#5c677d]">|</span>
 
-          <a
-            href="/#contact"
-            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap"
+          <button
+            type="button"
+            onClick={() => setCartOpen(true)}
+            className="flex items-center gap-1.5 hover:text-[#d4a373] transition-colors whitespace-nowrap cursor-pointer"
           >
-            <Building2 className="w-3 h-3 text-[#d4a373]" />
-            <span>Contractor Project Enquiry</span>
-          </a>
+            <div className="relative flex items-center">
+              <ShoppingCart className="w-3 h-3 text-[#d4a373]" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1.5 -right-2 bg-[#d4a373] text-[#0d1b2a] text-[8px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </div>
+            <span>Cart {totalItems > 0 ? `(${totalItems})` : ''}</span>
+          </button>
         </div>
 
         {/* Row 1 on Mobile / Right on Desktop: Language & Country Selectors */}
@@ -483,68 +660,163 @@ export const Navbar: React.FC = () => {
           {/* 4. SEARCH DROPDOWN BAR */}
           {searchOpen && (
             <div className="py-3 sm:py-4 border-t border-neutral-200 animate-in fade-in slide-in-from-top-2 duration-200">
-              <div className="relative flex items-center w-full">
+              <form onSubmit={handleSearchSubmit} className="relative flex items-center w-full">
                 <input
                   ref={searchInputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t('searchPlaceholder')}
+                  placeholder="Search products, models (e.g. ANT003), catalogue, enquiry, support..."
                   className="w-full bg-[#f5efe6] border border-[#d8c3af] rounded-lg sm:rounded-xl px-4 py-3 text-xs sm:text-sm text-[#0d1b2a] placeholder:text-[#a88b74] focus:outline-none focus:border-[#0d1b2a] focus:ring-1 focus:ring-[#0d1b2a] shadow-sm pr-12"
                 />
                 
                 {/* Arrow Submit Button */}
                 <button
-                  onClick={() => {
-                    if (searchQuery.trim()) {
-                      const el = document.getElementById('products');
-                      el?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 text-[#0d1b2a] hover:text-[#c8102e] hover:scale-110 transition-transform focus:outline-none"
+                  type="submit"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-2 text-[#0d1b2a] hover:text-[#c8102e] hover:scale-110 transition-transform focus:outline-none cursor-pointer"
                   aria-label="Submit search"
                 >
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
                 </button>
-              </div>
+              </form>
 
               {/* Instant Search Results Dropdown */}
               {searchQuery.trim().length > 0 && (
-                <div className="mt-2 w-full bg-white rounded-xl shadow-2xl border border-neutral-200 p-2 z-50 animate-in fade-in">
-                  <div className="text-[10px] font-bold text-[#a88b74] uppercase tracking-wider px-3 py-1.5">
-                    {t('searchResults')} ({filteredProducts.length})
-                  </div>
-                  {filteredProducts.length > 0 ? (
-                    <div className="max-h-60 overflow-y-auto space-y-1">
-                      {filteredProducts.map((prod) => (
+                <div className="mt-2 w-full bg-white rounded-2xl shadow-2xl border border-[#e2d5c5] p-3 sm:p-4 z-50 animate-in fade-in max-h-[70vh] overflow-y-auto space-y-4">
+                  
+                  {/* A. Quick Links (Enquiries, Catalogues, Support, Categories) */}
+                  {quickLinksMatches.length > 0 && (
+                    <div className="space-y-1.5">
+                      <div className="text-[10px] font-bold text-[#b58351] uppercase tracking-wider px-2">
+                        Quick Shortcuts & Inquiries ({quickLinksMatches.length})
+                      </div>
+                      <div className="space-y-1">
+                        {quickLinksMatches.map((item, idx) => (
+                          <a
+                            key={`quick-${idx}`}
+                            href={item.href}
+                            onClick={() => {
+                              setSearchQuery('');
+                              setSearchOpen(false);
+                            }}
+                            className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-[#fbf9f5] hover:bg-[#f5efe6] border border-[#f0e6da] transition-all group"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-lg bg-[#0d1b2a] text-[#d4a373] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                                {item.iconType === 'download' && <Download className="w-4 h-4" />}
+                                {item.iconType === 'enquiry' && <Building2 className="w-4 h-4" />}
+                                {item.iconType === 'support' && <Headphones className="w-4 h-4" />}
+                                {item.iconType === 'category' && <Layers className="w-4 h-4" />}
+                                {item.iconType === 'about' && <Sparkles className="w-4 h-4" />}
+                              </div>
+                              <div>
+                                <p className="text-xs sm:text-sm font-bold text-[#0d1b2a] group-hover:text-[#b58351] transition-colors">
+                                  {item.title}
+                                </p>
+                                <p className="text-[10px] sm:text-[11px] text-[#7f5539]">
+                                  {item.subtitle}
+                                </p>
+                              </div>
+                            </div>
+                            <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white border border-[#e2d5c5] text-[#0d1b2a] shrink-0">
+                              {item.badge}
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* B. Matching Products & Model Codes */}
+                  {matchingCatalogProducts.length > 0 && (
+                    <div className="space-y-1.5 pt-1">
+                      <div className="text-[10px] font-bold text-[#b58351] uppercase tracking-wider px-2">
+                        Matching Products & Models ({matchingCatalogProducts.length})
+                      </div>
+                      <div className="space-y-1">
+                        {matchingCatalogProducts.map((prod) => (
+                          <a
+                            key={prod.id}
+                            href={`/products/${prod.category}`}
+                            onClick={() => {
+                              setSearchQuery('');
+                              setSearchOpen(false);
+                            }}
+                            className="flex items-center justify-between p-2.5 hover:bg-[#fbf9f5] rounded-xl border border-transparent hover:border-[#f0e6da] transition-colors group"
+                          >
+                            <div className="flex items-center gap-3 min-w-0">
+                              {/* Product Thumbnail */}
+                              <div className="w-10 h-10 rounded-lg bg-[#ede0d4] border border-[#e2d5c5] overflow-hidden shrink-0 flex items-center justify-center">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={prod.image}
+                                  alt={prod.name}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+
+                              <div className="min-w-0">
+                                <p className="text-xs font-bold text-[#0d1b2a] group-hover:text-[#b58351] truncate transition-colors">
+                                  {prod.name}
+                                </p>
+                                <p className="text-[10px] text-[#7f5539] truncate">
+                                  Series: {prod.subCategory || prod.collection} • {prod.category}
+                                </p>
+                              </div>
+                            </div>
+
+                            {prod.modelCode && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#f5efe6] text-[#0d1b2a] border border-[#e2d5c5] shrink-0 ml-2">
+                                {prod.modelCode}
+                              </span>
+                            )}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* C. Fallback when nothing found */}
+                  {quickLinksMatches.length === 0 && matchingCatalogProducts.length === 0 && (
+                    <div className="p-6 text-center space-y-3">
+                      <p className="text-xs text-[#7f5539]">
+                        No direct results found for &ldquo;<span className="font-bold text-[#0d1b2a]">{searchQuery}</span>&rdquo;.
+                      </p>
+                      <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
                         <a
-                          key={prod.id}
-                          href="#products"
+                          href="/products"
                           onClick={() => {
                             setSearchQuery('');
                             setSearchOpen(false);
                           }}
-                          className="flex items-center justify-between p-2.5 hover:bg-[#f5efe6] rounded-lg transition-colors group"
+                          className="px-3 py-1.5 rounded-lg bg-[#0d1b2a] text-[#d4a373] text-[11px] font-bold uppercase tracking-wider hover:bg-[#1b263b] transition-colors"
                         >
-                          <div>
-                            <p className="text-xs font-bold text-[#0d1b2a] group-hover:text-[#b58351]">
-                              {prod.name}
-                            </p>
-                            <p className="text-[10px] text-[#a88b74]">
-                              {prod.collection} • {prod.finish}
-                            </p>
-                          </div>
-                          <span className="text-xs font-semibold text-[#0d1b2a]">
-                            {prod.price}
-                          </span>
+                          Browse All Products
                         </a>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="p-3 text-xs text-[#a88b74] text-center">
-                      {t('noResults')} &ldquo;{searchQuery}&rdquo;
+                        <a
+                          href="/catalogue"
+                          onClick={() => {
+                            setSearchQuery('');
+                            setSearchOpen(false);
+                          }}
+                          className="px-3 py-1.5 rounded-lg bg-[#f5efe6] text-[#0d1b2a] text-[11px] font-bold uppercase tracking-wider hover:bg-[#ede0d4] transition-colors border border-[#e2d5c5]"
+                        >
+                          Download Catalogue
+                        </a>
+                        <a
+                          href="/contact"
+                          onClick={() => {
+                            setSearchQuery('');
+                            setSearchOpen(false);
+                          }}
+                          className="px-3 py-1.5 rounded-lg bg-[#f5efe6] text-[#0d1b2a] text-[11px] font-bold uppercase tracking-wider hover:bg-[#ede0d4] transition-colors border border-[#e2d5c5]"
+                        >
+                          Contact Desk
+                        </a>
+                      </div>
                     </div>
                   )}
+
                 </div>
               )}
             </div>
@@ -575,6 +847,7 @@ export const Navbar: React.FC = () => {
           </div>
         )}
       </header>
+      <CartDrawer />
     </>
   );
 };

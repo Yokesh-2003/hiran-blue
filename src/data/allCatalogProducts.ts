@@ -12,36 +12,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "3 Way Ball Valve"
   },
   {
-    "id": "hb-valves-bv3002",
-    "name": "3 Way Ball Valve Model: BV3002",
-    "modelCode": "BV3002",
-    "collection": "3 Way Ball Valve",
-    "category": "valves",
-    "subCategory": "3 Way Ball Valve",
-    "image": "/images/products/3 Way Ball Valve/BV3002.jpg",
-    "tag": "3 Way Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv3003",
-    "name": "3 Way Ball Valve Model: BV3003",
-    "modelCode": "BV3003",
-    "collection": "3 Way Ball Valve",
-    "category": "valves",
-    "subCategory": "3 Way Ball Valve",
-    "image": "/images/products/3 Way Ball Valve/BV3003.jpg",
-    "tag": "3 Way Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv3004",
-    "name": "3 Way Ball Valve Model: BV3004",
-    "modelCode": "BV3004",
-    "collection": "3 Way Ball Valve",
-    "category": "valves",
-    "subCategory": "3 Way Ball Valve",
-    "image": "/images/products/3 Way Ball Valve/BV3004.jpg",
-    "tag": "3 Way Ball Valve"
-  },
-  {
     "id": "hb-allieds-641",
     "name": "Allied Items Model: 641",
     "modelCode": "641",
@@ -49,16 +19,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Allied Items",
     "image": "/images/products/Allied Items/641.jpg",
-    "tag": "Allied Items"
-  },
-  {
-    "id": "hb-allieds-642",
-    "name": "Allied Items Model: 642",
-    "modelCode": "642",
-    "collection": "Allied Items",
-    "category": "allieds",
-    "subCategory": "Allied Items",
-    "image": "/images/products/Allied Items/642.jpg",
     "tag": "Allied Items"
   },
   {
@@ -209,86 +169,6 @@ export const allCatalogProducts: Product[] = [
     "category": "valves",
     "subCategory": "Ball Valve",
     "image": "/images/products/Ball Valve/BV1004704.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004705",
-    "name": "Ball Valve Model: BV1004705",
-    "modelCode": "BV1004705",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004705.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004706",
-    "name": "Ball Valve Model: BV1004706",
-    "modelCode": "BV1004706",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004706.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004707",
-    "name": "Ball Valve Model: BV1004707",
-    "modelCode": "BV1004707",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004707.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004708",
-    "name": "Ball Valve Model: BV1004708",
-    "modelCode": "BV1004708",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004708.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004709",
-    "name": "Ball Valve Model: BV1004709",
-    "modelCode": "BV1004709",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004709.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004710",
-    "name": "Ball Valve Model: BV1004710",
-    "modelCode": "BV1004710",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004710.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004711",
-    "name": "Ball Valve Model: BV1004711",
-    "modelCode": "BV1004711",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004711.jpg",
-    "tag": "Ball Valve"
-  },
-  {
-    "id": "hb-valves-bv1004712",
-    "name": "Ball Valve Model: BV1004712",
-    "modelCode": "BV1004712",
-    "collection": "Ball Valve",
-    "category": "valves",
-    "subCategory": "Ball Valve",
-    "image": "/images/products/Ball Valve/BV1004712.jpg",
     "tag": "Ball Valve"
   },
   {
@@ -792,16 +672,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Connection & Shower Tubes"
   },
   {
-    "id": "hb-showers-202",
-    "name": "Connection & Shower Tubes Model: 202",
-    "modelCode": "202",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/202.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
     "id": "hb-showers-205",
     "name": "Connection & Shower Tubes Model: 205",
     "modelCode": "205",
@@ -812,16 +682,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Connection & Shower Tubes"
   },
   {
-    "id": "hb-showers-206",
-    "name": "Connection & Shower Tubes Model: 206",
-    "modelCode": "206",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/206.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
     "id": "hb-showers-207",
     "name": "Connection & Shower Tubes Model: 207",
     "modelCode": "207",
@@ -829,16 +689,6 @@ export const allCatalogProducts: Product[] = [
     "category": "showers",
     "subCategory": "Connection & Shower Tubes",
     "image": "/images/products/Connection & Shower Tubes/207.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-208",
-    "name": "Connection & Shower Tubes Model: 208",
-    "modelCode": "208",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/208.jpg",
     "tag": "Connection & Shower Tubes"
   },
   {
@@ -872,16 +722,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Connection & Shower Tubes"
   },
   {
-    "id": "hb-showers-224",
-    "name": "Connection & Shower Tubes Model: 224",
-    "modelCode": "224",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/224.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
     "id": "hb-showers-225",
     "name": "Connection & Shower Tubes Model: 225",
     "modelCode": "225",
@@ -889,36 +729,6 @@ export const allCatalogProducts: Product[] = [
     "category": "showers",
     "subCategory": "Connection & Shower Tubes",
     "image": "/images/products/Connection & Shower Tubes/225.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-226",
-    "name": "Connection & Shower Tubes Model: 226",
-    "modelCode": "226",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/226.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-229",
-    "name": "Connection & Shower Tubes Model: 229",
-    "modelCode": "229",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/229.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-230",
-    "name": "Connection & Shower Tubes Model: 230",
-    "modelCode": "230",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/230.jpg",
     "tag": "Connection & Shower Tubes"
   },
   {
@@ -932,26 +742,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Connection & Shower Tubes"
   },
   {
-    "id": "hb-showers-232",
-    "name": "Connection & Shower Tubes Model: 232",
-    "modelCode": "232",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/232.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-233",
-    "name": "Connection & Shower Tubes Model: 233",
-    "modelCode": "233",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/233.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
     "id": "hb-showers-236",
     "name": "Connection & Shower Tubes Model: 236",
     "modelCode": "236",
@@ -962,16 +752,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Connection & Shower Tubes"
   },
   {
-    "id": "hb-showers-237",
-    "name": "Connection & Shower Tubes Model: 237",
-    "modelCode": "237",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/237.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
     "id": "hb-showers-241",
     "name": "Connection & Shower Tubes Model: 241",
     "modelCode": "241",
@@ -979,26 +759,6 @@ export const allCatalogProducts: Product[] = [
     "category": "showers",
     "subCategory": "Connection & Shower Tubes",
     "image": "/images/products/Connection & Shower Tubes/241.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-242",
-    "name": "Connection & Shower Tubes Model: 242",
-    "modelCode": "242",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/242.jpg",
-    "tag": "Connection & Shower Tubes"
-  },
-  {
-    "id": "hb-showers-243",
-    "name": "Connection & Shower Tubes Model: 243",
-    "modelCode": "243",
-    "collection": "Connection & Shower Tubes",
-    "category": "showers",
-    "subCategory": "Connection & Shower Tubes",
-    "image": "/images/products/Connection & Shower Tubes/243.jpg",
     "tag": "Connection & Shower Tubes"
   },
   {
@@ -2032,26 +1792,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Floor Drain Marble Insert"
   },
   {
-    "id": "hb-allieds-433cr",
-    "name": "Floor Drain Marble Insert Model: 433CR",
-    "modelCode": "433CR",
-    "collection": "Floor Drain Marble Insert",
-    "category": "allieds",
-    "subCategory": "Floor Drain Marble Insert",
-    "image": "/images/products/Floor Drain Marble Insert/433CR.jpg",
-    "tag": "Floor Drain Marble Insert"
-  },
-  {
-    "id": "hb-allieds-434cr",
-    "name": "Floor Drain Marble Insert Model: 434CR",
-    "modelCode": "434CR",
-    "collection": "Floor Drain Marble Insert",
-    "category": "allieds",
-    "subCategory": "Floor Drain Marble Insert",
-    "image": "/images/products/Floor Drain Marble Insert/434CR.jpg",
-    "tag": "Floor Drain Marble Insert"
-  },
-  {
     "id": "hb-valves-749",
     "name": "Flush Valve Model: 749",
     "modelCode": "749",
@@ -2242,46 +1982,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Forged Brass Horizontal Check Valve"
   },
   {
-    "id": "hb-valves-cv003",
-    "name": "Forged Brass Horizontal Check Valve Model: CV003",
-    "modelCode": "CV003",
-    "collection": "Forged Brass Horizontal Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Horizontal Check Valve",
-    "image": "/images/products/Forged Brass Horizontal Check Valve/CV003.jpg",
-    "tag": "Forged Brass Horizontal Check Valve"
-  },
-  {
-    "id": "hb-valves-cv004",
-    "name": "Forged Brass Horizontal Check Valve Model: CV004",
-    "modelCode": "CV004",
-    "collection": "Forged Brass Horizontal Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Horizontal Check Valve",
-    "image": "/images/products/Forged Brass Horizontal Check Valve/CV004.jpg",
-    "tag": "Forged Brass Horizontal Check Valve"
-  },
-  {
-    "id": "hb-valves-cv005",
-    "name": "Forged Brass Horizontal Check Valve Model: CV005",
-    "modelCode": "CV005",
-    "collection": "Forged Brass Horizontal Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Horizontal Check Valve",
-    "image": "/images/products/Forged Brass Horizontal Check Valve/CV005.jpg",
-    "tag": "Forged Brass Horizontal Check Valve"
-  },
-  {
-    "id": "hb-valves-cv006",
-    "name": "Forged Brass Horizontal Check Valve Model: CV006",
-    "modelCode": "CV006",
-    "collection": "Forged Brass Horizontal Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Horizontal Check Valve",
-    "image": "/images/products/Forged Brass Horizontal Check Valve/CV006.jpg",
-    "tag": "Forged Brass Horizontal Check Valve"
-  },
-  {
     "id": "hb-valves-vcv001",
     "name": "Forged Brass Vertical Check Valve Model: VCV001",
     "modelCode": "VCV001",
@@ -2289,56 +1989,6 @@ export const allCatalogProducts: Product[] = [
     "category": "valves",
     "subCategory": "Forged Brass Vertical Check Valve",
     "image": "/images/products/Forged Brass Vertical Check Valve/VCV001.jpg",
-    "tag": "Forged Brass Vertical Check Valve"
-  },
-  {
-    "id": "hb-valves-vcv002",
-    "name": "Forged Brass Vertical Check Valve Model: VCV002",
-    "modelCode": "VCV002",
-    "collection": "Forged Brass Vertical Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Vertical Check Valve",
-    "image": "/images/products/Forged Brass Vertical Check Valve/VCV002.jpg",
-    "tag": "Forged Brass Vertical Check Valve"
-  },
-  {
-    "id": "hb-valves-vcv003",
-    "name": "Forged Brass Vertical Check Valve Model: VCV003",
-    "modelCode": "VCV003",
-    "collection": "Forged Brass Vertical Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Vertical Check Valve",
-    "image": "/images/products/Forged Brass Vertical Check Valve/VCV003.jpg",
-    "tag": "Forged Brass Vertical Check Valve"
-  },
-  {
-    "id": "hb-valves-vcv004",
-    "name": "Forged Brass Vertical Check Valve Model: VCV004",
-    "modelCode": "VCV004",
-    "collection": "Forged Brass Vertical Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Vertical Check Valve",
-    "image": "/images/products/Forged Brass Vertical Check Valve/VCV004.jpg",
-    "tag": "Forged Brass Vertical Check Valve"
-  },
-  {
-    "id": "hb-valves-vcv005",
-    "name": "Forged Brass Vertical Check Valve Model: VCV005",
-    "modelCode": "VCV005",
-    "collection": "Forged Brass Vertical Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Vertical Check Valve",
-    "image": "/images/products/Forged Brass Vertical Check Valve/VCV005.jpg",
-    "tag": "Forged Brass Vertical Check Valve"
-  },
-  {
-    "id": "hb-valves-vcv006",
-    "name": "Forged Brass Vertical Check Valve Model: VCV006",
-    "modelCode": "VCV006",
-    "collection": "Forged Brass Vertical Check Valve",
-    "category": "valves",
-    "subCategory": "Forged Brass Vertical Check Valve",
-    "image": "/images/products/Forged Brass Vertical Check Valve/VCV006.jpg",
     "tag": "Forged Brass Vertical Check Valve"
   },
   {
@@ -2722,16 +2372,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Gratings & Cockroach Trap"
   },
   {
-    "id": "hb-allieds-402",
-    "name": "Gratings & Cockroach Trap Model: 402",
-    "modelCode": "402",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/402.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
     "id": "hb-allieds-403",
     "name": "Gratings & Cockroach Trap Model: 403",
     "modelCode": "403",
@@ -2782,16 +2422,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Gratings & Cockroach Trap"
   },
   {
-    "id": "hb-allieds-412",
-    "name": "Gratings & Cockroach Trap Model: 412",
-    "modelCode": "412",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/412.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
     "id": "hb-allieds-413",
     "name": "Gratings & Cockroach Trap Model: 413",
     "modelCode": "413",
@@ -2799,16 +2429,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Gratings & Cockroach Trap",
     "image": "/images/products/Gratings & Cockroach Trap/413.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
-    "id": "hb-allieds-414",
-    "name": "Gratings & Cockroach Trap Model: 414",
-    "modelCode": "414",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/414.jpg",
     "tag": "Gratings & Cockroach Trap"
   },
   {
@@ -2822,16 +2442,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Gratings & Cockroach Trap"
   },
   {
-    "id": "hb-allieds-416",
-    "name": "Gratings & Cockroach Trap Model: 416",
-    "modelCode": "416",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/416.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
     "id": "hb-allieds-417",
     "name": "Gratings & Cockroach Trap Model: 417",
     "modelCode": "417",
@@ -2839,16 +2449,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Gratings & Cockroach Trap",
     "image": "/images/products/Gratings & Cockroach Trap/417.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
-    "id": "hb-allieds-418",
-    "name": "Gratings & Cockroach Trap Model: 418",
-    "modelCode": "418",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/418.jpg",
     "tag": "Gratings & Cockroach Trap"
   },
   {
@@ -2869,36 +2469,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Gratings & Cockroach Trap",
     "image": "/images/products/Gratings & Cockroach Trap/421.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
-    "id": "hb-allieds-422",
-    "name": "Gratings & Cockroach Trap Model: 422",
-    "modelCode": "422",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/422.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
-    "id": "hb-allieds-423",
-    "name": "Gratings & Cockroach Trap Model: 423",
-    "modelCode": "423",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/423.jpg",
-    "tag": "Gratings & Cockroach Trap"
-  },
-  {
-    "id": "hb-allieds-424",
-    "name": "Gratings & Cockroach Trap Model: 424",
-    "modelCode": "424",
-    "collection": "Gratings & Cockroach Trap",
-    "category": "allieds",
-    "subCategory": "Gratings & Cockroach Trap",
-    "image": "/images/products/Gratings & Cockroach Trap/424.jpg",
     "tag": "Gratings & Cockroach Trap"
   },
   {
@@ -4122,56 +3692,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "PVC Ball Valve"
   },
   {
-    "id": "hb-valves-pvcbv002",
-    "name": "PVC Ball Valve Model: PVCBV002",
-    "modelCode": "PVCBV002",
-    "collection": "PVC Ball Valve",
-    "category": "valves",
-    "subCategory": "PVC Ball Valve",
-    "image": "/images/products/PVC Ball Valve/PVCBV002.jpg",
-    "tag": "PVC Ball Valve"
-  },
-  {
-    "id": "hb-valves-pvcbv003",
-    "name": "PVC Ball Valve Model: PVCBV003",
-    "modelCode": "PVCBV003",
-    "collection": "PVC Ball Valve",
-    "category": "valves",
-    "subCategory": "PVC Ball Valve",
-    "image": "/images/products/PVC Ball Valve/PVCBV003.jpg",
-    "tag": "PVC Ball Valve"
-  },
-  {
-    "id": "hb-valves-pvcbv004",
-    "name": "PVC Ball Valve Model: PVCBV004",
-    "modelCode": "PVCBV004",
-    "collection": "PVC Ball Valve",
-    "category": "valves",
-    "subCategory": "PVC Ball Valve",
-    "image": "/images/products/PVC Ball Valve/PVCBV004.jpg",
-    "tag": "PVC Ball Valve"
-  },
-  {
-    "id": "hb-valves-pvcbv005",
-    "name": "PVC Ball Valve Model: PVCBV005",
-    "modelCode": "PVCBV005",
-    "collection": "PVC Ball Valve",
-    "category": "valves",
-    "subCategory": "PVC Ball Valve",
-    "image": "/images/products/PVC Ball Valve/PVCBV005.jpg",
-    "tag": "PVC Ball Valve"
-  },
-  {
-    "id": "hb-valves-pvcbv006",
-    "name": "PVC Ball Valve Model: PVCBV006",
-    "modelCode": "PVCBV006",
-    "collection": "PVC Ball Valve",
-    "category": "valves",
-    "subCategory": "PVC Ball Valve",
-    "image": "/images/products/PVC Ball Valve/PVCBV006.jpg",
-    "tag": "PVC Ball Valve"
-  },
-  {
     "id": "hb-allieds-681",
     "name": "Rack Bolt Model: 681",
     "modelCode": "681",
@@ -4252,26 +3772,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Rain Showers"
   },
   {
-    "id": "hb-showers-537",
-    "name": "Rain Showers Model: 537",
-    "modelCode": "537",
-    "collection": "Rain Showers",
-    "category": "showers",
-    "subCategory": "Rain Showers",
-    "image": "/images/products/Rain Showers/537.jpg",
-    "tag": "Rain Showers"
-  },
-  {
-    "id": "hb-showers-538",
-    "name": "Rain Showers Model: 538",
-    "modelCode": "538",
-    "collection": "Rain Showers",
-    "category": "showers",
-    "subCategory": "Rain Showers",
-    "image": "/images/products/Rain Showers/538.jpg",
-    "tag": "Rain Showers"
-  },
-  {
     "id": "hb-showers-541",
     "name": "Rain Showers Model: 541",
     "modelCode": "541",
@@ -4279,36 +3779,6 @@ export const allCatalogProducts: Product[] = [
     "category": "showers",
     "subCategory": "Rain Showers",
     "image": "/images/products/Rain Showers/541.jpg",
-    "tag": "Rain Showers"
-  },
-  {
-    "id": "hb-showers-542",
-    "name": "Rain Showers Model: 542",
-    "modelCode": "542",
-    "collection": "Rain Showers",
-    "category": "showers",
-    "subCategory": "Rain Showers",
-    "image": "/images/products/Rain Showers/542.jpg",
-    "tag": "Rain Showers"
-  },
-  {
-    "id": "hb-showers-543",
-    "name": "Rain Showers Model: 543",
-    "modelCode": "543",
-    "collection": "Rain Showers",
-    "category": "showers",
-    "subCategory": "Rain Showers",
-    "image": "/images/products/Rain Showers/543.jpg",
-    "tag": "Rain Showers"
-  },
-  {
-    "id": "hb-showers-545",
-    "name": "Rain Showers Model: 545",
-    "modelCode": "545",
-    "collection": "Rain Showers",
-    "category": "showers",
-    "subCategory": "Rain Showers",
-    "image": "/images/products/Rain Showers/545.jpg",
     "tag": "Rain Showers"
   },
   {
@@ -4342,16 +3812,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Shelves & Corners"
   },
   {
-    "id": "hb-allieds-803",
-    "name": "Shelves & Corners Model: 803",
-    "modelCode": "803",
-    "collection": "Shelves & Corners",
-    "category": "allieds",
-    "subCategory": "Shelves & Corners",
-    "image": "/images/products/Shelves & Corners/803.jpg",
-    "tag": "Shelves & Corners"
-  },
-  {
     "id": "hb-allieds-807",
     "name": "Shelves & Corners Model: 807",
     "modelCode": "807",
@@ -4372,16 +3832,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Shelves & Corners"
   },
   {
-    "id": "hb-allieds-813",
-    "name": "Shelves & Corners Model: 813",
-    "modelCode": "813",
-    "collection": "Shelves & Corners",
-    "category": "allieds",
-    "subCategory": "Shelves & Corners",
-    "image": "/images/products/Shelves & Corners/813.jpg",
-    "tag": "Shelves & Corners"
-  },
-  {
     "id": "hb-allieds-817",
     "name": "Shelves & Corners Model: 817",
     "modelCode": "817",
@@ -4390,46 +3840,6 @@ export const allCatalogProducts: Product[] = [
     "subCategory": "Shelves & Corners",
     "image": "/images/products/Shelves & Corners/817.jpg",
     "tag": "Shelves & Corners"
-  },
-  {
-    "id": "hb-showers-871",
-    "name": "Evo Round Shower Arm Model: 871",
-    "modelCode": "871",
-    "collection": "Evo Round Shower Arm",
-    "category": "showers",
-    "subCategory": "Evo Round Shower Arm",
-    "image": "/images/products/Shower Arm/Evo Round Shower Arm/871.jpg",
-    "tag": "Evo Round Shower Arm"
-  },
-  {
-    "id": "hb-showers-872",
-    "name": "Evo Round Shower Arm Model: 872",
-    "modelCode": "872",
-    "collection": "Evo Round Shower Arm",
-    "category": "showers",
-    "subCategory": "Evo Round Shower Arm",
-    "image": "/images/products/Shower Arm/Evo Round Shower Arm/872.jpg",
-    "tag": "Evo Round Shower Arm"
-  },
-  {
-    "id": "hb-showers-873",
-    "name": "Evo Round Shower Arm Model: 873",
-    "modelCode": "873",
-    "collection": "Evo Round Shower Arm",
-    "category": "showers",
-    "subCategory": "Evo Round Shower Arm",
-    "image": "/images/products/Shower Arm/Evo Round Shower Arm/873.jpg",
-    "tag": "Evo Round Shower Arm"
-  },
-  {
-    "id": "hb-showers-874",
-    "name": "Evo Round Shower Arm Model: 874",
-    "modelCode": "874",
-    "collection": "Evo Round Shower Arm",
-    "category": "showers",
-    "subCategory": "Evo Round Shower Arm",
-    "image": "/images/products/Shower Arm/Evo Round Shower Arm/874.jpg",
-    "tag": "Evo Round Shower Arm"
   },
   {
     "id": "hb-showers-875",
@@ -4452,46 +3862,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Recto Shower Arm"
   },
   {
-    "id": "hb-showers-862",
-    "name": "Recto Shower Arm Model: 862",
-    "modelCode": "862",
-    "collection": "Recto Shower Arm",
-    "category": "showers",
-    "subCategory": "Recto Shower Arm",
-    "image": "/images/products/Shower Arm/Recto Shower Arm/862.jpg",
-    "tag": "Recto Shower Arm"
-  },
-  {
-    "id": "hb-showers-863",
-    "name": "Recto Shower Arm Model: 863",
-    "modelCode": "863",
-    "collection": "Recto Shower Arm",
-    "category": "showers",
-    "subCategory": "Recto Shower Arm",
-    "image": "/images/products/Shower Arm/Recto Shower Arm/863.jpg",
-    "tag": "Recto Shower Arm"
-  },
-  {
-    "id": "hb-showers-864",
-    "name": "Recto Shower Arm Model: 864",
-    "modelCode": "864",
-    "collection": "Recto Shower Arm",
-    "category": "showers",
-    "subCategory": "Recto Shower Arm",
-    "image": "/images/products/Shower Arm/Recto Shower Arm/864.jpg",
-    "tag": "Recto Shower Arm"
-  },
-  {
-    "id": "hb-showers-865",
-    "name": "Recto Shower Arm Model: 865",
-    "modelCode": "865",
-    "collection": "Recto Shower Arm",
-    "category": "showers",
-    "subCategory": "Recto Shower Arm",
-    "image": "/images/products/Shower Arm/Recto Shower Arm/865.jpg",
-    "tag": "Recto Shower Arm"
-  },
-  {
     "id": "hb-showers-877",
     "name": "Round Shower Arm Model: 877",
     "modelCode": "877",
@@ -4500,56 +3870,6 @@ export const allCatalogProducts: Product[] = [
     "subCategory": "Round Shower Arm",
     "image": "/images/products/Shower Arm/Round Shower Arm/877.jpg",
     "tag": "Round Shower Arm"
-  },
-  {
-    "id": "hb-showers-878",
-    "name": "Round Shower Arm Model: 878",
-    "modelCode": "878",
-    "collection": "Round Shower Arm",
-    "category": "showers",
-    "subCategory": "Round Shower Arm",
-    "image": "/images/products/Shower Arm/Round Shower Arm/878.jpg",
-    "tag": "Round Shower Arm"
-  },
-  {
-    "id": "hb-showers-851",
-    "name": "Square Shower Arm Model: 851",
-    "modelCode": "851",
-    "collection": "Square Shower Arm",
-    "category": "showers",
-    "subCategory": "Square Shower Arm",
-    "image": "/images/products/Shower Arm/Square Shower Arm/851.jpg",
-    "tag": "Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-852",
-    "name": "Square Shower Arm Model: 852",
-    "modelCode": "852",
-    "collection": "Square Shower Arm",
-    "category": "showers",
-    "subCategory": "Square Shower Arm",
-    "image": "/images/products/Shower Arm/Square Shower Arm/852.jpg",
-    "tag": "Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-853",
-    "name": "Square Shower Arm Model: 853",
-    "modelCode": "853",
-    "collection": "Square Shower Arm",
-    "category": "showers",
-    "subCategory": "Square Shower Arm",
-    "image": "/images/products/Shower Arm/Square Shower Arm/853.jpg",
-    "tag": "Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-854",
-    "name": "Square Shower Arm Model: 854",
-    "modelCode": "854",
-    "collection": "Square Shower Arm",
-    "category": "showers",
-    "subCategory": "Square Shower Arm",
-    "image": "/images/products/Shower Arm/Square Shower Arm/854.jpg",
-    "tag": "Square Shower Arm"
   },
   {
     "id": "hb-showers-855",
@@ -4569,46 +3889,6 @@ export const allCatalogProducts: Product[] = [
     "category": "showers",
     "subCategory": "SS304 Square Shower Arm",
     "image": "/images/products/Shower Arm/SS304 Square Shower Arm/856.jpg",
-    "tag": "SS304 Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-857",
-    "name": "SS304 Square Shower Arm Model: 857",
-    "modelCode": "857",
-    "collection": "SS304 Square Shower Arm",
-    "category": "showers",
-    "subCategory": "SS304 Square Shower Arm",
-    "image": "/images/products/Shower Arm/SS304 Square Shower Arm/857.jpg",
-    "tag": "SS304 Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-858",
-    "name": "SS304 Square Shower Arm Model: 858",
-    "modelCode": "858",
-    "collection": "SS304 Square Shower Arm",
-    "category": "showers",
-    "subCategory": "SS304 Square Shower Arm",
-    "image": "/images/products/Shower Arm/SS304 Square Shower Arm/858.jpg",
-    "tag": "SS304 Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-859",
-    "name": "SS304 Square Shower Arm Model: 859",
-    "modelCode": "859",
-    "collection": "SS304 Square Shower Arm",
-    "category": "showers",
-    "subCategory": "SS304 Square Shower Arm",
-    "image": "/images/products/Shower Arm/SS304 Square Shower Arm/859.jpg",
-    "tag": "SS304 Square Shower Arm"
-  },
-  {
-    "id": "hb-showers-860",
-    "name": "SS304 Square Shower Arm Model: 860",
-    "modelCode": "860",
-    "collection": "SS304 Square Shower Arm",
-    "category": "showers",
-    "subCategory": "SS304 Square Shower Arm",
-    "image": "/images/products/Shower Arm/SS304 Square Shower Arm/860.jpg",
     "tag": "SS304 Square Shower Arm"
   },
   {
@@ -4762,16 +4042,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Drain Board"
   },
   {
-    "id": "hb-kitchen-sbsd06",
-    "name": "Drain Board Model: SBSD06",
-    "modelCode": "SBSD06",
-    "collection": "Drain Board",
-    "category": "kitchen",
-    "subCategory": "Drain Board",
-    "image": "/images/products/Sinks/Drain Board/SBSD06.jpg",
-    "tag": "Drain Board"
-  },
-  {
     "id": "hb-kitchen-rb01",
     "name": "Fino Series Model: RB01",
     "modelCode": "RB01",
@@ -4779,36 +4049,6 @@ export const allCatalogProducts: Product[] = [
     "category": "kitchen",
     "subCategory": "Fino Series",
     "image": "/images/products/Sinks/Fino Series/RB01.jpg",
-    "tag": "Fino Series"
-  },
-  {
-    "id": "hb-kitchen-rb02",
-    "name": "Fino Series Model: RB02",
-    "modelCode": "RB02",
-    "collection": "Fino Series",
-    "category": "kitchen",
-    "subCategory": "Fino Series",
-    "image": "/images/products/Sinks/Fino Series/RB02.jpg",
-    "tag": "Fino Series"
-  },
-  {
-    "id": "hb-kitchen-rb03",
-    "name": "Fino Series Model: RB03",
-    "modelCode": "RB03",
-    "collection": "Fino Series",
-    "category": "kitchen",
-    "subCategory": "Fino Series",
-    "image": "/images/products/Sinks/Fino Series/RB03.jpg",
-    "tag": "Fino Series"
-  },
-  {
-    "id": "hb-kitchen-rb04",
-    "name": "Fino Series Model: RB04",
-    "modelCode": "RB04",
-    "collection": "Fino Series",
-    "category": "kitchen",
-    "subCategory": "Fino Series",
-    "image": "/images/products/Sinks/Fino Series/RB04.jpg",
     "tag": "Fino Series"
   },
   {
@@ -4902,86 +4142,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Square Single Bowl"
   },
   {
-    "id": "hb-kitchen-sb02",
-    "name": "Square Single Bowl Model: SB02",
-    "modelCode": "SB02",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB02.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb03",
-    "name": "Square Single Bowl Model: SB03",
-    "modelCode": "SB03",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB03.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb04",
-    "name": "Square Single Bowl Model: SB04",
-    "modelCode": "SB04",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB04.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb05",
-    "name": "Square Single Bowl Model: SB05",
-    "modelCode": "SB05",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB05.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb06",
-    "name": "Square Single Bowl Model: SB06",
-    "modelCode": "SB06",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB06.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb07",
-    "name": "Square Single Bowl Model: SB07",
-    "modelCode": "SB07",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB07.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb08",
-    "name": "Square Single Bowl Model: SB08",
-    "modelCode": "SB08",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB08.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
-    "id": "hb-kitchen-sb10",
-    "name": "Square Single Bowl Model: SB10",
-    "modelCode": "SB10",
-    "collection": "Square Single Bowl",
-    "category": "kitchen",
-    "subCategory": "Square Single Bowl",
-    "image": "/images/products/Sinks/Square Single Bowl/SB10.jpg",
-    "tag": "Square Single Bowl"
-  },
-  {
     "id": "hb-allieds-dcc008",
     "name": "Curve Drain Channel Model: DCC008",
     "modelCode": "DCC008",
@@ -4989,66 +4149,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Curve Drain Channel",
     "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC008.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc009",
-    "name": "Curve Drain Channel Model: DCC009",
-    "modelCode": "DCC009",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC009.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc010",
-    "name": "Curve Drain Channel Model: DCC010",
-    "modelCode": "DCC010",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC010.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc011",
-    "name": "Curve Drain Channel Model: DCC011",
-    "modelCode": "DCC011",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC011.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc012",
-    "name": "Curve Drain Channel Model: DCC012",
-    "modelCode": "DCC012",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC012.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc013",
-    "name": "Curve Drain Channel Model: DCC013",
-    "modelCode": "DCC013",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC013.jpg",
-    "tag": "Curve Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcc014",
-    "name": "Curve Drain Channel Model: DCC014",
-    "modelCode": "DCC014",
-    "collection": "Curve Drain Channel",
-    "category": "allieds",
-    "subCategory": "Curve Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Curve Drain Channel/DCC014.jpg",
     "tag": "Curve Drain Channel"
   },
   {
@@ -5062,66 +4162,6 @@ export const allCatalogProducts: Product[] = [
     "tag": "Line Drain Channel"
   },
   {
-    "id": "hb-allieds-dcl009",
-    "name": "Line Drain Channel Model: DCL009",
-    "modelCode": "DCL009",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL009.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcl010",
-    "name": "Line Drain Channel Model: DCL010",
-    "modelCode": "DCL010",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL010.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcl011",
-    "name": "Line Drain Channel Model: DCL011",
-    "modelCode": "DCL011",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL011.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcl012",
-    "name": "Line Drain Channel Model: DCL012",
-    "modelCode": "DCL012",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL012.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcl013",
-    "name": "Line Drain Channel Model: DCL013",
-    "modelCode": "DCL013",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL013.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dcl014",
-    "name": "Line Drain Channel Model: DCL014",
-    "modelCode": "DCL014",
-    "collection": "Line Drain Channel",
-    "category": "allieds",
-    "subCategory": "Line Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Line Drain Channel/DCL014.jpg",
-    "tag": "Line Drain Channel"
-  },
-  {
     "id": "hb-allieds-dct008",
     "name": "Tile Drain Channel Model: DCT008",
     "modelCode": "DCT008",
@@ -5129,66 +4169,6 @@ export const allCatalogProducts: Product[] = [
     "category": "allieds",
     "subCategory": "Tile Drain Channel",
     "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT008.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct009",
-    "name": "Tile Drain Channel Model: DCT009",
-    "modelCode": "DCT009",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT009.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct010",
-    "name": "Tile Drain Channel Model: DCT010",
-    "modelCode": "DCT010",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT010.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct011",
-    "name": "Tile Drain Channel Model: DCT011",
-    "modelCode": "DCT011",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT011.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct012",
-    "name": "Tile Drain Channel Model: DCT012",
-    "modelCode": "DCT012",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT012.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct013",
-    "name": "Tile Drain Channel Model: DCT013",
-    "modelCode": "DCT013",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT013.jpg",
-    "tag": "Tile Drain Channel"
-  },
-  {
-    "id": "hb-allieds-dct014",
-    "name": "Tile Drain Channel Model: DCT014",
-    "modelCode": "DCT014",
-    "collection": "Tile Drain Channel",
-    "category": "allieds",
-    "subCategory": "Tile Drain Channel",
-    "image": "/images/products/SS304 Vertical Drain Channel/Tile Drain Channel/DCT014.jpg",
     "tag": "Tile Drain Channel"
   },
   {

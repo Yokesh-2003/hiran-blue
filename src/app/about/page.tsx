@@ -74,14 +74,7 @@ export default function AboutPage() {
     el?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-[#f7f4ee] text-[#0d1b2a] flex flex-col font-sans">
-        <div className="w-full h-8 bg-[#0d1b2a]" />
-        <div className="w-full h-16 bg-white border-b border-neutral-200" />
-      </div>
-    );
-  }
+
 
   return (
     <LanguageProvider>
@@ -118,25 +111,6 @@ export default function AboutPage() {
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
           onSelectProduct={(p) => setQuickViewProduct(p)}
-          onAddToCart={handleAddToCart}
-        />
-
-        <CartDrawer
-          isOpen={cartOpen}
-          onClose={() => setCartOpen(false)}
-          items={cartItems}
-          onRemoveItem={handleRemoveFromCart}
-          onClearCart={handleClearCart}
-          onProceedToInquiry={() => {
-            setInquiryTopic('BOQ Project Quotation with Selected Cart Items');
-            setInquiryOpen(true);
-          }}
-        />
-
-        <InquiryModal
-          isOpen={inquiryOpen}
-          onClose={() => setInquiryOpen(false)}
-          initialTopic={inquiryTopic}
         />
       </div>
     </LanguageProvider>

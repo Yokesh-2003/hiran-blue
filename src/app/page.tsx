@@ -85,14 +85,7 @@ export default function Home() {
     setInquiryOpen(true);
   };
 
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-[#f0f7ff] text-[#0f172a] flex flex-col font-sans">
-        <div className="w-full h-8 bg-[#e2e8f0]" />
-        <div className="w-full h-16 bg-[#e2e8f0] border-b border-[#cbd5e1]" />
-      </div>
-    );
-  }
+
 
   return (
     <LanguageProvider>
@@ -138,25 +131,6 @@ export default function Home() {
           product={quickViewProduct}
           onClose={() => setQuickViewProduct(null)}
           onSelectProduct={(p) => setQuickViewProduct(p)}
-          onAddToCart={handleAddToCart}
-        />
-
-        <CartDrawer
-          isOpen={cartOpen}
-          onClose={() => setCartOpen(false)}
-          items={cartItems}
-          onRemoveItem={handleRemoveFromCart}
-          onClearCart={handleClearCart}
-          onProceedToInquiry={() => {
-            setInquiryTopic('BOQ Project Quotation with Selected Cart Items');
-            setInquiryOpen(true);
-          }}
-        />
-
-        <InquiryModal
-          isOpen={inquiryOpen}
-          onClose={() => setInquiryOpen(false)}
-          initialTopic={inquiryTopic}
         />
       </div>
     </LanguageProvider>

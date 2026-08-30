@@ -42,19 +42,18 @@ export const AboutCta: React.FC<AboutCtaProps> = ({ onOpenInquiry }) => {
           {/* Two Interactive Call-To-Action Buttons (Horizontal on all screen sizes) */}
           <div className="pt-1.5 sm:pt-3 flex flex-row items-center justify-center gap-2 sm:gap-4">
             
-            {/* 1. Request Project Consultation Button */}
-            <button
-              type="button"
-              onClick={onOpenInquiry}
+            {/* 1. Request Project Consultation Button (Direct Call) */}
+            <a
+              href="tel:+919585117901"
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-[#d4a373] hover:bg-[#c69260] text-[#0d1b2a] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] cursor-pointer shrink-0"
             >
               <PhoneCall className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>Request Project Consultation</span>
-            </button>
+            </a>
 
             {/* 2. Digital Catalogue Button */}
             <a
-              href="/#catalogue"
+              href="/catalogue"
               className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-7 sm:py-3.5 rounded-full bg-[#0d1b2a]/80 hover:bg-[#0d1b2a] text-white hover:text-[#d4a373] border border-[#d4a373]/60 hover:border-[#d4a373] text-[9px] sm:text-xs md:text-sm font-bold uppercase tracking-wider backdrop-blur-md transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.4)] shrink-0"
             >
               <Download className="w-3 h-3 sm:w-4 sm:h-4 text-[#d4a373]" />

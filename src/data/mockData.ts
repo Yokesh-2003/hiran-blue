@@ -4,10 +4,8 @@ export const navItems: NavItem[] = [
   { name: 'Home', href: '#home' },
   { name: 'About Us', href: '#about' },
   { name: 'Products', href: '#products' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Dealers', href: '#dealers' },
-  { name: 'Catalogue', href: '#catalogue' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Catalogue', href: '/catalogue' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export const productsData: Product[] = [

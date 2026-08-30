@@ -28,27 +28,83 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Hiran - Bath | Luxury Architectural Bathware & Sanitaryware',
+  metadataBase: new URL('https://hiranbath.com'),
+  title: {
+    default: 'Hiran Bath | Luxury Architectural Bathware, Faucets & Sanitaryware',
+    template: '%s | Hiran Bath',
+  },
   description:
-    'Experience Hiran - Bath. Ultra-minimalist precision bathroom mixers, thermostatic wellness showers, monolithic stone bathtubs, and designer sanitaryware.',
+    'Discover Hiran Bath luxury bathware collections. Explore precision-engineered faucets, designer showers, heavy-duty valves, bath fittings, and download digital product catalogs.',
   keywords: [
+    'Hiran Bath',
     'Hiranbath',
     'Luxury Bathware',
-    'Sanitaryware',
-    'Concealed Basin Mixer',
-    'Aura Zero 2.0',
+    'Architectural Faucets',
+    'Sanitaryware India',
+    'Basin Mixers',
+    'Wall Mixers',
+    'Diverters',
+    'Bath Seth',
+    'Kitchen Sink Taps',
+    'Ball Valves',
     'Rain Showers',
-    'Freestanding Bathtubs',
-    'Architectural Bath Fittings',
+    'Bathroom Fittings',
+    'Product Catalogue Download',
   ],
-  icons: {
-    icon: [
-      { url: '/images/favicon.png?v=3', type: 'image/png' },
+  authors: [{ name: 'Hiran Bath' }],
+  creator: 'Hiran Bath',
+  publisher: 'Hiran Bath',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: 'https://hiranbath.com',
+  },
+  openGraph: {
+    title: 'Hiran Bath | Luxury Architectural Bathware, Faucets & Sanitaryware',
+    description:
+      'Discover Hiran Bath luxury bathware collections. Precision-engineered faucets, designer showers, valves, and bath suites.',
+    url: 'https://hiranbath.com',
+    siteName: 'Hiran Bath',
+    images: [
+      {
+        url: '/images/hero-banner.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hiran Bath Architectural Luxury',
+      },
     ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Hiran Bath | Luxury Architectural Bathware & Sanitaryware',
+    description:
+      'Discover Hiran Bath luxury bathware collections. Precision-engineered faucets, showers, and valves.',
+    images: ['/images/hero-banner.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: [{ url: '/images/favicon.png?v=3', type: 'image/png' }],
     shortcut: '/images/favicon.png?v=3',
     apple: '/images/favicon.png?v=3',
   },
 };
+
+import { CartProvider } from '@/context/CartContext';
 
 export default function RootLayout({
   children,
@@ -70,7 +126,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-screen flex flex-col bg-white text-neutral-900 antialiased overflow-x-hidden"
       >
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

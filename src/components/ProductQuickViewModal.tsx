@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Product } from '@/types';
 import { allCatalogProducts } from '@/data/allCatalogProducts';
+import { useCart } from '@/context/CartContext';
+import { CustomerInfoModal } from '@/components/CustomerInfoModal';
 import {
   X,
   Layers,
@@ -11,6 +13,8 @@ import {
   ArrowRight,
   Plus,
   Minus,
+  ShoppingCart,
+  Check,
 } from 'lucide-react';
 
 interface ProductQuickViewModalProps {
@@ -24,8 +28,12 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
   product,
   onClose,
   onSelectProduct,
+  onAddToCart,
 }) => {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(1);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [customerInfoOpen, setCustomerInfoOpen] = useState(false);
   const suggestedScrollRef = useRef<HTMLDivElement>(null);
   const modalBodyRef = useRef<HTMLDivElement>(null);
 
@@ -77,9 +85,10 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
     return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
   }, []);
 
-  // Reset quantity and scroll position when active product changes
+  // Reset quantity, cart button state, and scroll position when active product changes
   useEffect(() => {
     setQuantity(1);
+    setAddedToCart(false);
     if (modalBodyRef.current) {
       modalBodyRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -100,8 +109,6 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
     return [...sameSeries, ...sameCategory].slice(0, 16);
   }, [product]);
 
-  if (!product) return null;
-
   const handleIncrement = () => setQuantity((q) => q + 1);
   const handleDecrement = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
@@ -111,7 +118,24 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
     suggestedScrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
   };
 
+  const handleAddToCartClick = () => {
+    if (!product) return;
+    addToCart(product, quantity);
+    onAddToCart?.(product);
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 2500);
+  };
+
+  if (!product) return null;
+
   const handleBuyNow = () => {
+    if (!product) return;
+    setCustomerInfoOpen(true);
+  };
+
+  const handleCustomerInfoSubmit = (details: { name: string; email: string }) => {
     if (!product) return;
     const isLocalhost =
       typeof window !== 'undefined' &&
@@ -122,7 +146,7 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
       ? `https://raw.githubusercontent.com/Yokesh-2003/hiran-blue/main/public${encodeURI(product.image)}`
       : `${window.location.origin}${encodeURI(product.image)}`;
 
-    const message = `Hello Hiran Bath,\n\nI would like to order/enquire about this product:\n\n*Product Name:* ${product.name}\n*Category:* ${product.category}\n*Series:* ${product.subCategory || product.collection}\n*Model Code:* ${product.modelCode || 'N/A'}\n*Quantity:* ${quantity}\n*Product Image:* ${fullImageUrl}\n\nPlease share the details. Thank you!`;
+    const message = `Hello Hiran Bath,\n\n*Customer Details:*\n- Name: ${details.name}\n- Email: ${details.email}\n\n*Order Enquiry:*\n- Product Name: ${product.name}\n- Category: ${product.category}\n- Series: ${product.subCategory || product.collection}\n- Model Code: ${product.modelCode || 'N/A'}\n- Quantity: ${quantity}\n- Product Image: ${fullImageUrl}\n\nPlease share the official quotation and delivery details. Thank you!`;
 
     const whatsappUrl = `https://wa.me/919585117901?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
@@ -175,34 +199,34 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 [-webkit-user-drag:none]"
                 />
 
                 {product.modelCode && (
-                  <div className="absolute top-3 left-3 bg-[#0d1b2a] text-[#d4a373] text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full shadow-md border border-[#1b263b]">
+                  <div className="absolute top-3 left-3 bg-[#0d1b2a] text-[#d4a373] text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full border border-[#1b263b] shadow-md pointer-events-none">
                     Model: {product.modelCode}
                   </div>
                 )}
               </div>
             </div>
 
-            {/* 2. RIGHT COLUMN: CLASSIFICATION ONLY */}
-            <div className="md:col-span-7 flex flex-col justify-between space-y-5">
-              <div className="space-y-3">
-                
-                {/* Series Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f5efe6] text-[#7f5539] text-[11px] font-bold uppercase tracking-wider border border-[#e2d5c5]">
-                  <Layers className="w-3.5 h-3.5 text-[#b58351]" />
+            {/* 2. RIGHT COLUMN: CLASSIFICATION & ACTIONS */}
+            <div className="md:col-span-7 space-y-5">
+              
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f5efe6] text-[#7f5539] text-[10px] font-bold uppercase tracking-wider border border-[#e2d5c5]">
+                  <Layers className="w-3 h-3 text-[#b58351]" />
                   <span>{product.subCategory || product.collection}</span>
                 </div>
 
-                {/* Product Title */}
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#0d1b2a] leading-tight">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#0d1b2a] leading-tight">
                   {product.name}
                 </h3>
+              </div>
 
-                {/* Verified Classification Grid */}
-                <div className="pt-3 border-t border-[#e2d5c5] space-y-2.5 text-xs">
+              {/* Specifications Table */}
+              <div className="space-y-2 pt-2 border-t border-[#e2d5c5] text-xs">
+                <div className="grid grid-cols-1 gap-1.5">
                   <div className="grid grid-cols-2 gap-2 py-1.5 border-b border-[#f0e6da]">
                     <span className="text-[#7f5539] font-medium">Category:</span>
                     <span className="text-[#0d1b2a] font-bold uppercase">{product.category}</span>
@@ -220,8 +244,8 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                 </div>
               </div>
 
-              {/* QUANTITY COUNTER & BUY NOW BUTTON */}
-              <div className="pt-4 border-t border-[#e2d5c5] space-y-4">
+              {/* QUANTITY COUNTER & ACTION BUTTONS */}
+              <div className="pt-4 border-t border-[#e2d5c5] space-y-3.5">
                 <div className="flex items-center justify-between gap-4">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#7f5539]">
                     Quantity:
@@ -248,7 +272,30 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
                   </div>
                 </div>
 
-                {/* Sandal Colored Buy Now Button */}
+                {/* 1. Add to Cart Button */}
+                <button
+                  type="button"
+                  onClick={handleAddToCartClick}
+                  className={`w-full py-3.5 px-6 rounded-2xl font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer active:scale-[0.99] flex items-center justify-center gap-2 ${
+                    addedToCart
+                      ? 'bg-emerald-700 text-white shadow-md'
+                      : 'bg-[#0d1b2a] hover:bg-[#1b263b] text-[#ede0d4] hover:text-[#d4a373] shadow-md hover:shadow-lg'
+                  }`}
+                >
+                  {addedToCart ? (
+                    <>
+                      <Check className="w-4 h-4 text-white" />
+                      <span>Added to Cart!</span>
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingCart className="w-4 h-4 text-[#d4a373]" />
+                      <span>Add to Cart</span>
+                    </>
+                  )}
+                </button>
+
+                {/* 2. Sandal Colored Buy Now Button */}
                 <button
                   type="button"
                   onClick={handleBuyNow}
@@ -339,6 +386,16 @@ export const ProductQuickViewModal: React.FC<ProductQuickViewModalProps> = ({
 
         </div>
       </div>
+
+      {/* Customer Name & Email Modal before WhatsApp Redirect */}
+      <CustomerInfoModal
+        isOpen={customerInfoOpen}
+        onClose={() => setCustomerInfoOpen(false)}
+        onSubmit={handleCustomerInfoSubmit}
+        title="Direct WhatsApp Order"
+        subtitle={`Please enter your details to enquire about ${product.name} (Model: ${product.modelCode || 'N/A'}).`}
+        submitLabel="Continue"
+      />
     </div>
   );
 };

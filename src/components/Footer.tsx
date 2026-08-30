@@ -1,34 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import {
   ChevronRight,
   Globe,
   Phone,
   Mail,
   MapPin,
-  Check,
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.email) return;
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ firstName: '', lastName: '', email: '' });
-    }, 4000);
-  };
-
   return (
     <footer className="relative bg-[#ede0d4] text-[#0d1b2a] border-t border-[#d8c3af] overflow-hidden font-sans">
       
@@ -37,17 +18,17 @@ export const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#d8c3af]">
             
-            {/* Pillar 1: Assistance */}
+            {/* Pillar 1: Assistance (Direct Call) */}
             <a
-              href="/#contact"
+              href="tel:+919585117901"
               className="group py-8 sm:py-10 md:px-8 first:pl-0 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
                 <h3 className="text-base sm:text-lg font-bold text-[#0d1b2a] tracking-tight group-hover:text-[#b58351] transition-colors">
-                  Assistance
+                  Assistance & Support
                 </h3>
                 <p className="text-xs text-[#5c677d] leading-relaxed max-w-xs font-normal">
-                  Do you need assistance or would you like to request technical information?
+                  Call our expert support team directly at +91 95851 17901 for immediate assistance.
                 </p>
               </div>
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#0d1b2a] group-hover:text-[#b58351] group-hover:translate-x-1.5 transition-all shrink-0">
@@ -55,17 +36,17 @@ export const Footer: React.FC = () => {
               </div>
             </a>
 
-            {/* Pillar 2: News & Events */}
+            {/* Pillar 2: Products & Design */}
             <a
-              href="/#projects"
+              href="/products"
               className="group py-8 sm:py-10 md:px-8 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
                 <h3 className="text-base sm:text-lg font-bold text-[#0d1b2a] tracking-tight group-hover:text-[#b58351] transition-colors">
-                  News & Events
+                  Products & Design
                 </h3>
                 <p className="text-xs text-[#5c677d] leading-relaxed max-w-xs font-normal">
-                  News, architectural insights and must-see showcase moments.
+                  Explore precision-engineered faucets, designer showers, valves, allieds and bathroom suites.
                 </p>
               </div>
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-[#0d1b2a] group-hover:text-[#b58351] group-hover:translate-x-1.5 transition-all shrink-0">
@@ -75,7 +56,7 @@ export const Footer: React.FC = () => {
 
             {/* Pillar 3: Catalogues */}
             <a
-              href="/#catalogue"
+              href="/catalogue"
               className="group py-8 sm:py-10 md:px-8 last:pr-0 flex items-center justify-between transition-colors hover:bg-[#e4d4c4]/40"
             >
               <div className="space-y-1.5 pr-4">
@@ -95,9 +76,9 @@ export const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. MAIN 5-COLUMN EDITORIAL DIRECTORY GRID */}
+      {/* 2. MAIN EDITORIAL DIRECTORY GRID (4 BALANCED COLUMNS) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-12 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8">
           
           {/* Column 1: Contact Details */}
           <div className="lg:col-span-3 space-y-6">
@@ -110,14 +91,14 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-xs text-[#5c677d]">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#b58351] shrink-0" />
-                <a href="tel:641-754-0072" className="hover:text-[#0d1b2a] transition-colors font-medium">
-                  641-754-0072
+                <a href="tel:+919585117901" className="hover:text-[#0d1b2a] transition-colors font-medium">
+                  +91 95851 17901
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#b58351] shrink-0" />
-                <a href="mailto:GavinEMaki@rhyta.com" className="hover:text-[#0d1b2a] transition-colors break-all font-medium">
-                  GavinEMaki@rhyta.com
+                <a href="mailto:support@hiranbath.com" className="hover:text-[#0d1b2a] transition-colors break-all font-medium">
+                  support@hiranbath.com
                 </a>
               </div>
               <div className="flex items-start gap-2.5 pt-1">
@@ -129,108 +110,62 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Columns 2 & 3: Quick Links & Our Product (Side-by-side 2 columns on mobile & desktop) */}
-          <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:col-span-4">
-            
-            {/* Quick Link */}
-            <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
-                Quick Link
-              </h4>
-              <ul className="space-y-2.5 text-xs text-[#5c677d]">
-                <li><a href="/" className="hover:text-[#0d1b2a] transition-colors">Home</a></li>
-                <li><a href="/about" className="hover:text-[#0d1b2a] transition-colors">About Us</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Our Product</a></li>
-                <li><a href="/#catalogue" className="hover:text-[#0d1b2a] transition-colors">Catalogue</a></li>
-                <li><a href="/#projects" className="hover:text-[#0d1b2a] transition-colors">Projects</a></li>
-                <li><a href="/#dealers" className="hover:text-[#0d1b2a] transition-colors">Dealers</a></li>
-                <li><a href="/#contact" className="hover:text-[#0d1b2a] transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Our Product (On the right side of Quick Link) */}
-            <div className="space-y-4">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
-                Our Product
-              </h4>
-              <ul className="space-y-2.5 text-xs text-[#5c677d]">
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Faucets</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Bath Seth</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Kitchen</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Valves</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Allieds</a></li>
-                <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Showers</a></li>
-              </ul>
-            </div>
-
+          {/* Column 2: Quick Links */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
+              Quick Link
+            </h4>
+            <ul className="space-y-2.5 text-xs text-[#5c677d]">
+              <li><a href="/" className="hover:text-[#0d1b2a] transition-colors">Home</a></li>
+              <li><a href="/about" className="hover:text-[#0d1b2a] transition-colors">About Us</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Our Product</a></li>
+              <li><a href="/catalogue" className="hover:text-[#0d1b2a] transition-colors">Catalogue</a></li>
+              <li><a href="/contact" className="hover:text-[#0d1b2a] transition-colors">Contact</a></li>
+            </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Column 3: Our Product */}
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
-              Subscribe Newsletter
+              Our Product
             </h4>
+            <ul className="space-y-2.5 text-xs text-[#5c677d]">
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Faucets</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Bath Seth</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Kitchen</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Valves</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Allieds</a></li>
+              <li><a href="/products" className="hover:text-[#0d1b2a] transition-colors">Showers</a></li>
+            </ul>
+          </div>
 
-            <p className="text-xs text-[#5c677d] leading-relaxed">
-              Experience the pinnacle of bathroom luxury and precision engineering.
-            </p>
-
-            {isSubmitted ? (
-              <div className="p-4 rounded-xl bg-white border border-[#d8c3af] text-[#0d1b2a] text-xs font-medium flex items-center gap-2 animate-in fade-in">
-                <div className="w-5 h-5 rounded-full bg-[#0d1b2a] text-[#d4a373] flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3" />
-                </div>
-                <span>Thank you for subscribing to Hiran® newsletters.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 pt-1">
-                
-                {/* First Name & Last Name Underline Inputs */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="First Name"
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#0d1b2a]/40 focus:border-[#0d1b2a] text-xs py-1.5 text-[#0d1b2a] placeholder-[#7f5539]/70 focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Last Name"
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#0d1b2a]/40 focus:border-[#0d1b2a] text-xs py-1.5 text-[#0d1b2a] placeholder-[#7f5539]/70 focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* E-mail & CONFIRM Submit */}
-                <div className="flex items-center gap-3 pt-1">
-                  <div className="flex-1">
-                    <input
-                      type="email"
-                      placeholder="E-mail"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-transparent border-b border-[#0d1b2a]/40 focus:border-[#0d1b2a] text-xs py-1.5 text-[#0d1b2a] placeholder-[#7f5539]/70 focus:outline-none transition-colors"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="border-b border-[#0d1b2a] pb-1 text-xs font-bold uppercase tracking-widest text-[#0d1b2a] hover:text-[#b58351] hover:border-[#b58351] transition-colors cursor-pointer shrink-0"
-                  >
-                    CONFIRM
-                  </button>
-                </div>
-
-              </form>
-            )}
+          {/* Column 4: Contact & Support */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#0d1b2a]">
+              Contact
+            </h4>
+            <ul className="space-y-2.5 text-xs text-[#5c677d]">
+              <li>
+                <a href="/contact?tab=support" className="hover:text-[#0d1b2a] transition-colors">
+                  Customer Support
+                </a>
+              </li>
+              <li>
+                <a href="/contact?tab=enquiry" className="hover:text-[#0d1b2a] transition-colors">
+                  Business Enquiry
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-[#0d1b2a] transition-colors">
+                  General Enquiry
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919585117901" className="hover:text-[#0d1b2a] transition-colors">
+                  Direct Line Support
+                </a>
+              </li>
+            </ul>
           </div>
 
         </div>
@@ -242,10 +177,10 @@ export const Footer: React.FC = () => {
           FOLLOW US
         </h4>
 
-        {/* Social Icons Row (Instagram, WhatsApp, Facebook, YouTube, X) */}
+        {/* Social Icons Row */}
         <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-[#0d1b2a]">
           
-          {/* 1. Instagram */}
+          {/* Instagram */}
           <a
             href="https://instagram.com"
             target="_blank"
@@ -260,9 +195,9 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
 
-          {/* 2. WhatsApp */}
+          {/* WhatsApp */}
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919585117901"
             target="_blank"
             rel="noopener noreferrer"
             className="w-7 h-7 flex items-center justify-center hover:text-[#b58351] hover:scale-110 transition-transform"
@@ -273,7 +208,7 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
 
-          {/* 3. Facebook */}
+          {/* Facebook */}
           <a
             href="https://facebook.com"
             target="_blank"
@@ -284,7 +219,7 @@ export const Footer: React.FC = () => {
             f
           </a>
 
-          {/* 4. YouTube */}
+          {/* YouTube */}
           <a
             href="https://youtube.com"
             target="_blank"
@@ -297,15 +232,15 @@ export const Footer: React.FC = () => {
             </svg>
           </a>
 
-          {/* 5. X (Twitter) */}
+          {/* X / Twitter */}
           <a
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-7 h-7 flex items-center justify-center text-sm font-sans font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
-            aria-label="X Twitter"
+            className="w-7 h-7 flex items-center justify-center text-xs font-bold hover:text-[#b58351] hover:scale-110 transition-transform"
+            aria-label="X (Twitter)"
           >
-            𝕏
+            ✕
           </a>
 
         </div>
@@ -317,13 +252,10 @@ export const Footer: React.FC = () => {
           
           {/* Brand Logo */}
           <div className="shrink-0">
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/images/logo.webp"
               alt="HIRAN Bath Accessories"
-              width={200}
-              height={65}
-              priority
-              unoptimized
               className="h-10 sm:h-12 w-auto object-contain"
             />
           </div>

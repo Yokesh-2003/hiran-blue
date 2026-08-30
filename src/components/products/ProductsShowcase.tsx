@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ArrowRight,
   Eye,
@@ -202,6 +204,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
   onQuickView,
   onAddToCart,
 }) => {
+  const router = useRouter();
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const promoSliderRef = useRef<HTMLDivElement>(null);
@@ -444,18 +447,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
             {promoCards.map((card) => (
               <div
                 key={card.id}
-                onClick={() => {
-                  if (!hasDragged.current) {
-                    setActiveCategoryFilter(card.category);
-                    const el = document.getElementById('full-catalog-section');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }
-                }}
-                className={`w-[260px] sm:w-[280px] shrink-0 snap-start rounded-3xl p-5 sm:p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between cursor-pointer relative overflow-hidden group min-h-[380px] lg:min-h-[400px] ${card.baseBg} ${
-                  activeCategoryFilter === card.category ? 'ring-4 ring-white/90' : ''
-                }`}
+                className={`w-[260px] sm:w-[280px] shrink-0 snap-start rounded-3xl p-5 sm:p-6 text-white shadow-lg transition-all duration-300 flex flex-col justify-between relative overflow-hidden group min-h-[380px] lg:min-h-[400px] ${card.baseBg}`}
               >
                 {/* Full Container Background Image */}
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -463,7 +455,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                   <img
                     src={card.img}
                     alt={card.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 [-webkit-user-drag:none]"
+                    className="w-full h-full object-cover object-center [-webkit-user-drag:none]"
                   />
                 </div>
 
@@ -487,10 +479,6 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                 {/* Bottom Tag */}
                 <div className="relative z-10 pt-2 border-t border-white/20 flex items-center justify-between text-xs font-bold text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pointer-events-none">
                   <span>{card.tag}</span>
-                  <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    <span>View</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
                 </div>
               </div>
             ))}
@@ -505,7 +493,11 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                 <button
                   key={`top-${tab.id}`}
                   onClick={() => {
-                    setActiveCategoryFilter(tab.id);
+                    if (tab.id === 'all') {
+                      setActiveCategoryFilter('all');
+                    } else {
+                      router.push(`/products/${tab.id}`);
+                    }
                   }}
                   className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                     activeCategoryFilter === tab.id
@@ -524,17 +516,9 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                 <div
                   key={`top-${product.id}`}
                   onClick={() => {
-                    setActiveCategoryFilter(product.category);
-                    const el = document.getElementById('full-catalog-section');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    router.push(`/products/${product.category}`);
                   }}
-                  className={`rounded-2xl sm:rounded-3xl bg-white border p-3.5 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between items-center cursor-pointer group min-h-[190px] sm:min-h-[285px] ${
-                    activeCategoryFilter === product.category
-                      ? 'border-[#0d1b2a] ring-2 ring-[#0d1b2a]'
-                      : 'border-[#e2d5c5] hover:border-[#0d1b2a]'
-                  }`}
+                  className="rounded-2xl sm:rounded-3xl bg-white border border-[#e2d5c5] hover:border-[#0d1b2a] p-3.5 sm:p-5 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 flex flex-col justify-between items-center cursor-pointer group min-h-[190px] sm:min-h-[285px]"
                 >
                   {/* Product Image Frame */}
                   <div className="relative w-full aspect-square max-w-[130px] sm:max-w-[180px] rounded-xl sm:rounded-2xl bg-[#fbf9f5] border border-[#f0e6da] overflow-hidden flex items-center justify-center p-2.5 sm:p-4 group-hover:bg-[#f5efe6] transition-colors">
@@ -697,9 +681,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({
                 onQuickView={onQuickView}
                 onAddToCart={onAddToCart}
                 onViewAll={() => {
-                  setActiveCategoryFilter(group.id);
-                  const el = document.getElementById('full-catalog-section');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  router.push(`/products/${group.id}`);
                 }}
               />
             ))}
