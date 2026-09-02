@@ -10,7 +10,7 @@ export const ProductCategoriesSection: React.FC = () => {
   const isProgrammaticScroll = useRef<boolean>(false);
   const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const categories = [
+  const categories = [ 
     {
       id: 'faucets',
       name: 'Faucets',
