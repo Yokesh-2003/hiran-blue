@@ -12,14 +12,14 @@ export const AboutHeritageStory: React.FC = () => {
     {
       year: '1957',
       label: 'Phase 01',
-      img: '/images/nature1.png',
+      img: '/images/about 1.jpg',
       content:
         'Trilokchandji Hiran left Daspan in Rajasthan and came to Ahmedabad looking for a job after losing both his parents when he was very young. His search for work took him to several cities including Ahmedabad, Mumbai, Chennai, and finally Madurai in 1957. He tried his hand at various businesses such as selling plasticware, mehndi, turmeric, glucose, and pens before eventually settling into a business that he then grew by moving to different cities.',
     },
     {
       year: '1987',
       label: 'Phase 02',
-      img: '/images/nature2.png',
+      img: '/images/about 2.jpg',
       content:
         'Champalalji Hiran quit school early to help his father with his multiple businesses. He learned the ropes in various trades, including sarees, cassettes, watches, plasticware, and fast-moving consumer goods (FMCG). He also mastered hardware and plumbing and, in 1987, opened Hiran Pipe House.',
     },
@@ -33,7 +33,7 @@ export const AboutHeritageStory: React.FC = () => {
     {
       year: 'Present',
       label: 'Phase 04',
-      img: '/images/bathtub.jpg',
+      img: '/images/present.jpg',
       content:
         'The brand “HIRAN” took off quickly, serving more than 500 dealers in Tamil Nadu and over 50,000 customers in a few years, gaining popularity among plumbers, engineers, and contractors. They expanded their business from Tamil Nadu to Kerala, Karnataka, Maharashtra, Andhra Pradesh, Gujarat, and Rajasthan, strengthening their presence in the market.',
     },
